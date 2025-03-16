@@ -34,7 +34,7 @@ CREATE TABLE Question (
   QuestionId int IDENTITY NOT NULL, 
   Title      nvarchar(255) NOT NULL, 
   Answer     nvarchar(255) NOT NULL, 
-  [Type]     varchar(255) NOT NULL, 
+  [Type]     varchar(50) NOT NULL, 
   PRIMARY KEY (QuestionId));
 
 CREATE TABLE [Role] (
@@ -46,7 +46,7 @@ CREATE TABLE SkincareProduct (
   SkincareProductId int IDENTITY NOT NULL, 
   [Name]            nvarchar(150) NOT NULL, 
   [Description]     nvarchar(255) NULL, 
-  Capacity          int NULL, 
+  Capacity          varchar(100) NULL, 
   UnitPrice         decimal(9, 2) NOT NULL, 
   IsAvailable       bit NOT NULL, 
   CategoryId        int NOT NULL, 

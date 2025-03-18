@@ -7,12 +7,15 @@ namespace BusinessLogicLayer.Services
 {
     public class RoleService : IService<RoleDto>
     {
+        private static RoleService _Instance = null!;
         private readonly IRepository<Role> _RoleRepository;
 
-        public RoleService()
+        private RoleService()
         {
-            _RoleRepository = new RoleRepository();
+            _RoleRepository = RoleRepository.GetInstance();
         }
+
+        public static RoleService GetInstance() => _Instance ??= new RoleService();
 
         public RoleDto Add(RoleDto data)
         {
@@ -30,6 +33,11 @@ namespace BusinessLogicLayer.Services
         }
 
         public List<RoleDto> GetAll()
+        {
+            return [];
+        }
+
+        public List<RoleDto> Search(string? keyword)
         {
             return [];
         }

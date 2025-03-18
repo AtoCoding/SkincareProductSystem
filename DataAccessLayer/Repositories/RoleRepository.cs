@@ -6,12 +6,15 @@ namespace BusinessLogicLayer.Services
 {
     public class RoleRepository : IRepository<Role>
     {
+        private static RoleRepository _Instance = null!;
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
-        public RoleRepository()
+        private RoleRepository()
         {
             _SkincareProductSystemContext = new();
         }
+
+        public static RoleRepository GetInstance() => _Instance ??= new RoleRepository();
 
         public Role Add(Role data)
         {
@@ -29,6 +32,11 @@ namespace BusinessLogicLayer.Services
         }
 
         public List<Role> GetAll()
+        {
+            return [];
+        }
+
+        public List<Role> Search(string? keyword)
         {
             return [];
         }

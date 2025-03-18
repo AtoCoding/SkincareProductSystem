@@ -5,12 +5,15 @@ namespace DataAccessLayer.Repositories
 {
     public class BrandRepository : IRepository<Brand>
     {
+        private static BrandRepository _Instance = null!;
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
-        public BrandRepository()
+        private BrandRepository()
         {
             _SkincareProductSystemContext = new();
         }
+
+        public static BrandRepository GetInstance() => _Instance ??= new BrandRepository();
 
         public Brand Add(Brand data)
         {
@@ -28,6 +31,11 @@ namespace DataAccessLayer.Repositories
         }
 
         public List<Brand> GetAll()
+        {
+            return [];
+        }
+
+        public List<Brand> Search(string? keyword)
         {
             return [];
         }

@@ -6,12 +6,15 @@ namespace BusinessLogicLayer.Services
 {
     public class UserRepository : IRepository<User>
     {
+        private static UserRepository _Instance = null!;
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
-        public UserRepository()
+        private UserRepository()
         {
             _SkincareProductSystemContext = new();
         }
+
+        public static UserRepository GetInstance() => _Instance ??= new UserRepository();
 
         public User Add(User data)
         {
@@ -29,6 +32,11 @@ namespace BusinessLogicLayer.Services
         }
 
         public List<User> GetAll()
+        {
+            return [];
+        }
+
+        public List<User> Search(string? keyword)
         {
             return [];
         }

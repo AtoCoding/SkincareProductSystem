@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Entities;
+﻿using System;
+using System.Collections.Generic;
+using DataAccessLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -19,9 +21,15 @@ public partial class SkincareProductSystemContext : DbContext
 
     public virtual DbSet<Category> Categories { get; set; }
 
+    public virtual DbSet<Order> Orders { get; set; }
+
+    public virtual DbSet<Question> Questions { get; set; }
+
     public virtual DbSet<Role> Roles { get; set; }
 
     public virtual DbSet<SkincareProduct> SkincareProducts { get; set; }
+
+    public virtual DbSet<TypeOfSkin> TypeOfSkins { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -31,7 +39,7 @@ public partial class SkincareProductSystemContext : DbContext
     {
         modelBuilder.Entity<Brand>(entity =>
         {
-            entity.HasKey(e => e.BrandId).HasName("PK__Brand__DAD4F05E81B14BF8");
+            entity.HasKey(e => e.BrandId).HasName("PK__Brand__DAD4F05E3595EA29");
 
             entity.ToTable("Brand");
 
@@ -48,7 +56,7 @@ public partial class SkincareProductSystemContext : DbContext
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__Category__19093A0BC93AC9DA");
+            entity.HasKey(e => e.CategoryId).HasName("PK__Category__19093A0BD92E4453");
 
             entity.ToTable("Category");
 
@@ -63,9 +71,55 @@ public partial class SkincareProductSystemContext : DbContext
                 .HasConstraintName("FKCategory337703");
         });
 
+        modelBuilder.Entity<Order>(entity =>
+        {
+            entity.HasKey(e => e.OrderId).HasName("PK__Order__C3905BCFFBE971E6");
+
+            entity.ToTable("Order");
+
+            entity.Property(e => e.Username)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.UsernameNavigation).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.Username)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FKOrder39294");
+
+            entity.HasMany(d => d.SkincareProducts).WithMany(p => p.Orders)
+                .UsingEntity<Dictionary<string, object>>(
+                    "OrderDetail",
+                    r => r.HasOne<SkincareProduct>().WithMany()
+                        .HasForeignKey("SkincareProductId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FKOrderDetai412706"),
+                    l => l.HasOne<Order>().WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FKOrderDetai351167"),
+                    j =>
+                    {
+                        j.HasKey("OrderId", "SkincareProductId").HasName("PK__OrderDet__CE7C2571B265CDDC");
+                        j.ToTable("OrderDetails");
+                    });
+        });
+
+        modelBuilder.Entity<Question>(entity =>
+        {
+            entity.HasKey(e => e.QuestionId).HasName("PK__Question__0DC06FACC6E7BC12");
+
+            entity.ToTable("Question");
+
+            entity.Property(e => e.Answer).HasMaxLength(255);
+            entity.Property(e => e.Title).HasMaxLength(255);
+            entity.Property(e => e.Type)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__Role__8AFACE1A3904A86A");
+            entity.HasKey(e => e.RoleId).HasName("PK__Role__8AFACE1ACD7ECF52");
 
             entity.ToTable("Role");
 
@@ -76,15 +130,15 @@ public partial class SkincareProductSystemContext : DbContext
 
         modelBuilder.Entity<SkincareProduct>(entity =>
         {
-            entity.HasKey(e => e.SkincareProductId).HasName("PK__Skincare__DEC7EBE1F851D399");
+            entity.HasKey(e => e.SkincareProductId).HasName("PK__Skincare__DEC7EBE1DFC61650");
 
             entity.ToTable("SkincareProduct");
 
             entity.Property(e => e.Capacity)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.Description).HasMaxLength(255);
-            entity.Property(e => e.Name).HasMaxLength(255);
+            entity.Property(e => e.Name).HasMaxLength(150);
             entity.Property(e => e.UnitPrice).HasColumnType("decimal(9, 2)");
             entity.Property(e => e.Username)
                 .HasMaxLength(50)
@@ -106,9 +160,18 @@ public partial class SkincareProductSystemContext : DbContext
                 .HasConstraintName("FKSkincarePr229752");
         });
 
+        modelBuilder.Entity<TypeOfSkin>(entity =>
+        {
+            entity.HasKey(e => e.TypeOfSkinId).HasName("PK__TypeOfSk__E4DB09EC99291509");
+
+            entity.ToTable("TypeOfSkin");
+
+            entity.Property(e => e.Name).HasMaxLength(255);
+        });
+
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Username).HasName("PK__User__536C85E52B990EA5");
+            entity.HasKey(e => e.Username).HasName("PK__User__536C85E5DC433083");
 
             entity.ToTable("User");
 
@@ -116,7 +179,7 @@ public partial class SkincareProductSystemContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Fullname).HasMaxLength(100);
-            entity.Property(e => e.Gender).HasMaxLength(10);
+            entity.Property(e => e.Gender).HasMaxLength(5);
             entity.Property(e => e.Password)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -125,6 +188,11 @@ public partial class SkincareProductSystemContext : DbContext
                 .HasForeignKey(d => d.RoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FKUser68428");
+
+            entity.HasOne(d => d.TypeOfSkin).WithMany(p => p.Users)
+                .HasForeignKey(d => d.TypeOfSkinId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FKUser447311");
         });
 
         OnModelCreatingPartial(modelBuilder);

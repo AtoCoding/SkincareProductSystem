@@ -7,5 +7,6 @@
         bool Delete(int id);
         T? Get(int id);
         List<T> GetAll();
+        List<T> Search(string? keyword);
     }
 }

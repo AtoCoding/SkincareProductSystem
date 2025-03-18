@@ -5,12 +5,15 @@ namespace DataAccessLayer.Repositories
 {
     public class SkincareProductRepository : IRepository<SkincareProduct>
     {
+        private static SkincareProductRepository _Instance = null!;
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
-        public SkincareProductRepository()
+        private SkincareProductRepository()
         {
             _SkincareProductSystemContext = new();
         }
+
+        public static SkincareProductRepository GetInstance() => _Instance ??= new SkincareProductRepository();
 
         public SkincareProduct Add(SkincareProduct data)
         {
@@ -28,6 +31,11 @@ namespace DataAccessLayer.Repositories
         }
 
         public List<SkincareProduct> GetAll()
+        {
+            return [];
+        }
+
+        public List<SkincareProduct> Search(string? keyword)
         {
             return [];
         }

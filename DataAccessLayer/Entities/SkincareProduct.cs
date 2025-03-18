@@ -6,9 +6,9 @@ public partial class SkincareProduct
 
     public string Name { get; set; } = null!;
 
-    public string Description { get; set; } = null!;
+    public string? Description { get; set; }
 
-    public string Capacity { get; set; } = null!;
+    public string? Capacity { get; set; }
 
     public decimal UnitPrice { get; set; }
 
@@ -25,4 +25,6 @@ public partial class SkincareProduct
     public virtual Category Category { get; set; } = null!;
 
     public virtual User UsernameNavigation { get; set; } = null!;
+
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

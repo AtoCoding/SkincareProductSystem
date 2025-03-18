@@ -8,12 +8,15 @@ namespace BusinessLogicLayer.Services
 {
     public class BrandService : IService<BrandDto>
     {
+        private static BrandService _Instance = null!;
         private readonly IRepository<Brand> _BrandRepository;
 
-        public BrandService()
+        private BrandService()
         {
-            _BrandRepository = new BrandRepository();
+            _BrandRepository = BrandRepository.GetInstance();
         }
+
+        public static BrandService GetInstance() => _Instance ??= new BrandService();
 
         public BrandDto Add(BrandDto data)
         {
@@ -31,6 +34,11 @@ namespace BusinessLogicLayer.Services
         }
 
         public List<BrandDto> GetAll()
+        {
+            return [];
+        }
+
+        public List<BrandDto> Search(string? keyword)
         {
             return [];
         }

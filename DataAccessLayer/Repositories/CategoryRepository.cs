@@ -5,12 +5,15 @@ namespace DataAccessLayer.Repositories
 {
     public class CategoryRepository : IRepository<Category>
     {
+        private static CategoryRepository _Instance = null!;
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
         public CategoryRepository()
         {
             _SkincareProductSystemContext = new();
         }
+
+        public static CategoryRepository GetInstance() => _Instance ??= new CategoryRepository();
 
         public Category Add(Category data)
         {
@@ -28,6 +31,11 @@ namespace DataAccessLayer.Repositories
         }
 
         public List<Category> GetAll()
+        {
+            return [];
+        }
+
+        public List<Category> Search(string? keyword)
         {
             return [];
         }

@@ -8,12 +8,15 @@ namespace BusinessLogicLayer.Services
 {
     public class CategoryService : IService<CategoryDto>
     {
+        private static CategoryService _Instance = null!;
         private readonly IRepository<Category> _CategoryRepository;
 
-        public CategoryService()
+        private CategoryService()
         {
-            _CategoryRepository = new CategoryRepository();
+            _CategoryRepository = CategoryRepository.GetInstance();
         }
+
+        public static CategoryService GetInstance() => _Instance ??= new CategoryService();
 
         public CategoryDto Add(CategoryDto data)
         {
@@ -31,6 +34,11 @@ namespace BusinessLogicLayer.Services
         }
 
         public List<CategoryDto> GetAll()
+        {
+            return [];
+        }
+
+        public List<CategoryDto> Search(string? keyword)
         {
             return [];
         }

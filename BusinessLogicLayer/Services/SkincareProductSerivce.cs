@@ -8,12 +8,15 @@ namespace BusinessLogicLayer.Services
 {
     public class SkincareProductService : IService<SkincareProductDto>
     {
+        private static SkincareProductService _Instance = null!;
         private readonly IRepository<SkincareProduct> _SkincareProductRepository;
 
-        public SkincareProductService()
+        private SkincareProductService()
         {
-            _SkincareProductRepository = new SkincareProductRepository();
+            _SkincareProductRepository = SkincareProductRepository.GetInstance();
         }
+
+        public static SkincareProductService GetInstance() => _Instance ??= new SkincareProductService();
 
         public SkincareProductDto Add(SkincareProductDto data)
         {
@@ -31,6 +34,11 @@ namespace BusinessLogicLayer.Services
         }
 
         public List<SkincareProductDto> GetAll()
+        {
+            return [];
+        }
+
+        public List<SkincareProductDto> Search(string? keyword)
         {
             return [];
         }

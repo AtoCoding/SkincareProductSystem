@@ -1,12 +1,11 @@
-﻿using BusinessLogicLayer.Dtos;
-using BusinessLogicLayer.Services.IService;
+﻿using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Repositories.IRepositories;
 
 namespace BusinessLogicLayer.Services
 {
-    public class BrandService : IService<BrandDto>
+    public class BrandService : IService<Brand>
     {
         private static BrandService _Instance = null!;
         private readonly IRepository<Brand> _BrandRepository;
@@ -18,7 +17,7 @@ namespace BusinessLogicLayer.Services
 
         public static BrandService GetInstance() => _Instance ??= new BrandService();
 
-        public BrandDto Add(BrandDto data)
+        public Brand Add(Brand data)
         {
             return null!;
         }
@@ -28,22 +27,22 @@ namespace BusinessLogicLayer.Services
             return false;
         }
 
-        public BrandDto? Get(int id)
+        public Brand? Get(int id)
         {
             return null;
         }
 
-        public List<BrandDto> GetAll()
+        public List<Brand> GetAll()
         {
             return [];
         }
 
-        public List<BrandDto> Search(string? keyword)
+        public List<Brand> Search(string? keyword)
         {
             return [];
         }
 
-        public BrandDto? Update(BrandDto data)
+        public Brand? Update(Brand data)
         {
             return null;
         }

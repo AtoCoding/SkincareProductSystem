@@ -1,12 +1,11 @@
-﻿using BusinessLogicLayer.Dtos;
-using BusinessLogicLayer.Services.IService;
+﻿using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Repositories.IRepositories;
 
 namespace BusinessLogicLayer.Services
 {
-    public class SkincareProductService : IService<SkincareProductDto>
+    public class SkincareProductService : IService<SkincareProduct>
     {
         private static SkincareProductService _Instance = null!;
         private readonly IRepository<SkincareProduct> _SkincareProductRepository;
@@ -18,7 +17,7 @@ namespace BusinessLogicLayer.Services
 
         public static SkincareProductService GetInstance() => _Instance ??= new SkincareProductService();
 
-        public SkincareProductDto Add(SkincareProductDto data)
+        public SkincareProduct Add(SkincareProduct data)
         {
             return null!;
         }
@@ -28,22 +27,22 @@ namespace BusinessLogicLayer.Services
             return false;
         }
 
-        public SkincareProductDto? Get(int id)
+        public SkincareProduct? Get(int id)
         {
             return null;
         }
 
-        public List<SkincareProductDto> GetAll()
+        public List<SkincareProduct> GetAll()
         {
             return [];
         }
 
-        public List<SkincareProductDto> Search(string? keyword)
+        public List<SkincareProduct> Search(string? keyword)
         {
             return [];
         }
 
-        public SkincareProductDto? Update(SkincareProductDto data)
+        public SkincareProduct? Update(SkincareProduct data)
         {
             return null;
         }

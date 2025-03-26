@@ -1,12 +1,11 @@
-﻿using BusinessLogicLayer.Dtos;
-using BusinessLogicLayer.Services.IService;
+﻿using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Repositories.IRepositories;
 
 namespace BusinessLogicLayer.Services
 {
-    public class CategoryService : IService<CategoryDto>
+    public class CategoryService : IService<Category>
     {
         private static CategoryService _Instance = null!;
         private readonly IRepository<Category> _CategoryRepository;
@@ -18,7 +17,7 @@ namespace BusinessLogicLayer.Services
 
         public static CategoryService GetInstance() => _Instance ??= new CategoryService();
 
-        public CategoryDto Add(CategoryDto data)
+        public Category Add(Category data)
         {
             return null!;
         }
@@ -28,22 +27,22 @@ namespace BusinessLogicLayer.Services
             return false;
         }
 
-        public CategoryDto? Get(int id)
+        public Category? Get(int id)
         {
             return null;
         }
 
-        public List<CategoryDto> GetAll()
+        public List<Category> GetAll()
         {
             return [];
         }
 
-        public List<CategoryDto> Search(string? keyword)
+        public List<Category> Search(string? keyword)
         {
             return [];
         }
 
-        public CategoryDto? Update(CategoryDto data)
+        public Category? Update(Category data)
         {
             return null;
         }

@@ -1,11 +1,10 @@
-﻿using BusinessLogicLayer.Dtos;
-using BusinessLogicLayer.Services.IService;
+﻿using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.IRepositories;
 
 namespace BusinessLogicLayer.Services
 {
-    public class RoleService : IService<RoleDto>
+    public class RoleService : IService<Role>
     {
         private static RoleService _Instance = null!;
         private readonly IRepository<Role> _RoleRepository;
@@ -17,7 +16,7 @@ namespace BusinessLogicLayer.Services
 
         public static RoleService GetInstance() => _Instance ??= new RoleService();
 
-        public RoleDto Add(RoleDto data)
+        public Role Add(Role data)
         {
             return null!;
         }
@@ -27,22 +26,22 @@ namespace BusinessLogicLayer.Services
             return false;
         }
 
-        public RoleDto? Get(int id)
+        public Role? Get(int id)
         {
             return null;
         }
 
-        public List<RoleDto> GetAll()
+        public List<Role> GetAll()
         {
             return [];
         }
 
-        public List<RoleDto> Search(string? keyword)
+        public List<Role> Search(string? keyword)
         {
             return [];
         }
 
-        public RoleDto? Update(RoleDto data)
+        public Role? Update(Role data)
         {
             return null;
         }

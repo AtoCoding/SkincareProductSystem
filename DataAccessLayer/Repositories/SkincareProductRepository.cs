@@ -15,9 +15,9 @@ namespace DataAccessLayer.Repositories
 
         public static SkincareProductRepository GetInstance() => _Instance ??= new SkincareProductRepository();
 
-        public SkincareProduct Add(SkincareProduct data)
+        public bool Add(SkincareProduct data)
         {
-            return null!;
+            return false;
         }
 
         public bool Delete(int id)
@@ -32,7 +32,7 @@ namespace DataAccessLayer.Repositories
 
         public List<SkincareProduct> GetAll()
         {
-            return [];
+            return _SkincareProductSystemContext.SkincareProducts.ToList();
         }
 
         public List<SkincareProduct> Search(string? keyword)
@@ -40,9 +40,9 @@ namespace DataAccessLayer.Repositories
             return [];
         }
 
-        public SkincareProduct? Update(SkincareProduct data)
+        public bool Update(SkincareProduct data)
         {
-            return null;
+            return false;
         }
     }
 }

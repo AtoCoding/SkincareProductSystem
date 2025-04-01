@@ -17,9 +17,9 @@ namespace BusinessLogicLayer.Services
 
         public static BrandService GetInstance() => _Instance ??= new BrandService();
 
-        public Brand Add(Brand data)
+        public bool Add(Brand data)
         {
-            return null!;
+            return false;
         }
 
         public bool Delete(int id)
@@ -42,9 +42,9 @@ namespace BusinessLogicLayer.Services
             return [];
         }
 
-        public Brand? Update(Brand data)
+        public bool Update(Brand data)
         {
-            return null;
+            return false;
         }
     }
 }

@@ -16,9 +16,9 @@ namespace BusinessLogicLayer.Services
 
         public static RoleService GetInstance() => _Instance ??= new RoleService();
 
-        public Role Add(Role data)
+        public bool Add(Role data)
         {
-            return null!;
+            return false;
         }
 
         public bool Delete(int id)
@@ -41,9 +41,9 @@ namespace BusinessLogicLayer.Services
             return [];
         }
 
-        public Role? Update(Role data)
+        public bool Update(Role data)
         {
-            return null;
+            return false;
         }
     }
 }

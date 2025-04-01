@@ -1,4 +1,7 @@
-﻿namespace DataAccessLayer.Entities;
+﻿using System;
+using System.Collections.Generic;
+
+namespace DataAccessLayer.Entities;
 
 public partial class SkincareProduct
 {
@@ -12,6 +15,10 @@ public partial class SkincareProduct
 
     public decimal UnitPrice { get; set; }
 
+    public int Quantity { get; set; }
+
+    public string Image { get; set; } = null!;
+
     public bool IsAvailable { get; set; }
 
     public int CategoryId { get; set; }
@@ -24,7 +31,7 @@ public partial class SkincareProduct
 
     public virtual Category Category { get; set; } = null!;
 
-    public virtual User UsernameNavigation { get; set; } = null!;
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    public virtual User UsernameNavigation { get; set; } = null!;
 }

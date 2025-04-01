@@ -16,9 +16,9 @@ namespace BusinessLogicLayer.Services
 
         public static QuestionService GetInstance() => _Instance ??= new QuestionService();
 
-        public Question Add(Question data)
+        public bool Add(Question data)
         {
-            return data;
+            return false;
         }
 
         public bool Delete(int id)
@@ -41,9 +41,9 @@ namespace BusinessLogicLayer.Services
             return [];
         }
 
-        public Question? Update(Question data)
+        public bool Update(Question data)
         {
-            return null!;
+            return false;
         }
     }
 }

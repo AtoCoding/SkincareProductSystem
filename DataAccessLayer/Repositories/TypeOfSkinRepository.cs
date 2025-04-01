@@ -15,9 +15,9 @@ namespace DataAccessLayer.Repositories
 
         public static TypeOfSkinRepository GetInstance() => _Instance ??= new TypeOfSkinRepository();
 
-        public TypeOfSkin Add(TypeOfSkin data)
+        public bool Add(TypeOfSkin data)
         {
-            return data;
+            return false;
         }
 
         public bool Delete(int id)
@@ -40,9 +40,9 @@ namespace DataAccessLayer.Repositories
             return [];
         }
 
-        public TypeOfSkin? Update(TypeOfSkin data)
+        public bool Update(TypeOfSkin data)
         {
-            return null!;
+            return false;
         }
     }
 }

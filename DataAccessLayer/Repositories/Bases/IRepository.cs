@@ -2,8 +2,8 @@
 {
     public interface IRepository<T>
     {
-        T Add(T data);
-        T? Update(T data);
+        bool Add(T data);
+        bool Update(T data);
         bool Delete(int id);
         T? Get(int id);
         List<T> GetAll();

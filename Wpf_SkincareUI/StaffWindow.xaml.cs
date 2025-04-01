@@ -23,5 +23,24 @@ namespace Wpf_SkincareUI
         {
             InitializeComponent();
         }
+        // Placeholder for Search button
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Search functionality not implemented yet.");
+        }
+
+        // Placeholder for View Details button
+        private void ViewDetails_Click(object sender, RoutedEventArgs e)
+        {
+            if (CustomerGrid.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a customer.");
+                return;
+            }
+
+            // Open Customer Details Window
+            CustomerDetailsWindow detailsWindow = new CustomerDetailsWindow();
+            detailsWindow.ShowDialog();
+        }
     }
 }

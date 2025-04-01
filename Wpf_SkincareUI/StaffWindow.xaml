@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_SkincareUI"
         mc:Ignorable="d"
-        Title="StaffWindow" Height="450" Width="800">
+        Title="StaffWindow" Height="530" Width="800">
     <Grid>
-        
+        <TabControl>
+            <!-- Customer List Tab -->
+            <TabItem Header="Customers">
+                <Grid>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <TextBox Width="300" Height="25" />
+                            <Button Content="Search" Width="80" Margin="5,0,0,0"/>
+                        </StackPanel>
+
+                        <!-- Customer DataGrid -->
+                        <DataGrid Name="CustomerGrid" AutoGenerateColumns="False" Height="350" Margin="10">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding CustomerId}" Width="50"/>
+                                <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="100"/>
+                                <DataGridTextColumn Header="Full Name" Binding="{Binding Fullname}" Width="150"/>
+                                <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="60"/>
+                                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="80"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <!-- View Details Button -->
+                        <Button Content="View Details" Width="120" Margin="10" Click="ViewDetails_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

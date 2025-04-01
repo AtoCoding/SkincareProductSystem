@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_SkincareUI"
         mc:Ignorable="d"
-        Title="StaffWindow" Height="530" Width="800">
+        Title="StaffWindow" Height="564" Width="800">
     <Grid>
         <TabControl>
             <!-- Customer List Tab -->
@@ -31,6 +31,51 @@
 
                         <!-- View Details Button -->
                         <Button Content="View Details" Width="120" Margin="10" Click="ViewDetails_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Order History Tab -->
+            <TabItem Header="Order History">
+                <Grid>
+                    <StackPanel>
+                        <!-- Search and Filter Box -->
+                        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
+                            <!-- Search Section -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                <TextBox Width="200" Height="25" />
+                                <Button Content="Search" Width="80" Margin="5,0,0,0" Click="SearchOrder_Click"/>
+                            </StackPanel>
+
+                            <!-- Date Filter Section -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20,0,0,0">
+                                <TextBlock Text="Filter by Date:" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                                <DatePicker Width="150"/>
+                                <Button Content="Filter" Width="80" Margin="5,0,0,0" Click="FilterByDate_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Order DataGrid -->
+                        <DataGrid Name="OrderGrid" AutoGenerateColumns="False" Height="350" Margin="10">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Order ID" Binding="{Binding OrderId}" Width="100"/>
+                                <DataGridTextColumn Header="Date Created" Binding="{Binding DateCreated}" Width="150"/>
+                                <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="150"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <!-- Sorting Dropdown -->
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <ComboBox Width="150" SelectedIndex="0">
+                                <ComboBoxItem Content="Newest First"/>
+                                <ComboBoxItem Content="Oldest First"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!-- View Order Details Button -->
+                        <Button Content="View Details" Width="120" Margin="10" Click="ViewOrderDetails_Click"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

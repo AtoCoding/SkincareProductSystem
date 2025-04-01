@@ -5,16 +5,15 @@ USE SkincareProductSystem;
 GO
 
 CREATE TABLE Brand (
-  BrandId     int IDENTITY NOT NULL, 
-  [Name]      nvarchar(100) NOT NULL, 
-  IsAvailable bit NOT NULL, 
-  Username    varchar(50) NOT NULL, 
+  BrandId     int IDENTITY NOT NULL,
+  [Name]      nvarchar(100) NOT NULL,
+  IsAvailable bit NOT NULL,
+  Username    varchar(50) NOT NULL,
   PRIMARY KEY (BrandId));
 
 CREATE TABLE Category (
   CategoryId  int IDENTITY NOT NULL, 
-  [Name]      nvarchar(50) NOT NULL, 
-  Quantity    int NOT NULL, 
+  [Name]      nvarchar(50) NOT NULL,
   IsAvailable bit NOT NULL, 
   Username    varchar(50) NOT NULL, 
   PRIMARY KEY (CategoryId));
@@ -28,6 +27,8 @@ CREATE TABLE [Order] (
 CREATE TABLE OrderDetails (
   OrderId           int NOT NULL, 
   SkincareProductId int NOT NULL, 
+  Quantity			int NOT NULL,
+  TotalPrice		decimal(9, 2) NOT NULL, 
   PRIMARY KEY (OrderId, SkincareProductId));
 
 CREATE TABLE Question (
@@ -48,6 +49,8 @@ CREATE TABLE SkincareProduct (
   [Description]     nvarchar(255) NULL, 
   Capacity          varchar(100) NULL, 
   UnitPrice         decimal(9, 2) NOT NULL, 
+  Quantity			int NOT NULL,
+  [Image]			varchar(255) NOT NULL,
   IsAvailable       bit NOT NULL, 
   CategoryId        int NOT NULL, 
   BrandId           int NOT NULL, 

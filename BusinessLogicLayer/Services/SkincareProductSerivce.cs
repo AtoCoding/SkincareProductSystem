@@ -19,12 +19,12 @@ namespace BusinessLogicLayer.Services
 
         public bool Add(SkincareProduct data)
         {
-            return false;
+            return _SkincareProductRepository.Add(data);
         }
 
         public bool Delete(int id)
         {
-            return false;
+            return _SkincareProductRepository.Delete(id);
         }
 
         public SkincareProduct? Get(int id)
@@ -39,12 +39,20 @@ namespace BusinessLogicLayer.Services
 
         public List<SkincareProduct> Search(string? keyword)
         {
-            return [];
+            return _SkincareProductRepository.Search(keyword);
         }
 
         public bool Update(SkincareProduct data)
         {
-            return false;
+            return _SkincareProductRepository.Update(data);
         }
+
+
+        /// Product management service 
+        //public List<SkincareProduct> GetAllWithBrandAndCategory()
+        //{
+        //    return _SkincareProductRepository.GetAllWithBrandAndCategory();
+        //}
+
     }
 }

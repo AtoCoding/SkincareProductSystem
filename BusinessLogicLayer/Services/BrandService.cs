@@ -34,7 +34,7 @@ namespace BusinessLogicLayer.Services
 
         public List<Brand> GetAll()
         {
-            return [];
+            return _BrandRepository.GetAll();
         }
 
         public List<Brand> Search(string? keyword)

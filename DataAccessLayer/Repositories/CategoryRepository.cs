@@ -32,7 +32,7 @@ namespace DataAccessLayer.Repositories
 
         public List<Category> GetAll()
         {
-            return [];
+            return _SkincareProductSystemContext.Categories.ToList();
         }
 
         public List<Category> Search(string? keyword)

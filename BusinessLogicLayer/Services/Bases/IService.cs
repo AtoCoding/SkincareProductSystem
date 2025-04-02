@@ -8,5 +8,9 @@
         T? Get(int id);
         List<T> GetAll();
         List<T> Search(string? keyword);
+
+        // Product management 
+        //List<T> GetAllWithBrandAndCategory();
+
     }
 }

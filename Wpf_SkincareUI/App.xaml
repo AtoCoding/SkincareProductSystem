@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Wpf_SkincareUI"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
-         
+       
     </Application.Resources>
+
 </Application>

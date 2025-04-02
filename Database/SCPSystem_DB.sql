@@ -20,7 +20,7 @@ CREATE TABLE Category (
 
 CREATE TABLE [Order] (
   OrderId     int IDENTITY NOT NULL, 
-  DateCreated date NOT NULL, 
+  DateCreated  date NOT NULL,
   Username    varchar(50) NOT NULL, 
   PRIMARY KEY (OrderId));
 
@@ -67,7 +67,8 @@ CREATE TABLE [User] (
   [Password]   varchar(50) NOT NULL, 
   Fullname     nvarchar(100) NOT NULL, 
   Gender	   nvarchar(5) NOT NULL,
-  IsActive     bit NOT NULL, 
+  IsActive     bit NOT NULL,
+  DateCreated	   date NOT NULL,
   RoleId       int NOT NULL, 
   TypeOfSkinId int NOT NULL, 
   PRIMARY KEY (Username));

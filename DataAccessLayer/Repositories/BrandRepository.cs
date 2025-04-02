@@ -32,7 +32,7 @@ namespace DataAccessLayer.Repositories
 
         public List<Brand> GetAll()
         {
-            return [];
+            return _SkincareProductSystemContext.Brands.ToList();
         }
 
         public List<Brand> Search(string? keyword)
@@ -44,5 +44,8 @@ namespace DataAccessLayer.Repositories
         {
             return false;
         }
+
+
+
     }
 }

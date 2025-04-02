@@ -1,0 +1,43 @@
+﻿<Window x:Class="Wpf_SkincareUI.Popup.AddEditPopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_SkincareUI"
+        Title="Thêm/Chỉnh sửa Sản phẩm" Height="650" Width="400">
+    <Grid Margin="10">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+            <TextBlock Text="Tên sản phẩm:"/>
+            <TextBox x:Name="txtName" Width="350"/>
+
+            <TextBlock Text="Mô tả:"/>
+            <TextBox x:Name="txtDescription" Width="350" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+            <TextBlock Text="Dung tích:"/>
+            <TextBox x:Name="txtCapacity" Width="350"/>
+
+            <TextBlock Text="Giá:"/>
+            <TextBox x:Name="txtUnitPrice" Width="350"/>
+
+            <TextBlock Text="Số lượng:"/>
+            <TextBox x:Name="txtQuantity" Width="350"/>
+
+            <TextBlock Text="Ảnh sản phẩm:"/>
+            <Button Content="Chọn ảnh" Width="100" Click="SelectImage_Click"/>
+            <Image x:Name="imgPreview" Width="100" Height="100" Margin="5" Stretch="Uniform"/>
+
+            <TextBlock Text="Danh mục:"/>
+            <ComboBox x:Name="cbCategory" Width="350" SelectionChanged="cbCategory_SelectionChanged"/>
+
+            <TextBlock Text="Thương hiệu:"/>
+            <ComboBox x:Name="cbBrand" Width="350"/>
+
+            <CheckBox x:Name="chkInStock" Content="Còn hàng"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0 0 0">
+                <Button Content="💾 Lưu" Width="80" Margin="5" Click="SaveProduct_Click"/>
+                <Button Content="❌ Hủy" Width="80" Margin="5" Click="Cancel_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

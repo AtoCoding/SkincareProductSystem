@@ -34,7 +34,7 @@ namespace BusinessLogicLayer.Services
 
         public List<Category> GetAll()
         {
-            return [];
+            return _CategoryRepository.GetAll();
         }
 
         public List<Category> Search(string? keyword)

@@ -10,12 +10,12 @@ INSERT INTO TypeOfSkin([Name]) values
 (N'Da khô'),
 (N'Da nhạy cảm');
 
-INSERT INTO [User](Username, [Password], Fullname, Gender, IsActive, DateCreated, RoleId, TypeOfSkinId) values
-('admin@gmail.com', '@123', N'Nguyễn Phi Nhạn', N'Nam', 1, '20250101', 1, 1),
-('staff@gmail.com', '@123', N'Trần Phi Mai', N'Nữ', 1, '20250101', 2, 1),
-('customer1@gmail.com', '@123', N'Phạm Nhật Ánh', N'Nữ', 1, '20250201', 3, 2),
-('customer2@gmail.com', '@123', N'Lu Tử Kiệt', N'Nam', 0, '20250301', 3, 1),
-('customer3@gmail.com', '@123', N'Trần Khắc Trung', N'Nam', 1, '20241218', 3, 1);
+INSERT INTO [User](Username, [Password], Fullname, Gender, Budget, IsActive, DateCreated, RoleId, TypeOfSkinId) values
+('admin@gmail.com', '@123', N'Nguyễn Phi Nhạn', N'Nam', 999999999.99, 1, '20250101', 1, 1),
+('staff@gmail.com', '@123', N'Trần Phi Mai', N'Nữ', 999999999.99, 1, '20250101', 2, 1),
+('customer1@gmail.com', '@123', N'Phạm Nhật Ánh', N'Nữ', 999999999.99, 1, '20250201', 3, 2),
+('customer2@gmail.com', '@123', N'Lu Tử Kiệt', N'Nam', 999999999.99, 0, '20250301', 3, 1),
+('customer3@gmail.com', '@123', N'Trần Khắc Trung', N'Nam', 999999999.99, 1, '20241218', 3, 1);
 
 INSERT INTO Brand([Name], IsAvailable, Username) values
 ('Cocoon', 1, 'admin@gmail.com'),

@@ -1,6 +1,7 @@
-﻿using DataAccessLayer.Entities;
+﻿using System;
+using System.Collections.Generic;
+using DataAccessLayer.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace DataAccessLayer;
 
@@ -33,13 +34,13 @@ public partial class SkincareProductSystemContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer(GetConnectionString());
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer(RepositoryCommon.GetConnectionString());
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Brand>(entity =>
         {
-            entity.HasKey(e => e.BrandId).HasName("PK__Brand__DAD4F05E050752C7");
+            entity.HasKey(e => e.BrandId).HasName("PK__Brand__DAD4F05E089B9FDF");
 
             entity.ToTable("Brand");
 
@@ -56,7 +57,7 @@ public partial class SkincareProductSystemContext : DbContext
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__Category__19093A0B9EA18B20");
+            entity.HasKey(e => e.CategoryId).HasName("PK__Category__19093A0B5EAE82DB");
 
             entity.ToTable("Category");
 
@@ -73,7 +74,7 @@ public partial class SkincareProductSystemContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Order__C3905BCFF1C1BE41");
+            entity.HasKey(e => e.OrderId).HasName("PK__Order__C3905BCFF70FA294");
 
             entity.ToTable("Order");
 
@@ -89,7 +90,7 @@ public partial class SkincareProductSystemContext : DbContext
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => new { e.OrderId, e.SkincareProductId }).HasName("PK__OrderDet__CE7C257118ECC537");
+            entity.HasKey(e => new { e.OrderId, e.SkincareProductId }).HasName("PK__OrderDet__CE7C2571A78C8976");
 
             entity.Property(e => e.TotalPrice).HasColumnType("decimal(9, 2)");
 
@@ -106,7 +107,7 @@ public partial class SkincareProductSystemContext : DbContext
 
         modelBuilder.Entity<Question>(entity =>
         {
-            entity.HasKey(e => e.QuestionId).HasName("PK__Question__0DC06FAC99CC527D");
+            entity.HasKey(e => e.QuestionId).HasName("PK__Question__0DC06FAC3BD938E7");
 
             entity.ToTable("Question");
 
@@ -119,7 +120,7 @@ public partial class SkincareProductSystemContext : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__Role__8AFACE1A7C595786");
+            entity.HasKey(e => e.RoleId).HasName("PK__Role__8AFACE1ACADDD68D");
 
             entity.ToTable("Role");
 
@@ -130,7 +131,7 @@ public partial class SkincareProductSystemContext : DbContext
 
         modelBuilder.Entity<SkincareProduct>(entity =>
         {
-            entity.HasKey(e => e.SkincareProductId).HasName("PK__Skincare__DEC7EBE1CD6549CF");
+            entity.HasKey(e => e.SkincareProductId).HasName("PK__Skincare__DEC7EBE100EAE967");
 
             entity.ToTable("SkincareProduct");
 
@@ -165,7 +166,7 @@ public partial class SkincareProductSystemContext : DbContext
 
         modelBuilder.Entity<TypeOfSkin>(entity =>
         {
-            entity.HasKey(e => e.TypeOfSkinId).HasName("PK__TypeOfSk__E4DB09ECAB88146A");
+            entity.HasKey(e => e.TypeOfSkinId).HasName("PK__TypeOfSk__E4DB09ECD8F10936");
 
             entity.ToTable("TypeOfSkin");
 
@@ -174,13 +175,14 @@ public partial class SkincareProductSystemContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Username).HasName("PK__User__536C85E5D14C0955");
+            entity.HasKey(e => e.Username).HasName("PK__User__536C85E548430FCF");
 
             entity.ToTable("User");
 
             entity.Property(e => e.Username)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.Budget).HasColumnType("decimal(11, 2)");
             entity.Property(e => e.Fullname).HasMaxLength(100);
             entity.Property(e => e.Gender).HasMaxLength(5);
             entity.Property(e => e.Password)
@@ -202,14 +204,4 @@ public partial class SkincareProductSystemContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-    private string? GetConnectionString()
-    {
-        IConfiguration config = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", true, true)
-            .Build();
-
-        return config["ConnectionStrings:DefaultConnection"];
-    }
 }

@@ -67,8 +67,9 @@ CREATE TABLE [User] (
   [Password]   varchar(50) NOT NULL, 
   Fullname     nvarchar(100) NOT NULL, 
   Gender	   nvarchar(5) NOT NULL,
+  Budget       decimal(11, 2) NOT NULL, 
   IsActive     bit NOT NULL,
-  DateCreated	   date NOT NULL,
+  DateCreated  date NOT NULL,
   RoleId       int NOT NULL, 
   TypeOfSkinId int NOT NULL, 
   PRIMARY KEY (Username));

@@ -1,12 +1,13 @@
-﻿namespace DataAccessLayer.Entities;
+﻿using System;
+using System.Collections.Generic;
+
+namespace DataAccessLayer.Entities;
 
 public partial class Category
 {
     public int CategoryId { get; set; }
 
     public string Name { get; set; } = null!;
-
-    public int Quantity { get; set; }
 
     public bool IsAvailable { get; set; }
 

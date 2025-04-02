@@ -15,9 +15,9 @@ namespace DataAccessLayer.Repositories
 
         public static OrderRepository GetInstance() => _Instance ??= new OrderRepository();
 
-        public Order Add(Order data)
+        public bool Add(Order data)
         {
-            return data;
+            return false;
         }
 
         public bool Delete(int id)
@@ -40,9 +40,9 @@ namespace DataAccessLayer.Repositories
             return [];
         }
 
-        public Order? Update(Order data)
+        public bool Update(Order data)
         {
-            return null!;
+            return false;
         }
     }
 }

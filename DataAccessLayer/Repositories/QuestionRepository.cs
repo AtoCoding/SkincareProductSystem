@@ -15,9 +15,9 @@ namespace DataAccessLayer.Repositories
 
         public static QuestionRepository GetInstance() => _Instance ??= new QuestionRepository();
 
-        public Question Add(Question data)
+        public bool Add(Question data)
         {
-            return data;
+            return false;
         }
 
         public bool Delete(int id)
@@ -40,9 +40,9 @@ namespace DataAccessLayer.Repositories
             return [];
         }
 
-        public Question? Update(Question data)
+        public bool Update(Question data)
         {
-            return null!;
+            return false;
         }
     }
 }

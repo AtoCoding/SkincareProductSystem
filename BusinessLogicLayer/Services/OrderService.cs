@@ -16,9 +16,9 @@ namespace BusinessLogicLayer.Services
 
         public static OrderService GetInstance() => _Instance ??= new OrderService();
 
-        public Order Add(Order data)
+        public bool Add(Order data)
         {
-            return null!;
+            return false;
         }
 
         public bool Delete(int id)
@@ -41,9 +41,9 @@ namespace BusinessLogicLayer.Services
             return [];
         }
 
-        public Order? Update(Order data)
+        public bool Update(Order data)
         {
-            return null!;
+            return false;
         }
     }
 }

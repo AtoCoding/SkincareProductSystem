@@ -16,9 +16,9 @@ namespace BusinessLogicLayer.Services
 
         public static TypeOfSkinService GetInstance() => _Instance ??= new TypeOfSkinService();
 
-        public TypeOfSkin Add(TypeOfSkin data)
+        public bool Add(TypeOfSkin data)
         {
-            return data;
+            return false;
         }
 
         public bool Delete(int id)
@@ -41,9 +41,9 @@ namespace BusinessLogicLayer.Services
             return [];
         }
 
-        public TypeOfSkin? Update(TypeOfSkin data)
+        public bool Update(TypeOfSkin data)
         {
-            return null!;
+            return false;
         }
     }
 }

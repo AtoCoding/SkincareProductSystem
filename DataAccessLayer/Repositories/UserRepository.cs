@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.IRepositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogicLayer.Services
 {
@@ -16,9 +17,11 @@ namespace BusinessLogicLayer.Services
 
         public static UserRepository GetInstance() => _Instance ??= new UserRepository();
 
-        public User Add(User data)
+        public bool Add(User data)
         {
-            return null!;
+            _SkincareProductSystemContext.Users.Add(data);
+
+            return _SkincareProductSystemContext.SaveChanges() > 0;
         }
 
         public bool Delete(int id)
@@ -33,7 +36,7 @@ namespace BusinessLogicLayer.Services
 
         public List<User> GetAll()
         {
-            return [];
+            return _SkincareProductSystemContext.Users.ToList();
         }
 
         public List<User> Search(string? keyword)
@@ -41,9 +44,9 @@ namespace BusinessLogicLayer.Services
             return [];
         }
 
-        public User? Update(User data)
+        public bool Update(User data)
         {
-            return null;
+            return false;
         }
     }
 }

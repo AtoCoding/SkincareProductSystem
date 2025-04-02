@@ -1,4 +1,7 @@
-﻿namespace DataAccessLayer.Entities;
+﻿using System;
+using System.Collections.Generic;
+
+namespace DataAccessLayer.Entities;
 
 public partial class Order
 {
@@ -8,7 +11,7 @@ public partial class Order
 
     public string Username { get; set; } = null!;
 
-    public virtual User UsernameNavigation { get; set; } = null!;
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
-    public virtual ICollection<SkincareProduct> SkincareProducts { get; set; } = new List<SkincareProduct>();
+    public virtual User UsernameNavigation { get; set; } = null!;
 }

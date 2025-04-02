@@ -15,9 +15,9 @@ namespace DataAccessLayer.Repositories
 
         public static BrandRepository GetInstance() => _Instance ??= new BrandRepository();
 
-        public Brand Add(Brand data)
+        public bool Add(Brand data)
         {
-            return null!;
+            return false;
         }
 
         public bool Delete(int id)
@@ -40,9 +40,9 @@ namespace DataAccessLayer.Repositories
             return [];
         }
 
-        public Brand? Update(Brand data)
+        public bool Update(Brand data)
         {
-            return null;
+            return false;
         }
     }
 }

@@ -17,9 +17,9 @@ namespace BusinessLogicLayer.Services
 
         public static SkincareProductService GetInstance() => _Instance ??= new SkincareProductService();
 
-        public SkincareProduct Add(SkincareProduct data)
+        public bool Add(SkincareProduct data)
         {
-            return null!;
+            return false;
         }
 
         public bool Delete(int id)
@@ -34,7 +34,7 @@ namespace BusinessLogicLayer.Services
 
         public List<SkincareProduct> GetAll()
         {
-            return [];
+            return _SkincareProductRepository.GetAll();
         }
 
         public List<SkincareProduct> Search(string? keyword)
@@ -42,9 +42,9 @@ namespace BusinessLogicLayer.Services
             return [];
         }
 
-        public SkincareProduct? Update(SkincareProduct data)
+        public bool Update(SkincareProduct data)
         {
-            return null;
+            return false;
         }
     }
 }

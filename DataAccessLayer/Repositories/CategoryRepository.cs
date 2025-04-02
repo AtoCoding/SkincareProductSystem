@@ -15,9 +15,9 @@ namespace DataAccessLayer.Repositories
 
         public static CategoryRepository GetInstance() => _Instance ??= new CategoryRepository();
 
-        public Category Add(Category data)
+        public bool Add(Category data)
         {
-            return null!;
+            return false;
         }
 
         public bool Delete(int id)
@@ -40,9 +40,9 @@ namespace DataAccessLayer.Repositories
             return [];
         }
 
-        public Category? Update(Category data)
+        public bool Update(Category data)
         {
-            return null;
+            return false;
         }
     }
 }

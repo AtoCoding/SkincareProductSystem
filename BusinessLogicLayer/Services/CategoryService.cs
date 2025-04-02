@@ -17,9 +17,9 @@ namespace BusinessLogicLayer.Services
 
         public static CategoryService GetInstance() => _Instance ??= new CategoryService();
 
-        public Category Add(Category data)
+        public bool Add(Category data)
         {
-            return null!;
+            return false;
         }
 
         public bool Delete(int id)
@@ -42,9 +42,9 @@ namespace BusinessLogicLayer.Services
             return [];
         }
 
-        public Category? Update(Category data)
+        public bool Update(Category data)
         {
-            return null;
+            return false;
         }
     }
 }

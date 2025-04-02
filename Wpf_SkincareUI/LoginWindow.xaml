@@ -1,0 +1,101 @@
+﻿<Window x:Class="Wpf_SkincareUI.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_SkincareUI"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450" Width="800"
+        Background="#FF929292"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Width="404" Height="325" Background="White" CornerRadius="15" BorderBrush="#4C000000" BorderThickness="2" RenderTransformOrigin="0.5,0.5">
+            <StackPanel>
+                <Label 
+                    Content="WELCOME" 
+                    FontSize="30" 
+                    Margin="0px 20px 0px 0px" 
+                    Foreground="Red" 
+                    FontWeight="Bold" 
+                    HorizontalAlignment="Center"/>
+                <Label 
+                    Content="Sign into your account" 
+                    HorizontalAlignment="Center" 
+                    Margin="0px 0px 0px 15px" 
+                    Foreground="Black"/>
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    Margin="30px 15px">
+                    <Label 
+                        Content="Email" 
+                        Width="80" 
+                        VerticalAlignment="Center"
+                        FontSize="15px"/>
+                    <TextBox 
+                        x:Name="txtEmail" 
+                        TextWrapping="Wrap" 
+                        Width="260" Height="40" 
+                        VerticalContentAlignment="Center"
+                        FontSize="15px"
+                        Padding="10px 0px"/>
+                </StackPanel>
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    Margin="30px 15px">
+                    <Label 
+                        Content="Password" 
+                        Width="80" 
+                        VerticalAlignment="Center"
+                        FontSize="15px"/>
+                    <PasswordBox 
+                        x:Name="txtPassword" 
+                        Width="260" 
+                        Height="40" 
+                        VerticalContentAlignment="Center"
+                        FontSize="15px"
+                        Padding="10px 0px"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0px 10px">
+                    <Button 
+                        Name="btnLogin"
+                        Content="LOGIN" 
+                        Background="#D32F2F" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" 
+                        Foreground="White" 
+                        FontWeight="Bold" 
+                        Width="100" 
+                        Height="30" 
+                        BorderBrush="Black"
+                        Click="btnLogin_Click"/>
+                    <Button 
+                        Name="btnRegister"
+                        Content="REGISTER" 
+                        Background="#1976D2" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" 
+                        Foreground="White" 
+                        FontWeight="Bold" 
+                        Width="100" 
+                        Height="30" 
+                        BorderBrush="Black"
+                        Margin="10 0 0 0"
+                        Click="btnRegister_Click"/>
+                </StackPanel>
+                <TextBox 
+                    x:Name="txtGuest" 
+                    Width="102" 
+                    Height="17"
+                    FontSize="14"
+                    IsReadOnly="True"
+                    Text="Login by Guest"
+                    TextAlignment="Center"
+                    Cursor="Hand"
+                    BorderThickness="0"
+                    PreviewMouseLeftButtonDown="txtMessage_MouseLeftButtonDown"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</Window>

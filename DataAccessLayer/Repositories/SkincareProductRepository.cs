@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.IRepositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories
 {
@@ -32,7 +33,9 @@ namespace DataAccessLayer.Repositories
 
         public List<SkincareProduct> GetAll()
         {
-            return _SkincareProductSystemContext.SkincareProducts.ToList();
+            return _SkincareProductSystemContext.SkincareProducts.Include(x => x.Category)
+                                                                 .Include(x => x.Brand)
+                                                                 .ToList();
         }
 
         public List<SkincareProduct> Search(string? keyword)

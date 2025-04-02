@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
@@ -34,7 +36,7 @@ namespace Wpf_SkincareUI
             List<SkincareProduct> skincareProducts = _SkincareProductService.GetAll();
             ProcessImage(skincareProducts);
 
-            ListViewProducts.ItemsSource = skincareProducts;
+            icSkincareProduct.ItemsSource = skincareProducts;
         }
 
         private void ProcessImage(List<SkincareProduct> skincareProducts)
@@ -46,6 +48,27 @@ namespace Wpf_SkincareUI
             foreach (var skincareProduct in skincareProducts)
             {
                 skincareProduct.Image = Path.Combine(imageFolder, skincareProduct.Image);
+            }
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new();
+            loginWindow.Show();
+            this.Close();
+        }
+
+        private void Product_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var stackPanel = sender as StackPanel;
+            if (stackPanel != null)
+            {
+                if (stackPanel.DataContext is SkincareProduct product)
+                {
+                    DetailsWindow detailsWindow = new(user, product);
+                    detailsWindow.Show();
+                    this.Close();
+                }
             }
         }
 
@@ -64,11 +87,9 @@ namespace Wpf_SkincareUI
             }
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void Homepage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            LoginWindow loginWindow = new();
-            loginWindow.Show();
-            this.Close();
+            LoadProducts();
         }
     }
 }

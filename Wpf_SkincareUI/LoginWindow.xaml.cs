@@ -38,15 +38,21 @@ namespace Wpf_SkincareUI
             {
                 switch(user.RoleId)
                 {
-                    case 1 or 2:
+                    case 1:
                         {
-                            ManagementWindow managementWindow = new ManagementWindow(user);
-                            managementWindow.Show();
+                            //AdminWindow adminWindow = new AdminWindow(user);
+                            //adminWindow.Show();
+                            break;
+                        }
+                    case 2:
+                        {
+                            StaffWindow staffWindow = new StaffWindow(user);
+                            staffWindow.Show();
                             break;
                         }
                     default:
                         {
-                            HomepageWindow homepageWindow = new HomepageWindow(user);
+                            HomepageWindow homepageWindow = new HomepageWindow(user, []);
                             homepageWindow.Show();
                             break;
                         }
@@ -68,7 +74,7 @@ namespace Wpf_SkincareUI
 
         private void txtMessage_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            HomepageWindow homepageWindow = new HomepageWindow(null);
+            HomepageWindow homepageWindow = new HomepageWindow(null, []);
             homepageWindow.Show();
             this.Close();
         }

@@ -1,10 +1,9 @@
-﻿using BusinessLogicLayer.Services;
+﻿using System.IO;
+using System.Windows;
+using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
-using System.Windows;
-using System.IO;
 using Wpf_SkincareUI.Popup;
-using System.Windows.Media.Imaging;
 
 
 namespace Wpf_SkincareUI
@@ -92,6 +91,6 @@ namespace Wpf_SkincareUI
             }
             // Sau khi xử lý ảnh, xóa sản phẩm khỏi database
         }
-        
+
     }
 }

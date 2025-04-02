@@ -17,11 +17,13 @@ namespace Wpf_SkincareUI
 
         private User? user;
 
-        public HomepageWindow(User? user)
+        private List<SkincareProduct> products;
+        public HomepageWindow(User? user, List<SkincareProduct> products)
         {
             InitializeComponent();
             this.user = user;
             _SkincareProductService = SkincareProductService.GetInstance();
+            this.products = products.Count > 0 ? products : new List<SkincareProduct>();
             LoadButtonByPermission();
             LoadProducts();
         }
@@ -65,7 +67,7 @@ namespace Wpf_SkincareUI
             {
                 if (stackPanel.DataContext is SkincareProduct product)
                 {
-                    DetailsWindow detailsWindow = new(user, product);
+                    DetailsWindow detailsWindow = new(user, product, products);
                     detailsWindow.Show();
                     this.Close();
                 }
@@ -90,6 +92,16 @@ namespace Wpf_SkincareUI
         private void Homepage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             LoadProducts();
+        }
+
+        private void btnCart_Click(object sender, RoutedEventArgs e)
+        {
+            if (user != null)
+            {
+                CartWindow cartWindow = new(user, products);
+                cartWindow.Show();
+                this.Close();
+            }
         }
     }
 }

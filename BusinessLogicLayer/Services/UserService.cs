@@ -7,6 +7,7 @@ namespace BusinessLogicLayer.Services
     public class UserService : IUser
     {
         private static UserService _Instance = null!;
+
         private readonly IRepository<User> _UserRepository;
 
         private UserService()

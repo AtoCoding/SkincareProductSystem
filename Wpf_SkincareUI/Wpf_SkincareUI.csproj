@@ -8,10 +8,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Utils\**" />
+    <EmbeddedResource Remove="Utils\**" />
+    <None Remove="Utils\**" />
+    <Page Remove="Utils\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <Folder Include="Image\" />
-    <Folder Include="Utils\" />
   </ItemGroup>
 
 

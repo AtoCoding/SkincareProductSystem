@@ -7,6 +7,7 @@ namespace BusinessLogicLayer.Services
     public class OrderService : IService<Order>
     {
         private static OrderService _Instance = null!;
+
         private readonly OrderRepository _OrderRepository;
 
         private OrderService()

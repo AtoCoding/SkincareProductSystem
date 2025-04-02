@@ -49,7 +49,7 @@ namespace Wpf_SkincareUI
                 if (isSuccess)
                 {
                     MessageBox.Show("Register successfully!");
-                    HomepageWindow homepageWindow = new HomepageWindow(user);
+                    HomepageWindow homepageWindow = new HomepageWindow(user, []);
                     homepageWindow.Show();
                     this.Close();
                 }

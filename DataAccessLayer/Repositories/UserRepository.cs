@@ -1,13 +1,13 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.IRepositories;
-using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogicLayer.Services
 {
     public class UserRepository : IRepository<User>
     {
         private static UserRepository _Instance = null!;
+
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
         private UserRepository()

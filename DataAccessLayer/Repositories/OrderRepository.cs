@@ -6,6 +6,7 @@ namespace DataAccessLayer.Repositories
     public class OrderRepository : IRepository<Order>
     {
         private static OrderRepository _Instance = null!;
+
         private readonly SkincareProductSystemContext __SkincareProductSystemContext;
 
         private OrderRepository()

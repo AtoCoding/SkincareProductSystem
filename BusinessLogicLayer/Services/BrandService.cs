@@ -8,6 +8,7 @@ namespace BusinessLogicLayer.Services
     public class BrandService : IService<Brand>
     {
         private static BrandService _Instance = null!;
+
         private readonly IRepository<Brand> _BrandRepository;
 
         private BrandService()

@@ -14,11 +14,14 @@ namespace Wpf_SkincareUI
 
         private SkincareProduct product;
 
-        public DetailsWindow(User? user, SkincareProduct product)
+        private List<SkincareProduct> products;
+
+        public DetailsWindow(User? user, SkincareProduct product, List<SkincareProduct> products)
         {
             InitializeComponent();
             this.user = user;
             this.product = product;
+            this.products = products;
             LoadButtonByPermission();
             LoadProductDetails();
         }
@@ -32,6 +35,15 @@ namespace Wpf_SkincareUI
             }
             else
             {
+                if (products.FirstOrDefault(x => x.SkincareProductId == product.SkincareProductId) == null)
+                {
+                    product.Quantity = 1;
+                    products.Add(product);
+                } 
+                else
+                {
+                    product.Quantity++;
+                }
                 MessageBox.Show("Add to cart successfully!");
             }
         }
@@ -77,9 +89,19 @@ namespace Wpf_SkincareUI
 
         private void Homepage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            HomepageWindow homepageWindow = new(user);
+            HomepageWindow homepageWindow = new(user, products);
             homepageWindow.Show();
             this.Close();
+        }
+
+        private void btnCart_Click(object sender, RoutedEventArgs e)
+        {
+            if (user != null)
+            {
+                CartWindow cartWindow = new(user, products);
+                cartWindow.Show();
+                this.Close();
+            }
         }
     }
 }

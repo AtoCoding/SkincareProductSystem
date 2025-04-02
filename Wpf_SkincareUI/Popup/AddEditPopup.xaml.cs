@@ -1,13 +1,11 @@
-﻿using System;
-
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.IO;
 using System.Windows.Media.Imaging;
-using Microsoft.Win32;
+using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
-using BusinessLogicLayer.Services;
+using Microsoft.Win32;
 
 namespace Wpf_SkincareUI.Popup
 {
@@ -222,7 +220,7 @@ namespace Wpf_SkincareUI.Popup
             }
             else
             {
-                if(SkincareProduct == null)
+                if (SkincareProduct == null)
                 {
                     MessageBox.Show("Không tìm thấy sản phẩm cần chỉnh sửa.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
@@ -237,7 +235,7 @@ namespace Wpf_SkincareUI.Popup
                 SkincareProduct.Image = image;
                 SkincareProduct.Quantity = quantity;
                 SkincareProduct.Username = username;
-                if(_skincareProductService.Update(SkincareProduct))
+                if (_skincareProductService.Update(SkincareProduct))
                 {
                     MessageBox.Show("Cập nhật sản phẩm thành công.", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -247,7 +245,7 @@ namespace Wpf_SkincareUI.Popup
                 }
             }
             // Tạo đối tượng sản phẩm
-            
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

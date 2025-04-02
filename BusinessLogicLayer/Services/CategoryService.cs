@@ -8,6 +8,7 @@ namespace BusinessLogicLayer.Services
     public class CategoryService : IService<Category>
     {
         private static CategoryService _Instance = null!;
+
         private readonly IRepository<Category> _CategoryRepository;
 
         private CategoryService()

@@ -11,7 +11,7 @@
             <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                 <TextBox x:Name="txtSearch" Width="200"/>
                 <Button Content="Search" Width="50" Margin="5" Click="btnSearch_Click"/>
-               
+
                 <Button Content="Thêm sản phẩm" Width="120" Background="Green" Foreground="White" Click="AddProduct_Click" Margin="10 0"/>
             </StackPanel>
 
@@ -23,7 +23,7 @@
                             <DataTemplate>
                                 <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="3">
                                     <Image Source="{Binding Image}" Width="50" Height="50"/>
-                                    
+
                                 </Border>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -44,7 +44,7 @@
                                     <Button Content="✏" Width="30" Margin="5" Click="EditProduct_Click"/>
                                     <Button Content="🗑" Width="30" Margin="5" Click="DeleteProduct_Click"/>
                                 </StackPanel>
-                            </DataTemplate> 
+                            </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>

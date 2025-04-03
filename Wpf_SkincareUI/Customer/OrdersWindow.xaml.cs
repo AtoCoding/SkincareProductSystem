@@ -34,6 +34,8 @@ namespace Wpf_SkincareUI
 
             orders.RemoveAll(x => !x.Username.Equals(user.Username));
 
+            txtWelcomMessage.Text = $"| Hello, {user.Fullname}";
+            txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
             icOrderList.ItemsSource = orders;
         }
 
@@ -62,6 +64,16 @@ namespace Wpf_SkincareUI
             HomepageWindow homepageWindow = new(user, products);
             homepageWindow.Show();
             this.Close();
+        }
+
+        private void btnCart_Click(object sender, RoutedEventArgs e)
+        {
+            if (user != null)
+            {
+                CartWindow cartWindow = new(user, products);
+                cartWindow.Show();
+                this.Close();
+            }
         }
     }
 }

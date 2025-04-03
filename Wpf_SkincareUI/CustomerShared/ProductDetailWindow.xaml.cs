@@ -92,10 +92,12 @@ namespace Wpf_SkincareUI
             {
                 spUnauthorize.Visibility = Visibility.Visible;
                 spAuthorize.Visibility = Visibility.Hidden;
+                txtWelcomMessage.Text = $"Hello, Guest";
             }
             else
             {
-                txtWelcomMessage.Text = $"Hello, {user.Fullname}";
+                txtWelcomMessage.Text = $"| Hello, {user.Fullname}";
+                txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
                 spUnauthorize.Visibility = Visibility.Hidden;
                 spAuthorize.Visibility = Visibility.Visible;
             }
@@ -116,6 +118,13 @@ namespace Wpf_SkincareUI
                 cartWindow.Show();
                 this.Close();
             }
+        }
+
+        private void btnMyOrders_Click(object sender, RoutedEventArgs e)
+        {
+            OrdersWindow ordersWindow = new(user!, products);
+            ordersWindow.Show();
+            this.Close();
         }
     }
 }

@@ -43,6 +43,8 @@ namespace Wpf_SkincareUI
             }
 
             txtTotalPrice.Text = totalPrice.ToString("C");
+            txtWelcomMessage.Text = $"| Hello, {user.Fullname}";
+            txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
             icCartItems.ItemsSource = products;
             icCartItems.Items.Refresh();
         }
@@ -78,6 +80,13 @@ namespace Wpf_SkincareUI
         {
             CheckoutWindow checkoutWindow = new(user, products);
             checkoutWindow.Show();
+            this.Close();
+        }
+
+        private void btnMyOrders_Click(object sender, RoutedEventArgs e)
+        {
+            OrdersWindow ordersWindow = new(user!, products);
+            ordersWindow.Show();
             this.Close();
         }
     }

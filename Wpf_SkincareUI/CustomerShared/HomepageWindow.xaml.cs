@@ -37,21 +37,9 @@ namespace Wpf_SkincareUI
             {
                 productsClone.Add(ServiceCommon.CloneObject(product));
             }
-            ProcessImage(productsClone);
+            ServiceCommon.ProcessImage(productsClone);
 
             icSkincareProduct.ItemsSource = productsClone;
-        }
-
-        private void ProcessImage(List<SkincareProduct> products)
-        {
-            string projectDirectory = AppContext.BaseDirectory;
-            string imageFolder = Path.Combine(projectDirectory, @"..\..\..\Image");
-            imageFolder = Path.GetFullPath(imageFolder);
-
-            foreach (var product in products)
-            {
-                product.Image = Path.Combine(imageFolder, product.Image);
-            }
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -81,10 +69,11 @@ namespace Wpf_SkincareUI
             {
                 spUnauthorize.Visibility = Visibility.Visible;
                 spAuthorize.Visibility = Visibility.Hidden;
+                txtWelcomMessage.Text = $"Hello, Guest";
             }
             else
             {
-                txtWelcomMessage.Text = $"Hello, {user.Fullname}";
+                txtWelcomMessage.Text = $"| Hello, {user.Fullname}";
                 txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
                 spUnauthorize.Visibility = Visibility.Hidden;
                 spAuthorize.Visibility = Visibility.Visible;

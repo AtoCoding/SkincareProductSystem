@@ -87,5 +87,22 @@ namespace Wpf_SkincareUI
             homepageWindow.Show();
             this.Close();
         }
+
+        private void btnCart_Click(object sender, RoutedEventArgs e)
+        {
+            if (user != null)
+            {
+                CartWindow cartWindow = new(user, products);
+                cartWindow.Show();
+                this.Close();
+            }
+        }
+
+        private void btnMyOrders_Click(object sender, RoutedEventArgs e)
+        {
+            OrdersWindow ordersWindow = new(user!, products);
+            ordersWindow.Show();
+            this.Close();
+        }
     }
 }

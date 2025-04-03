@@ -28,7 +28,7 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Skincare Store" HorizontalAlignment="Center" Margin="10" FontSize="36" FontWeight="Bold" MouseLeftButtonDown="Homepage_MouseLeftButtonDown" Cursor="Hand"/>
                 <TextBox Width="250" Height="30" Margin="15" FontSize="16" VerticalAlignment="Center"/>
-                <TextBlock x:Name="txtWelcomMessage" Text="Hello, Guest!" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15" FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock x:Name="txtWelcomMessage" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15" FontSize="16" FontWeight="SemiBold"/>
                 <TextBlock x:Name="txtAccountBalance" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15" FontSize="16" FontWeight="SemiBold"/>
             </StackPanel>
         </Border>

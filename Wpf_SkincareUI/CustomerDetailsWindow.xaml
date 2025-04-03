@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_SkincareUI"
         mc:Ignorable="d"
-        Title="CustomerDetailsWindow" Height="450" Width="639">
+        Title="CustomerDetailsWindow" Height="450" Width="639"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Margin="50">
             <TextBlock Text="Username:" FontWeight="Bold"/>

@@ -4,7 +4,7 @@ using DataAccessLayer.Repositories.IRepositories;
 
 namespace BusinessLogicLayer.Services
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUserRepository
     {
         private static UserRepository _Instance = null!;
 
@@ -29,9 +29,14 @@ namespace BusinessLogicLayer.Services
             return false;
         }
 
-        public User? Get(int id)
+        public User GetByUserName(string username)
         {
-            return null;
+           var user = _SkincareProductSystemContext.Users.FirstOrDefault(user => user.Username == username);
+            if (user == null)
+            {
+                throw new Exception("User not found");
+            }
+            return user;
         }
 
         public List<User> GetAll()
@@ -46,7 +51,23 @@ namespace BusinessLogicLayer.Services
 
         public bool Update(User data)
         {
-            return false;
+            var existingUser = _SkincareProductSystemContext.Users.FirstOrDefault(u => u.Username == data.Username);
+
+            if (existingUser == null)
+            {
+                return false; // User not found
+            }
+
+            // Update user properties
+            existingUser.Username = data.Username;
+            existingUser.Fullname = data.Fullname;
+            existingUser.IsActive = data.IsActive;
+            existingUser.Gender = data.Gender;
+            existingUser.RoleId = data.RoleId;
+            existingUser.TypeOfSkinId = data.TypeOfSkinId;
+
+            // Save changes to the database
+            return _SkincareProductSystemContext.SaveChanges() > 0;
         }
     }
 }

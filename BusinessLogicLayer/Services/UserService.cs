@@ -8,7 +8,7 @@ namespace BusinessLogicLayer.Services
     {
         private static UserService _Instance = null!;
 
-        private readonly IRepository<User> _UserRepository;
+        private readonly IUserRepository _UserRepository;
 
         public UserService()
         {
@@ -37,6 +37,15 @@ namespace BusinessLogicLayer.Services
         public User? Get(int id)
         {
             return null;
+        }
+        public User GetByUserName(string username)
+        {
+            var user = _UserRepository.GetByUserName(username);
+            if (user == null)
+            {
+                throw new Exception("User not found");
+            }
+            return user;
         }
 
         public List<User> GetAll()
@@ -76,17 +85,16 @@ namespace BusinessLogicLayer.Services
 
         public bool Update(User user)
         {
-            //var existingUser = _UserRepository.GetById(user.Username);
-            //if (existingUser == null) return false;
+            var existingUser = _UserRepository.GetByUserName(user.Username);
+            if (existingUser == null) return false;
 
-            //// Update all relevant fields
-            //existingUser.Username = user.Username;
-            //existingUser.Fullname = user.Fullname;
-            //existingUser.IsActive = user.IsActive;
-            //existingUser.Gender = user.Gender;
+            // Update all relevant fields
+            existingUser.Username = user.Username;
+            existingUser.Fullname = user.Fullname;
+            existingUser.IsActive = user.IsActive;
+            existingUser.Gender = user.Gender;
 
-            //return _UserRepository.Update(existingUser);
-            return false;
+            return _UserRepository.Update(existingUser);
         }
 
     }

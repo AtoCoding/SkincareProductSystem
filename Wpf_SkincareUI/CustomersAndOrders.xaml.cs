@@ -35,9 +35,11 @@ namespace Wpf_SkincareUI
                 MessageBox.Show("Please select a customer.");
                 return;
             }
+            // Get the selected customer
+            var customer = _UserService.GetByUserName(((User)CustomerGrid.SelectedItem).Username);
 
             // Open Customer Details Window
-            CustomerDetailsWindow detailsWindow = new CustomerDetailsWindow();
+            CustomerDetailsWindow detailsWindow = new CustomerDetailsWindow(customer);
             detailsWindow.ShowDialog();
         }
 
@@ -57,13 +59,11 @@ namespace Wpf_SkincareUI
                     // Retrieve the latest values from DataGrid
                     bool newIsActive = user.IsActive;
 
-                    changesMade = true;
-
-                    //// Update the user in the database
-                    //if (_UserService.Update(user))
-                    //{
-                    //    changesMade = true;
-                    //}
+                    // Update the user in the database
+                    if (_UserService.Update(user))
+                    {
+                        changesMade = true;
+                    }
                 }
             }
 

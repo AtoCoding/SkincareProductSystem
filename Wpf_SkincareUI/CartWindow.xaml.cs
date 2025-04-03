@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using DataAccessLayer.Entities;
 
 namespace Wpf_SkincareUI
@@ -10,9 +12,9 @@ namespace Wpf_SkincareUI
     /// </summary>
     public partial class CartWindow : Window
     {
-        private User user;
+        private readonly User user;
 
-        private List<SkincareProduct> products;
+        private readonly List<SkincareProduct> products;
 
         public CartWindow(User user, List<SkincareProduct> products)
         {
@@ -24,15 +26,23 @@ namespace Wpf_SkincareUI
 
         private void LoadCart()
         {
-            decimal totalPrice = 0;
             if (products.Count > 0)
             {
-                foreach (SkincareProduct product in products)
+                decimal totalPrice = 0;
+                if (products.Count > 0)
                 {
-                    totalPrice += (product.UnitPrice * product.Quantity);
+                    foreach (SkincareProduct product in products)
+                    {
+                        totalPrice += (product.UnitPrice * product.Quantity);
+                    }
                 }
+                txtTotalPrice.Text = totalPrice.ToString("C");
             }
-            txtTotalPrice.Text = totalPrice.ToString("C");
+            else
+            {
+                btnCheckout.IsEnabled = false;
+                btnCheckout.Foreground = new SolidColorBrush(Colors.Black);
+            }
 
             icCartItems.ItemsSource = products;
             icCartItems.Items.Refresh();
@@ -63,6 +73,13 @@ namespace Wpf_SkincareUI
                     LoadCart();
                 }
             }
+        }
+
+        private void btnCheckout_Click(object sender, RoutedEventArgs e)
+        {
+            CheckoutWindow checkoutWindow = new(user, products);
+            checkoutWindow.Show();
+            this.Close();
         }
     }
 }

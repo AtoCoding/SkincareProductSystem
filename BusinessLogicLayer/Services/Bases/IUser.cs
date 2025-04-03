@@ -6,5 +6,6 @@ namespace BusinessLogicLayer.Services.IService
     {
         User? CheckLogin(string email, string password);
         bool RegisterNewAccount(User user);
+        User? GetByUserName(string username);
     }
 }

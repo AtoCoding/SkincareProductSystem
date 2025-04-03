@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories;
+using DataAccessLayer.Repositories.IRepositories;
 
 namespace BusinessLogicLayer.Services
 {
@@ -8,17 +9,49 @@ namespace BusinessLogicLayer.Services
     {
         private static OrderService _Instance = null!;
 
-        private readonly OrderRepository _OrderRepository;
+        private readonly IUser _UserService;
+
+        private readonly IService<SkincareProduct> _SkincareProductService;
+
+        private readonly IRepository<Order> _OrderRepository;
 
         private OrderService()
         {
             _OrderRepository = OrderRepository.GetInstance();
+            _UserService = UserService.GetInstance();
+            _SkincareProductService = SkincareProductService.GetInstance();
         }
 
         public static OrderService GetInstance() => _Instance ??= new OrderService();
 
         public bool Add(Order data)
         {
+            decimal totalPrice = 0;
+            List<SkincareProduct> products = _SkincareProductService.GetAll();
+            User? user = _UserService.GetByUserName(data.Username);
+
+            foreach (OrderDetail orderDetail in data.OrderDetails)
+            {
+                totalPrice += orderDetail.TotalPrice;
+            }
+
+            if (user != null && user.Budget >= totalPrice)
+            {
+                foreach (OrderDetail orderDetail in data.OrderDetails)
+                {
+                    SkincareProduct? product = products.FirstOrDefault(p => p.SkincareProductId == orderDetail.SkincareProductId);
+                    if (product != null && product.Quantity >= orderDetail.Quantity)
+                    {
+                        product.Quantity -= orderDetail.Quantity;
+                        if (!_SkincareProductService.Update(product)) break;
+                    }
+                }
+                user.Budget -= totalPrice;
+                if (_UserService.Update(user))
+                {
+                    return _OrderRepository.Add(data);
+                }
+            }
             return false;
         }
 

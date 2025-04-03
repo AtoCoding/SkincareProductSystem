@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using BusinessLogicLayer;
 using DataAccessLayer.Entities;
 
 namespace Wpf_SkincareUI
@@ -35,14 +36,16 @@ namespace Wpf_SkincareUI
             }
             else
             {
-                if (products.FirstOrDefault(x => x.SkincareProductId == product.SkincareProductId) == null)
+                SkincareProduct? productInList = products.FirstOrDefault(x => x.SkincareProductId == product.SkincareProductId);
+                if (productInList == null)
                 {
-                    product.Quantity = 1;
-                    products.Add(product);
+                    SkincareProduct productClone = ServiceCommon.CloneObject(product);
+                    productClone.Quantity = 1;
+                    products.Add(productClone);
                 } 
                 else
                 {
-                    product.Quantity++;
+                    productInList.Quantity++;
                 }
                 MessageBox.Show("Add to cart successfully!");
             }

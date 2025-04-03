@@ -62,29 +62,9 @@ namespace DataAccessLayer.Repositories
 
         public bool Update(SkincareProduct data)
         {
-            try
-            {
-                var skincareProduct = _SkincareProductSystemContext.SkincareProducts.FirstOrDefault(x => x.SkincareProductId == data.SkincareProductId);
-                if (skincareProduct == null) 
-                    return false;
-                skincareProduct.Name = data.Name;
-                    skincareProduct.Description = data.Description;
-                    skincareProduct.Capacity = data.Capacity;
-                    skincareProduct.UnitPrice = data.UnitPrice;
-                    skincareProduct.Quantity = data.Quantity;
-                    skincareProduct.Image = data.Image;
-                    skincareProduct.IsAvailable = data.IsAvailable;
-                    skincareProduct.CategoryId = data.CategoryId;
-                    skincareProduct.BrandId = data.BrandId;
-                    skincareProduct.Username = data.Username;
-                    _SkincareProductSystemContext.SaveChanges();
-                    return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi khi cập nhật sản phẩm: " + ex.Message);
-                return false;
-            }
+            _SkincareProductSystemContext.SkincareProducts.Update(data);
+
+            return _SkincareProductSystemContext.SaveChanges() > 0;
         }
 
         // Product management respository

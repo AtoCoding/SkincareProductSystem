@@ -1,6 +1,6 @@
 ﻿using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
-using DataAccessLayer.Repositories.IRepositories;
+using DataAccessLayer.Repositories.Bases;
 
 namespace BusinessLogicLayer.Services
 {
@@ -8,7 +8,7 @@ namespace BusinessLogicLayer.Services
     {
         private static UserService _Instance = null!;
 
-        private readonly IRepository<User> _UserRepository;
+        private readonly IUserRepo _UserRepository;
 
         private UserService()
         {
@@ -36,7 +36,12 @@ namespace BusinessLogicLayer.Services
 
         public User? Get(int id)
         {
-            return null;
+            return null!;
+        }
+
+        public User? GetByUserName (string username)
+        {
+            return _UserRepository.GetByUserName(username);
         }
 
         public List<User> GetAll()
@@ -64,7 +69,7 @@ namespace BusinessLogicLayer.Services
 
         public bool Update(User data)
         {
-            return false;
+            return _UserRepository.Update(data);
         }
     }
 }

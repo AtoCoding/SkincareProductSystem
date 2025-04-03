@@ -1,10 +1,12 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Entities;
+using DataAccessLayer.Repositories.Bases;
 using DataAccessLayer.Repositories.IRepositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogicLayer.Services
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUserRepo
     {
         private static UserRepository _Instance = null!;
 
@@ -39,6 +41,11 @@ namespace BusinessLogicLayer.Services
             return _SkincareProductSystemContext.Users.ToList();
         }
 
+        public User? GetByUserName(string username)
+        {
+            return _SkincareProductSystemContext.Users.FirstOrDefault(user => user.Username.Equals(username));
+        }
+
         public List<User> Search(string? keyword)
         {
             return [];
@@ -46,7 +53,9 @@ namespace BusinessLogicLayer.Services
 
         public bool Update(User data)
         {
-            return false;
+            _SkincareProductSystemContext.Users.Update(data);
+
+            return _SkincareProductSystemContext.SaveChanges() > 0;
         }
     }
 }

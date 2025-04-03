@@ -7,18 +7,20 @@ namespace DataAccessLayer.Repositories
     {
         private static OrderRepository _Instance = null!;
 
-        private readonly SkincareProductSystemContext __SkincareProductSystemContext;
+        private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
         private OrderRepository()
         {
-            __SkincareProductSystemContext = new();
+            _SkincareProductSystemContext = new();
         }
 
         public static OrderRepository GetInstance() => _Instance ??= new OrderRepository();
 
         public bool Add(Order data)
         {
-            return false;
+            _SkincareProductSystemContext.Orders.Add(data);
+
+            return _SkincareProductSystemContext.SaveChanges() > 0;
         }
 
         public bool Delete(int id)
@@ -43,7 +45,9 @@ namespace DataAccessLayer.Repositories
 
         public bool Update(Order data)
         {
-            return false;
+            _SkincareProductSystemContext.Orders.Update(data);
+
+            return _SkincareProductSystemContext.SaveChanges() > 0;
         }
     }
 }

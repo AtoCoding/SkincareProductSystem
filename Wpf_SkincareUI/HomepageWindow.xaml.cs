@@ -30,11 +30,6 @@ namespace Wpf_SkincareUI
 
         private void LoadProducts()
         {
-            string projectDirectory = AppContext.BaseDirectory;
-            string imageFolder = Path.Combine(projectDirectory, @"..\..\..\Image");
-            imageFolder = Path.GetFullPath(imageFolder);
-            string imagePath = Path.Combine(imageFolder, "AaG.jpg");
-
             List<SkincareProduct> skincareProducts = _SkincareProductService.GetAll();
             ProcessImage(skincareProducts);
 

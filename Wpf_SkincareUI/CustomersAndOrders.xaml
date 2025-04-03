@@ -16,13 +16,13 @@
                             <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0"/>
                             <TextBox Width="300" Height="25" />
                             <Button Content="Search" Width="80" Margin="5,0,0,0"/>
+                            <Button Content="Refresh" Width="80" Margin="30,0,10,0" Click="Refresh_Click"/>
                         </StackPanel>
 
                         <!-- Customer DataGrid -->
                         <DataGrid Name="CustomerGrid" AutoGenerateColumns="False" Height="350" Margin="10">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Binding="{Binding CustomerId}" Width="50"/>
-                                <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="100"/>
+                                <DataGridTextColumn Header="Email" Binding="{Binding Username}" Width="200"/>
                                 <DataGridTextColumn Header="Full Name" Binding="{Binding Fullname}" Width="150"/>
                                 <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="60"/>
                                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="80"/>
@@ -30,7 +30,11 @@
                         </DataGrid>
 
                         <!-- View Details Button -->
-                        <Button Content="View Details" Width="120" Margin="10" Click="ViewDetails_Click"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                            <Button Content="Save Changes" Width="120" Margin="5,0,5,0" Click="SaveChanges_Click"/>
+                            <Button Content="View Details" Width="120" Margin="5,0,5,0" Click="ViewDetails_Click"/>
+                            <Button Content="Go Back" Width="120" Margin="5,0,0,0" Click="GoBack_Click"/>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </TabItem>

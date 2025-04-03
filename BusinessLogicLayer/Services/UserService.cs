@@ -10,7 +10,7 @@ namespace BusinessLogicLayer.Services
 
         private readonly IRepository<User> _UserRepository;
 
-        private UserService()
+        public UserService()
         {
             _UserRepository = UserRepository.GetInstance();
         }
@@ -44,6 +44,18 @@ namespace BusinessLogicLayer.Services
             return _UserRepository.GetAll();
         }
 
+        public List<User> GetAllByRoleId(int roleId)
+        {
+            var users = _UserRepository.GetAll();
+
+            if (users == null || users.Count == 0)
+            {
+                return new List<User>(); // Return empty list instead of null
+            }
+
+            return users.Where(user => user.RoleId == roleId).ToList();
+        }
+
         public bool RegisterNewAccount(User user)
         {
             if (user != null)
@@ -62,9 +74,20 @@ namespace BusinessLogicLayer.Services
             return [];
         }
 
-        public bool Update(User data)
+        public bool Update(User user)
         {
+            //var existingUser = _UserRepository.GetById(user.Username);
+            //if (existingUser == null) return false;
+
+            //// Update all relevant fields
+            //existingUser.Username = user.Username;
+            //existingUser.Fullname = user.Fullname;
+            //existingUser.IsActive = user.IsActive;
+            //existingUser.Gender = user.Gender;
+
+            //return _UserRepository.Update(existingUser);
             return false;
         }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using BusinessLogicLayer;
 using DataAccessLayer.Entities;
@@ -43,9 +44,14 @@ namespace Wpf_SkincareUI
                     productClone.Quantity = 1;
                     products.Add(productClone);
                 } 
-                else
+                else if (product.Quantity > productInList.Quantity)
                 {
                     productInList.Quantity++;
+                }
+                else
+                {
+                    MessageBox.Show("You have taken the maximum number of products!");
+                    return;
                 }
                 MessageBox.Show("Add to cart successfully!");
             }
@@ -73,6 +79,11 @@ namespace Wpf_SkincareUI
             txtPrice.Text = product.UnitPrice.ToString();
             txtQuantity.Text = product.Quantity.ToString();
             txtDescription.Text = product.Description;
+            if (!product.IsAvailable)
+            {
+                btnAddCart.IsEnabled = product.IsAvailable;
+                btnAddCart.Foreground = new SolidColorBrush(Colors.Black);
+            }
         }
 
         private void LoadButtonByPermission()

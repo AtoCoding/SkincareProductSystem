@@ -27,7 +27,49 @@ namespace Wpf_SkincareUI
         // Placeholder for Search button
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Search functionality not implemented yet.");
+            var searchText = txtSearch.Text.Trim();
+            if (string.IsNullOrEmpty(searchText))
+            {
+                MessageBox.Show("Please enter a search term.");
+                return;
+            }
+
+            var customers = _UserService.GetAllByRoleId(3);
+
+            // Filter customers by any attribute
+            var filteredCustomers = customers.Where(c =>
+                c.Username.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                c.Fullname.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                c.Gender.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                c.TypeOfSkin?.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
+                c.Role?.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true
+            ).ToList();
+
+            // Update DataGrid
+            CustomerGrid.ItemsSource = filteredCustomers;
+        }
+
+        private void Search_Changed(object sender, TextChangedEventArgs e)
+        {
+            var searchText = txtSearch.Text.Trim();
+            if (string.IsNullOrEmpty(searchText))
+            {
+                return;
+            }
+
+            var customers = _UserService.GetAllByRoleId(3);
+
+            // Filter customers by any attribute
+            var filteredCustomers = customers.Where(c =>
+                c.Username.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                c.Fullname.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                c.Gender.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                c.TypeOfSkin?.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
+                c.Role?.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true
+            ).ToList();
+
+            // Update DataGrid
+            CustomerGrid.ItemsSource = filteredCustomers;
         }
 
 
@@ -197,6 +239,8 @@ namespace Wpf_SkincareUI
             StaffPage staffPage = new StaffPage(user);
             staffPage.Show();
         }
+
+
     }
 
 

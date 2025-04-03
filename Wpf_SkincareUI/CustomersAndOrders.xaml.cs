@@ -72,8 +72,6 @@ namespace Wpf_SkincareUI
             CustomerGrid.ItemsSource = filteredCustomers;
         }
 
-
-        // Placeholder for View Details button
         private void DataGrid_DoubleClick(object sender, RoutedEventArgs e)
         {
             if (e.OriginalSource is DependencyObject source)
@@ -91,82 +89,45 @@ namespace Wpf_SkincareUI
             }
 
         }
-        private void ViewDetails_Click(object sender, RoutedEventArgs e)
-        {
-            if (e.OriginalSource is DependencyObject source)
-            {
-                DataGridRow? row = FindParent<DataGridRow>(source);
-                if ((row == null ||CustomerGrid.SelectedItem != null))
-                {
-                    MessageBox.Show("Please select a customer.");
-                    return;
-                }
-            }
-            // Get the selected customer
-            var customer = _UserService.GetByUserName(((User)CustomerGrid.SelectedItem).Username);
-
-            // Open Customer Details Window
-            CustomerDetailsWindow detailsWindow = new CustomerDetailsWindow(customer);
-            detailsWindow.ShowDialog();
-        }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             LoadCustomerData();
         }
 
-        private void SaveChanges_Click(object sender, RoutedEventArgs e)
-        {
-            bool changesMade = false;
+        //private void SaveChanges_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bool changesMade = false;
 
-            foreach (var item in CustomerGrid.Items)
-            {
-                if (item is User user)
-                {
-                    // Retrieve the latest values from DataGrid
-                    bool newIsActive = user.IsActive;
+        //    foreach (var item in CustomerGrid.Items)
+        //    {
+        //        if (item is User user)
+        //        {
+        //            // Retrieve the latest values from DataGrid
+        //            bool newIsActive = user.IsActive;
 
-                    // Update the user in the database
-                    if (_UserService.Update(user))
-                    {
-                        changesMade = true;
-                    }
-                }
-            }
+        //            // Update the user in the database
+        //            if (_UserService.Update(user))
+        //            {
+        //                changesMade = true;
+        //            }
+        //        }
+        //    }
 
-            if (changesMade)
-            {
-                MessageBox.Show("Changes saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
-            {
-                MessageBox.Show("No changes detected or failed to save.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+        //    if (changesMade)
+        //    {
+        //        MessageBox.Show("Changes saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("No changes detected or failed to save.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //    }
 
-            // Refresh the grid after saving
-            LoadCustomerData();
-        }
+        //    // Refresh the grid after saving
+        //    LoadCustomerData();
+        //}
 
-        
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-            //Get current selected customer
-            if (CustomerGrid.SelectedItem == null)
-            {
-                MessageBox.Show("Please select a customer.");
-                return;
-            }
-           //tobecontinued
-        }
 
-        private void NewCustomer_Click(object sender, RoutedEventArgs e)
-        {
-            // Open New Customer Window
-            NewCustomerWindow newCustomerWindow = new NewCustomerWindow();
-            newCustomerWindow.ShowDialog();
-            // Refresh the grid after adding a new customer
-            LoadCustomerData();
-        }
         private void LoadCustomerData()
         {
             //load Customer data to the grid

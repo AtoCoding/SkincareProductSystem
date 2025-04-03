@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using BusinessLogicLayer.Services;
+using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
 
 namespace Wpf_SkincareUI
@@ -9,11 +11,20 @@ namespace Wpf_SkincareUI
     public partial class StaffPage : Window
     {
         private User? user;
+        private readonly IService<SkincareProduct> _skincareProductService;
 
         public StaffPage(User? user)
         {
             InitializeComponent();
+            _skincareProductService = SkincareProductService.GetInstance();
             this.user = user;
+            Load_Data();
+        }
+
+        private void Load_Data()
+        {
+            var totalProduct = _skincareProductService.GetAll().Count();
+            txtProducts.Text = totalProduct.ToString();
         }
 
         private void ProductManagement_Click(object sender, RoutedEventArgs e)
@@ -25,8 +36,8 @@ namespace Wpf_SkincareUI
 
         private void CustomerManagement_Click(object sender, RoutedEventArgs e)
         {
-            CustomersAndOrders customersAndOrders = new CustomersAndOrders(user);
-            customersAndOrders.Show();
+            //StaffWindow customerDetailsWindow = new StaffWindow(user);
+            //customerDetailsWindow.Show();
             this.Close();
         }
 

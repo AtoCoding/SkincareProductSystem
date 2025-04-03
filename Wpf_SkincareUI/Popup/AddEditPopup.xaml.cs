@@ -76,7 +76,6 @@ namespace Wpf_SkincareUI.Popup
             if (openFileDialog.ShowDialog() == true)
             {
                 imagePath = openFileDialog.FileName; // Lưu đường dẫn ảnh
-                MessageBox.Show(imagePath);
                 // Hiển thị ảnh trong Image control
                 BitmapImage bitmapImage = new BitmapImage(new Uri(imagePath));
                 imgPreview.Source = bitmapImage;
@@ -109,7 +108,6 @@ namespace Wpf_SkincareUI.Popup
                     string ImageFileName = Guid.NewGuid().ToString() + Path.GetExtension(imagePath);
                     string NewPathImage = Path.Combine(ImageFolder, ImageFileName);
                     File.Copy(imagePath, NewPathImage);
-                    MessageBox.Show(NewPathImage);
 
                     // Lưu tên file vào biến imagePath
                     imagePath = ImageFileName;
@@ -201,15 +199,7 @@ namespace Wpf_SkincareUI.Popup
                 };
 
                 // Hiển thị thông tin sản phẩm trước khi thêm
-                MessageBox.Show($"Tên sản phẩm: {skincareProduct.Name}\n" +
-                    $"Mô tả: {skincareProduct.Description}\n" +
-                    $"Danh mục ID: {skincareProduct.CategoryId}\n" +
-                    $"Thương hiệu ID: {skincareProduct.BrandId}\n" +
-                    $"Còn hàng: {(skincareProduct.IsAvailable ? "Có" : "Không")}\n" +
-                    $"Dung tích: {skincareProduct.Capacity}\n" +
-                    $"Giá: {skincareProduct.UnitPrice:C}\n" +
-                    $"Hình ảnh: {skincareProduct.Image}\n" +
-                    $"Số lượng: {skincareProduct.Quantity}", "Thông tin sản phẩm", MessageBoxButton.OK, MessageBoxImage.Information);
+
 
                 // Thêm sản phẩm vào hệ thống
                 if (_skincareProductService.Add(skincareProduct))
@@ -253,8 +243,7 @@ namespace Wpf_SkincareUI.Popup
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            ProductPage productPage = new ProductPage(user);
-            productPage.Show();
+
             this.Close();
         }
 

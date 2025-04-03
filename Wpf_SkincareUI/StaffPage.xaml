@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_SkincareUI"
-        Title="Admin Dashboard" Height="600" Width="900"
+        Title="Admin Dashboard" Height="650" Width="1310"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -84,7 +84,6 @@
                 <ContentControl x:Name="PageContent">
                     <!-- Dashboard Content (Default) -->
                     <Grid>
-                        <TextBlock Text="Welcome to Dashboard" FontSize="22" FontWeight="SemiBold" Margin="0,0,0,20"/>
 
                         <!-- Dashboard Cards -->
                         <WrapPanel Margin="0,40,0,0">
@@ -93,7 +92,7 @@
                                 <Grid Margin="15">
                                     <StackPanel>
                                         <TextBlock Text="Total Products" Foreground="#7f8c8d" FontSize="14"/>
-                                        <TextBlock Text="245" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
+                                        <TextBlock x:Name="txtProducts" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
                                     </StackPanel>
                                 </Grid>
                             </Border>

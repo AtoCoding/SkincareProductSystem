@@ -19,11 +19,14 @@ namespace Wpf_SkincareUI.Popup
 
         private readonly IService<SkincareProduct> _skincareProductService;
         private Boolean isAddFeature;
+        private User? user;
+
         private string imagePath = null;
         private SkincareProduct SkincareProduct { get; set; }
-        public AddEditPopup(SkincareProduct? product, bool isAddFeature)
+        public AddEditPopup(SkincareProduct? product, bool isAddFeature, User user)
         {
             InitializeComponent();
+            this.user = user;
             _categoryService = CategoryService.GetInstance();
             _brandService = BrandService.GetInstance();
             _skincareProductService = SkincareProductService.GetInstance();
@@ -125,7 +128,7 @@ namespace Wpf_SkincareUI.Popup
             var unitPriceText = txtUnitPrice.Text.Trim();
             var quantityText = txtQuantity.Text.Trim();
             var image = imagePath;
-            var username = "staff@gmail.com";
+            var username = user.Username;
 
             // Kiểm tra tên sản phẩm
             if (string.IsNullOrWhiteSpace(name))
@@ -250,7 +253,7 @@ namespace Wpf_SkincareUI.Popup
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            ProductPage productPage = new ProductPage();
+            ProductPage productPage = new ProductPage(user);
             productPage.Show();
             this.Close();
         }

@@ -46,7 +46,7 @@ namespace Wpf_SkincareUI
                         }
                     case 2:
                         {
-                            StaffWindow staffWindow = new StaffWindow(user);
+                            StaffPage staffWindow = new StaffPage(user);
                             staffWindow.Show();
                             break;
                         }

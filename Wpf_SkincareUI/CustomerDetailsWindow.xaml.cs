@@ -18,6 +18,7 @@ namespace Wpf_SkincareUI
             this.user = customer;
             LoadInfo(customer);
         }
+
         private void LoadInfo(User customer)
         {
             txtUsername.Text = customer.Username;

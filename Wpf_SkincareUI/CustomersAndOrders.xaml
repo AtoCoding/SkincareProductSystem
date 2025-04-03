@@ -17,21 +17,32 @@
                             <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0"/>
                             <TextBox Width="300" Height="25" />
                             <Button Content="Search" Width="80" Margin="5,0,0,0"/>
-                            <Button Content="New Customer" Width="100" Margin="30,0,10,0" Click="Refresh_Click"/>
+                            <Button Content="New Customer" Width="100" Margin="30,0,10,0" Click="NewCustomer_Click"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button Content="Refresh" Width="80" Margin="30,0,10,0" Click="Refresh_Click"/>
                         </StackPanel>
 
                         <!-- Customer DataGrid -->
-                        <DataGrid Name="CustomerGrid" AutoGenerateColumns="False" Height="350" Margin="10" CanUserAddRows="False">
+                        <DataGrid Name="CustomerGrid" AutoGenerateColumns="False" Height="350" Margin="10" CanUserAddRows="False" MouseDoubleClick="DataGrid_DoubleClick">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Email" Binding="{Binding Username}" Width="200"/>
-                                <DataGridTextColumn Header="Full Name" Binding="{Binding Fullname}" Width="150"/>
+                                <DataGridTextColumn Header="Email" Binding="{Binding Username}" Width="200" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Full Name" Binding="{Binding Fullname}" Width="150" IsReadOnly="True"/>
                                 <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="60"/>
-                                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="80"/>
-                                <DataGridTextColumn Header="Skin Type" Binding="{Binding TypeOfSkin.Name}" Width="80"/>
-                                <DataGridTextColumn Header="Role" Binding="{Binding Role.Name}" Width="80"/>
+                                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="80" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Skin Type" Binding="{Binding TypeOfSkin.Name}" Width="80" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Role" Binding="{Binding Role.Name}" Width="80" IsReadOnly="True"/>
+                                <DataGridTemplateColumn Header="Action" Width="100">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>
+                                                <Hyperlink Click="ViewDetails_Click">
+                                                    <TextBlock Text="Delete" Tag="{Binding Username}"/>
+                                                </Hyperlink>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
 

@@ -1,4 +1,7 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media;
 using BusinessLogicLayer.Services;
 using DataAccessLayer.Entities;
 
@@ -27,13 +30,35 @@ namespace Wpf_SkincareUI
             MessageBox.Show("Search functionality not implemented yet.");
         }
 
+
         // Placeholder for View Details button
+        private void DataGrid_DoubleClick(object sender, RoutedEventArgs e)
+        {
+            if (e.OriginalSource is DependencyObject source)
+            {
+                DataGridRow? row = FindParent<DataGridRow>(source);
+                if (row != null && row.Item != CollectionView.NewItemPlaceholder) // Prevent empty row selection
+                {
+                    // Get the selected customer
+                    var customer = _UserService.GetByUserName(((User)CustomerGrid.SelectedItem).Username);
+
+                    // Open Customer Details Window
+                    CustomerDetailsWindow detailsWindow = new CustomerDetailsWindow(customer);
+                    detailsWindow.ShowDialog();
+                }
+            }
+
+        }
         private void ViewDetails_Click(object sender, RoutedEventArgs e)
         {
-            if (CustomerGrid.SelectedItem == null)
+            if (e.OriginalSource is DependencyObject source)
             {
-                MessageBox.Show("Please select a customer.");
-                return;
+                DataGridRow? row = FindParent<DataGridRow>(source);
+                if ((row == null ||CustomerGrid.SelectedItem != null))
+                {
+                    MessageBox.Show("Please select a customer.");
+                    return;
+                }
             }
             // Get the selected customer
             var customer = _UserService.GetByUserName(((User)CustomerGrid.SelectedItem).Username);
@@ -80,6 +105,26 @@ namespace Wpf_SkincareUI
             LoadCustomerData();
         }
 
+        
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            //Get current selected customer
+            if (CustomerGrid.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a customer.");
+                return;
+            }
+           //tobecontinued
+        }
+
+        private void NewCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            // Open New Customer Window
+            NewCustomerWindow newCustomerWindow = new NewCustomerWindow();
+            newCustomerWindow.ShowDialog();
+            // Refresh the grid after adding a new customer
+            LoadCustomerData();
+        }
         private void LoadCustomerData()
         {
             //load Customer data to the grid
@@ -105,6 +150,22 @@ namespace Wpf_SkincareUI
         {
             this.Close();
         }
+
+        private static T? FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            DependencyObject? parent = VisualTreeHelper.GetParent(child);
+            while (parent != null)
+            {
+                if (parent is T typedParent)
+                {
+                    return typedParent;
+                }
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+            return null;
+        }
+
+        
         #endregion
 
         #region ORDER HISTORY

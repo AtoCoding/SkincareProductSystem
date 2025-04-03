@@ -55,14 +55,22 @@ namespace BusinessLogicLayer.Services
 
         public List<User> GetAllByRoleId(int roleId)
         {
-            var users = _UserRepository.GetAll();
+            var users = _UserRepository.GetAll()
+                .Where(user => user.RoleId == roleId) // Only get customers
+                .Select(user => new User
+                {
+                    Username = user.Username,
+                    Fullname = user.Fullname,
+                    IsActive = user.IsActive,
+                    Gender = user.Gender,
+                    RoleId = user.RoleId,
+                    TypeOfSkinId = user.TypeOfSkinId,
+                    TypeOfSkin = new TypeOfSkin { Name = user.TypeOfSkin.Name },
+                    Role = new Role { Name = user.Role.Name }
+                })
+                .ToList();
 
-            if (users == null || users.Count == 0)
-            {
-                return new List<User>(); // Return empty list instead of null
-            }
-
-            return users.Where(user => user.RoleId == roleId).ToList();
+            return users ?? new List<User>();
         }
 
         public bool RegisterNewAccount(User user)

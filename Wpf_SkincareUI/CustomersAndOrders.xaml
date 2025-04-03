@@ -30,7 +30,8 @@
                                 <DataGridTextColumn Header="Full Name" Binding="{Binding Fullname}" Width="150"/>
                                 <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="60"/>
                                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="80"/>
-                                <DataGridTextColumn Header="Skin Type" Binding="{Binding TypeOfSkinId}" Width="80"/>
+                                <DataGridTextColumn Header="Skin Type" Binding="{Binding TypeOfSkin.Name}" Width="80"/>
+                                <DataGridTextColumn Header="Role" Binding="{Binding Role.Name}" Width="80"/>
                             </DataGrid.Columns>
                         </DataGrid>
 

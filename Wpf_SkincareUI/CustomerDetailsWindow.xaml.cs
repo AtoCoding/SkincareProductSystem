@@ -23,8 +23,8 @@ namespace Wpf_SkincareUI
             txtUsername.Text = customer.Username;
             txtFullname.Text = customer.Fullname;
             txtGender.Text = customer.Gender;
-            txtRole.Text = customer.RoleId.ToString();
-            txtSkinType.Text = customer.TypeOfSkinId.ToString();
+            txtRole.Text = customer.Role.Name;
+            txtSkinType.Text = customer.TypeOfSkin.Name;
             chkIsActive.IsChecked = customer.IsActive;
 
         }
@@ -37,8 +37,8 @@ namespace Wpf_SkincareUI
             currentCustomer.Fullname = txtFullname.Text;
             currentCustomer.Gender = txtGender.Text;
             currentCustomer.IsActive = chkIsActive.IsChecked == true;
-            currentCustomer.RoleId = int.Parse(txtRole.Text);
-            currentCustomer.TypeOfSkinId = int.Parse(txtSkinType.Text);
+            currentCustomer.Role.Name = txtRole.Text;
+            currentCustomer.TypeOfSkin.Name = txtSkinType.Text;
             // Update the user in the database
             if (_userService.Update(currentCustomer))
             {

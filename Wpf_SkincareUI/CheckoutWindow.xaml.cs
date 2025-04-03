@@ -29,8 +29,8 @@ namespace Wpf_SkincareUI
 
         private void LoadCheckout()
         {
-            txtWelcomMessage.Text = $"Hello, {user.Fullname}";
-            txtAccountBalance.Text = user.Budget.ToString("C");
+            txtWelcomMessage.Text = $"| Hello, {user.Fullname}";
+            txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
             txtEmail.Text = user.Username;
             txtFullname.Text = user.Fullname;
 
@@ -71,6 +71,8 @@ namespace Wpf_SkincareUI
             if (addResult)
             {
                 MessageBox.Show("Order successfully!");
+                OrderDetailWindow orderDetailWindow = new(user, products);
+                orderDetailWindow.Show();
                 this.Close();
             }
             else

@@ -1,4 +1,4 @@
-﻿<Window x:Class="Wpf_SkincareUI.DetailsWindow"
+﻿<Window x:Class="Wpf_SkincareUI.ProductDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -40,7 +40,7 @@
             <StackPanel x:Name="spAuthorize" Visibility="Hidden">
                 <Button Content="Profile" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
                 <Button x:Name ="btnCart" Content="Cart" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0" Click="btnCart_Click"/>
-                <Button Content="Your order" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
+                <Button x:Name="btnMyOrders" Content="My orders" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
                 <Button Content="Skin type test" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
             </StackPanel>
         </StackPanel>

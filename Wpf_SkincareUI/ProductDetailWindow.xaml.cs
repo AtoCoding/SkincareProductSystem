@@ -8,9 +8,9 @@ using DataAccessLayer.Entities;
 namespace Wpf_SkincareUI
 {
     /// <summary>
-    /// Interaction logic for DetailsWindow.xaml
+    /// Interaction logic for ProductDetailsWindow.xaml
     /// </summary>
-    public partial class DetailsWindow : Window
+    public partial class ProductDetailsWindow : Window
     {
         private User? user;
 
@@ -18,7 +18,7 @@ namespace Wpf_SkincareUI
 
         private List<SkincareProduct> products;
 
-        public DetailsWindow(User? user, SkincareProduct product, List<SkincareProduct> products)
+        public ProductDetailsWindow(User? user, SkincareProduct product, List<SkincareProduct> products)
         {
             InitializeComponent();
             this.user = user;

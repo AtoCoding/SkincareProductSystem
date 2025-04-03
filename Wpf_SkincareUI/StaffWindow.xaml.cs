@@ -56,7 +56,7 @@ namespace Wpf_SkincareUI
                 return;
             }
             // Open Order Details Window
-            OrderDetailsWindow detailsWindow = new OrderDetailsWindow();
+            OrderDetailWindow detailsWindow = new OrderDetailWindow(user, []);
             detailsWindow.ShowDialog();
         }
         #endregion

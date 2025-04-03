@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -26,9 +25,9 @@ namespace Wpf_SkincareUI
 
         private void LoadCart()
         {
+            decimal totalPrice = 0;
             if (products.Count > 0)
             {
-                decimal totalPrice = 0;
                 if (products.Count > 0)
                 {
                     foreach (SkincareProduct product in products)
@@ -36,7 +35,6 @@ namespace Wpf_SkincareUI
                         totalPrice += (product.UnitPrice * product.Quantity);
                     }
                 }
-                txtTotalPrice.Text = totalPrice.ToString("C");
             }
             else
             {
@@ -44,6 +42,7 @@ namespace Wpf_SkincareUI
                 btnCheckout.Foreground = new SolidColorBrush(Colors.Black);
             }
 
+            txtTotalPrice.Text = totalPrice.ToString("C");
             icCartItems.ItemsSource = products;
             icCartItems.Items.Refresh();
         }

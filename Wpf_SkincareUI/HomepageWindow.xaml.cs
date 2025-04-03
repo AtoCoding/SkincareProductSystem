@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using BusinessLogicLayer;
 using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
@@ -30,21 +31,26 @@ namespace Wpf_SkincareUI
 
         private void LoadProducts()
         {
-            List<SkincareProduct> skincareProducts = _SkincareProductService.GetAll();
-            ProcessImage(skincareProducts);
+            List<SkincareProduct> products = _SkincareProductService.GetAll();
+            List<SkincareProduct> productsClone = new();
+            foreach (SkincareProduct product in products)
+            {
+                productsClone.Add(ServiceCommon.CloneObject(product));
+            }
+            ProcessImage(productsClone);
 
-            icSkincareProduct.ItemsSource = skincareProducts;
+            icSkincareProduct.ItemsSource = productsClone;
         }
 
-        private void ProcessImage(List<SkincareProduct> skincareProducts)
+        private void ProcessImage(List<SkincareProduct> products)
         {
             string projectDirectory = AppContext.BaseDirectory;
             string imageFolder = Path.Combine(projectDirectory, @"..\..\..\Image");
             imageFolder = Path.GetFullPath(imageFolder);
 
-            foreach (var skincareProduct in skincareProducts)
+            foreach (var product in products)
             {
-                skincareProduct.Image = Path.Combine(imageFolder, skincareProduct.Image);
+                product.Image = Path.Combine(imageFolder, product.Image);
             }
         }
 
@@ -62,8 +68,8 @@ namespace Wpf_SkincareUI
             {
                 if (stackPanel.DataContext is SkincareProduct product)
                 {
-                    DetailsWindow detailsWindow = new(user, product, products);
-                    detailsWindow.Show();
+                    ProductDetailsWindow productDetailsWindow = new(user, product, products);
+                    productDetailsWindow.Show();
                     this.Close();
                 }
             }
@@ -79,6 +85,7 @@ namespace Wpf_SkincareUI
             else
             {
                 txtWelcomMessage.Text = $"Hello, {user.Fullname}";
+                txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
                 spUnauthorize.Visibility = Visibility.Hidden;
                 spAuthorize.Visibility = Visibility.Visible;
             }
@@ -97,6 +104,13 @@ namespace Wpf_SkincareUI
                 cartWindow.Show();
                 this.Close();
             }
+        }
+
+        private void btnMyOrders_Click(object sender, RoutedEventArgs e)
+        {
+            OrdersWindow ordersWindow = new(user!, products);
+            ordersWindow.Show();
+            this.Close();
         }
     }
 }

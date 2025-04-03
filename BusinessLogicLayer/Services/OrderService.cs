@@ -71,7 +71,7 @@ namespace BusinessLogicLayer.Services
 
         public List<Order> GetAll()
         {
-            return [];
+            return _OrderRepository.GetAll();
         }
 
         public List<Order> Search(string? keyword)

@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.DTOs;
+﻿using BusinessLogicLayer.Dtos;
 using DataAccessLayer.Repositories.Bases;
 using Microsoft.EntityFrameworkCore;
 
@@ -73,7 +73,7 @@ namespace DataAccessLayer.Repositories
             return result;
         }
 
-        public List<ProductDTO> GetTopProductsSold()
+        public List<ProductDto> GetTopProductsSold()
         {
             var result = _context.OrderDetails
                 .GroupBy(od => od.SkincareProductId)
@@ -95,7 +95,7 @@ namespace DataAccessLayer.Repositories
                 .Join(_context.Categories.AsNoTracking(),
                 x => x.CategoryId,
                 c => c.CategoryId,
-                (x, c) => new ProductDTO
+                (x, c) => new ProductDto
                 {
                     ProductName = x.Name ?? "Unknown",
                     ProductPrice = x.UnitPrice,
@@ -108,13 +108,13 @@ namespace DataAccessLayer.Repositories
             return result;
         }
 
-        public List<ProductDTO> GetLowSalesProducts()
+        public List<ProductDto> GetLowSalesProducts()
         {
             var result = _context.SkincareProducts
                 .Where(sp => sp.IsAvailable)
                 .Include(sp => sp.Brand)
                 .Include(sp => sp.Category)
-                .GroupJoin( _context.OrderDetails,
+                .GroupJoin(_context.OrderDetails,
                     sp => sp.SkincareProductId,
                     od => od.SkincareProductId,
                     (sp, orderDetails) => new
@@ -124,7 +124,7 @@ namespace DataAccessLayer.Repositories
                     })
                 .OrderBy(x => x.TotalSold)
                 .Take(_topN)
-                .Select(x => new ProductDTO
+                .Select(x => new ProductDto
                 {
                     ProductName = x.Product.Name ?? "Unknown",
                     ProductPrice = x.Product.UnitPrice,
@@ -137,7 +137,7 @@ namespace DataAccessLayer.Repositories
             return result;
         }
 
-        public List<ProductDTO> GetTopProductsInMonth()
+        public List<ProductDto> GetTopProductsInMonth()
         {
             var result = _context.OrderDetails
                 .Include(od => od.Order)
@@ -155,7 +155,7 @@ namespace DataAccessLayer.Repositories
                 .Where(x => x.Product.IsAvailable)
                 .OrderByDescending(x => x.TotalSold)
                 .Take(_topN)
-                .Select(x => new ProductDTO
+                .Select(x => new ProductDto
                 {
                     ProductName = x.Product.Name ?? "Unknown",
                     ProductPrice = x.Product.UnitPrice,

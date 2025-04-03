@@ -1,9 +1,9 @@
-﻿using BusinessLogicLayer.Services;
-using BusinessLogicLayer.Services.Bases;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using BusinessLogicLayer.Services;
+using BusinessLogicLayer.Services.Bases;
 
 namespace Wpf_SkincareUI
 {

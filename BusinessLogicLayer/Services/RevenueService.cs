@@ -1,5 +1,5 @@
-﻿using BusinessLogicLayer.Services.Bases;
-using DataAccessLayer.DTOs;
+﻿using BusinessLogicLayer.Dtos;
+using BusinessLogicLayer.Services.Bases;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Repositories.Bases;
 
@@ -25,17 +25,17 @@ namespace BusinessLogicLayer.Services
             return list;
         }
 
-        public List<ProductDTO> GetTopProductsSold()
+        public List<ProductDto> GetTopProductsSold()
         {
             return _repository.GetTopProductsSold();
         }
 
-        public List<ProductDTO> GetLowSalesProducts()
+        public List<ProductDto> GetLowSalesProducts()
         {
             return _repository.GetLowSalesProducts();
         }
 
-        public List<ProductDTO> GetTopProductsInMonth()
+        public List<ProductDto> GetTopProductsInMonth()
         {
             return _repository.GetTopProductsInMonth();
         }

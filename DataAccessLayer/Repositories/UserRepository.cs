@@ -1,7 +1,6 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Bases;
-using DataAccessLayer.Repositories.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogicLayer.Services
@@ -38,7 +37,10 @@ namespace BusinessLogicLayer.Services
 
         public List<User> GetAll()
         {
-            return _SkincareProductSystemContext.Users.ToList();
+            return _SkincareProductSystemContext.Users
+                .Include(user => user.TypeOfSkin)
+                .Include(user => user.Role)
+                .ToList();
         }
 
         public User? GetByUserName(string username)

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_SkincareUI"
         mc:Ignorable="d"
-        Title="CustomerDetailsWindow" Height="450" Width="639">
+        Title="CustomerDetailsWindow" Height="450" Width="639"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Margin="50">
             <TextBlock Text="Username:" FontWeight="Bold"/>
@@ -24,9 +25,9 @@
             <TextBox Name="txtSkinType" IsReadOnly="True" Margin="0,0,0,10"/>
 
             <TextBlock Text="Active Status:" FontWeight="Bold"/>
-            <CheckBox Name="chkIsActive" Content="Is Active" Margin="0,0,0,10"/>
+            <CheckBox Name="chkIsActive" Content="Is Active" Margin="0,0,0,10" IsEnabled="False"/>
 
-            <Button Content="Save Changes" Width="120" Margin="10" Click="SaveChanges_Click"/>
+            <Button Content="Ok" Width="120" Margin="10" Click="Ok_Click"/>
         </StackPanel>
     </Grid>
 </Window>

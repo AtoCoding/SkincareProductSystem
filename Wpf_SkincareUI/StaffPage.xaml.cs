@@ -37,8 +37,8 @@ namespace Wpf_SkincareUI
 
         private void CustomerManagement_Click(object sender, RoutedEventArgs e)
         {
-            StaffWindow customerDetailsWindow = new StaffWindow(user);
-            customerDetailsWindow.Show();
+            CustomersAndOrders customersAndOrders = new CustomersAndOrders(user);
+            customersAndOrders.Show();
             this.Close();
         }
 

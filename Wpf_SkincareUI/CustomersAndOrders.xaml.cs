@@ -6,10 +6,10 @@ namespace Wpf_SkincareUI
     /// <summary>
     /// Interaction logic for StaffWindow.xaml
     /// </summary>
-    public partial class StaffWindow : Window
+    public partial class CustomersAndOrders : Window
     {
         private User user;
-        public StaffWindow(User user)
+        public CustomersAndOrders(User user)
         {
             InitializeComponent();
             this.user = user;

@@ -55,23 +55,7 @@ namespace BusinessLogicLayer.Services
 
         public bool Update(User data)
         {
-            var existingUser = _SkincareProductSystemContext.Users.FirstOrDefault(u => u.Username == data.Username);
-
-            if (existingUser == null)
-            {
-                return false; // User not found
-            }
-
-            // Update user properties
-            existingUser.Username = data.Username;
-            existingUser.Fullname = data.Fullname;
-            existingUser.IsActive = data.IsActive;
-            existingUser.Gender = data.Gender;
-            existingUser.RoleId = data.RoleId;
-            existingUser.TypeOfSkinId = data.TypeOfSkinId;
-
-            // Save changes to the database
-            return _SkincareProductSystemContext.SaveChanges() > 0;
+            return false;
         }
     }
 }

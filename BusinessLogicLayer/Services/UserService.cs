@@ -93,16 +93,7 @@ namespace BusinessLogicLayer.Services
 
         public bool Update(User user)
         {
-            var existingUser = _UserRepository.GetByUserName(user.Username);
-            if (existingUser == null) return false;
-
-            // Update all relevant fields
-            existingUser.Username = user.Username;
-            existingUser.Fullname = user.Fullname;
-            existingUser.IsActive = user.IsActive;
-            existingUser.Gender = user.Gender;
-
-            return _UserRepository.Update(existingUser);
+            return false;
         }
 
     }

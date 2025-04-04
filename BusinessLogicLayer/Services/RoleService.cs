@@ -7,6 +7,7 @@ namespace BusinessLogicLayer.Services
     public class RoleService : IService<Role>
     {
         private static RoleService _Instance = null!;
+
         private readonly IRepository<Role> _RoleRepository;
 
         private RoleService()

@@ -1,10 +1,9 @@
-﻿using BusinessLogicLayer.Services;
+﻿using System.IO;
+using System.Windows;
+using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
-using System.Windows;
-using System.IO;
 using Wpf_SkincareUI.Popup;
-using System.Windows.Media.Imaging;
 
 
 namespace Wpf_SkincareUI
@@ -58,7 +57,7 @@ namespace Wpf_SkincareUI
         }
         private void AddProduct_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPopup addPopup = new AddEditPopup(null, true);
+            AddEditPopup addPopup = new AddEditPopup(null, true, user);
             addPopup.Show();
             this.Hide();
         }
@@ -70,7 +69,7 @@ namespace Wpf_SkincareUI
                 MessageBox.Show("Vui lòng chọn một sản phẩm để chỉnh sửa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            AddEditPopup addPopup = new AddEditPopup(selectedProduct, false);
+            AddEditPopup addPopup = new AddEditPopup(selectedProduct, false, user);
             addPopup.Show();
             this.Hide();
         }
@@ -92,6 +91,6 @@ namespace Wpf_SkincareUI
             }
             // Sau khi xử lý ảnh, xóa sản phẩm khỏi database
         }
-        
+
     }
 }

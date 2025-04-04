@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DataAccessLayer.Entities;
 
@@ -21,7 +19,11 @@ public partial class User
     [Required(ErrorMessage = "Gender is required.")]
     public string Gender { get; set; } = null!;
 
+    public decimal Budget { get; set; }
+
     public bool IsActive { get; set; }
+
+    public DateOnly DateCreated { get; set; }
 
     public int RoleId { get; set; }
 

@@ -6,6 +6,7 @@ namespace DataAccessLayer.Repositories
     public class TypeOfSkinRepository : IRepository<TypeOfSkin>
     {
         private static TypeOfSkinRepository _Instance = null!;
+
         private readonly SkincareProductSystemContext __SkincareProductSystemContext;
 
         private TypeOfSkinRepository()

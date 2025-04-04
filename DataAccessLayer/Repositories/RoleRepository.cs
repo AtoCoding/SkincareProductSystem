@@ -7,6 +7,7 @@ namespace BusinessLogicLayer.Services
     public class RoleRepository : IRepository<Role>
     {
         private static RoleRepository _Instance = null!;
+
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
         private RoleRepository()

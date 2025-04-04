@@ -7,9 +7,10 @@ namespace BusinessLogicLayer.Services
     public class UserService : IUser
     {
         private static UserService _Instance = null!;
-        private readonly IRepository<User> _UserRepository;
 
-        private UserService()
+        private readonly IUserRepository _UserRepository;
+
+        public UserService()
         {
             _UserRepository = UserRepository.GetInstance();
         }
@@ -37,10 +38,39 @@ namespace BusinessLogicLayer.Services
         {
             return null;
         }
+        public User GetByUserName(string username)
+        {
+            var user = _UserRepository.GetByUserName(username);
+            if (user == null)
+            {
+                throw new Exception("User not found");
+            }
+            return user;
+        }
 
         public List<User> GetAll()
         {
             return _UserRepository.GetAll();
+        }
+
+        public List<User> GetAllByRoleId(int roleId)
+        {
+            var users = _UserRepository.GetAll()
+                .Where(user => user.RoleId == roleId) // Only get customers
+                .Select(user => new User
+                {
+                    Username = user.Username,
+                    Fullname = user.Fullname,
+                    IsActive = user.IsActive,
+                    Gender = user.Gender,
+                    RoleId = user.RoleId,
+                    TypeOfSkinId = user.TypeOfSkinId,
+                    TypeOfSkin = new TypeOfSkin { Name = user.TypeOfSkin.Name },
+                    Role = new Role { Name = user.Role.Name }
+                })
+                .ToList();
+
+            return users ?? new List<User>();
         }
 
         public bool RegisterNewAccount(User user)
@@ -61,9 +91,10 @@ namespace BusinessLogicLayer.Services
             return [];
         }
 
-        public bool Update(User data)
+        public bool Update(User user)
         {
             return false;
         }
+
     }
 }

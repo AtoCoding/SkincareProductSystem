@@ -26,7 +26,7 @@
                 <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="1" Opacity="0.7"/>
             </Border.Effect>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Skincare Store" HorizontalAlignment="Center" Margin="10" FontSize="36" FontWeight="Bold"/>
+                <TextBlock Text="Skincare Store" HorizontalAlignment="Center" Margin="10" FontSize="36" FontWeight="Bold" MouseLeftButtonDown="Homepage_MouseLeftButtonDown" Cursor="Hand"/>
                 <TextBox Width="250" Height="30" Margin="15" FontSize="16" VerticalAlignment="Center"/>
                 <TextBlock x:Name="txtWelcomMessage" Text="Hello, Guest!" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15" FontSize="16" FontWeight="SemiBold"/>
             </StackPanel>
@@ -39,7 +39,7 @@
             </StackPanel>
             <StackPanel x:Name="spAuthorize" Visibility="Hidden">
                 <Button Content="Profile" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
-                <Button Content="Cart" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
+                <Button x:Name="btnCart" Content="Cart" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0" Click="btnCart_Click"/>
                 <Button Content="Your order" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
                 <Button Content="Skin type test" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
             </StackPanel>
@@ -50,7 +50,7 @@
             <StackPanel>
                 <TextBlock Text="All products" Margin="10" FontSize="28" FontWeight="Medium"/>
                 <StackPanel Margin="20 0">
-                    <ItemsControl x:Name="ListViewProducts">
+                    <ItemsControl x:Name="icSkincareProduct">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Margin="15" Width="160" Height="240" Background="White" CornerRadius="8">
@@ -70,7 +70,7 @@
                                             </BeginStoryboard>
                                         </EventTrigger>
                                     </Border.Triggers>
-                                    <StackPanel>
+                                    <StackPanel MouseLeftButtonDown="Product_MouseLeftButtonDown">
                                         <Border Width="140" Height="140" CornerRadius="6" Margin="8">
                                             <Border.Effect>
                                                 <DropShadowEffect ShadowDepth="2"/>

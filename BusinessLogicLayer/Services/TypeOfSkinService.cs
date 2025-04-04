@@ -7,6 +7,7 @@ namespace BusinessLogicLayer.Services
     public class TypeOfSkinService : IService<TypeOfSkin>
     {
         private static TypeOfSkinService _Instance = null!;
+
         private readonly TypeOfSkinRepository _TypeOfSkinRepository;
 
         private TypeOfSkinService()

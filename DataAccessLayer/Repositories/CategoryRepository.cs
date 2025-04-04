@@ -6,6 +6,7 @@ namespace DataAccessLayer.Repositories
     public class CategoryRepository : IRepository<Category>
     {
         private static CategoryRepository _Instance = null!;
+
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
         public CategoryRepository()

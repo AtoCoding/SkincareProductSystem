@@ -6,6 +6,7 @@ namespace DataAccessLayer.Repositories
     public class BrandRepository : IRepository<Brand>
     {
         private static BrandRepository _Instance = null!;
+
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
         private BrandRepository()
@@ -44,8 +45,5 @@ namespace DataAccessLayer.Repositories
         {
             return false;
         }
-
-
-
     }
 }

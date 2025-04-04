@@ -5,9 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogicLayer.Services
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUserRepository
     {
         private static UserRepository _Instance = null!;
+
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
         private UserRepository()
@@ -29,14 +30,22 @@ namespace BusinessLogicLayer.Services
             return false;
         }
 
-        public User? Get(int id)
+        public User GetByUserName(string username)
         {
-            return null;
+           var user = _SkincareProductSystemContext.Users.FirstOrDefault(user => user.Username == username);
+            if (user == null)
+            {
+                throw new Exception("User not found");
+            }
+            return user;
         }
 
         public List<User> GetAll()
         {
-            return _SkincareProductSystemContext.Users.ToList();
+            return _SkincareProductSystemContext.Users
+                .Include(user => user.TypeOfSkin)
+                .Include(user => user.Role)
+                .ToList();
         }
 
         public List<User> Search(string? keyword)

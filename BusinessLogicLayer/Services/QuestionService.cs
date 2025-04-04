@@ -7,6 +7,7 @@ namespace BusinessLogicLayer.Services
     public class QuestionService : IService<Question>
     {
         private static QuestionService _Instance = null!;
+
         private readonly QuestionRepository _QuestionRepository;
 
         private QuestionService()

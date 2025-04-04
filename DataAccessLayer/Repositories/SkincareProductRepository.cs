@@ -7,6 +7,7 @@ namespace DataAccessLayer.Repositories
     public class SkincareProductRepository : IRepository<SkincareProduct>
     {
         private static SkincareProductRepository _Instance = null!;
+
         private readonly SkincareProductSystemContext _SkincareProductSystemContext;
 
         private SkincareProductRepository()
@@ -39,7 +40,9 @@ namespace DataAccessLayer.Repositories
 
         public List<SkincareProduct> GetAll()
         {
-            return _SkincareProductSystemContext.SkincareProducts.Include(x => x.Brand).Include(x => x.Category).ToList();
+            return _SkincareProductSystemContext.SkincareProducts.Include(x => x.Category)
+                                                                 .Include(x => x.Brand)
+                                                                 .ToList();
         }
 
         public List<SkincareProduct> Search(string? keyword)

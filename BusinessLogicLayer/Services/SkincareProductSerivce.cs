@@ -8,6 +8,7 @@ namespace BusinessLogicLayer.Services
     public class SkincareProductService : IService<SkincareProduct>
     {
         private static SkincareProductService _Instance = null!;
+
         private readonly IRepository<SkincareProduct> _SkincareProductRepository;
 
         private SkincareProductService()
@@ -47,12 +48,10 @@ namespace BusinessLogicLayer.Services
             return _SkincareProductRepository.Update(data);
         }
 
-
-        /// Product management service 
+        // Product management service 
         //public List<SkincareProduct> GetAllWithBrandAndCategory()
         //{
         //    return _SkincareProductRepository.GetAllWithBrandAndCategory();
         //}
-
     }
 }

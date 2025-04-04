@@ -11,6 +11,5 @@
 
         // Product management 
         //List<T> GetAllWithBrandAndCategory();
-
     }
 }

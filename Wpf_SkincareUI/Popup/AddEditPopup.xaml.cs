@@ -1,13 +1,11 @@
-﻿using System;
-
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.IO;
 using System.Windows.Media.Imaging;
-using Microsoft.Win32;
+using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
-using BusinessLogicLayer.Services;
+using Microsoft.Win32;
 
 namespace Wpf_SkincareUI.Popup
 {
@@ -21,11 +19,14 @@ namespace Wpf_SkincareUI.Popup
 
         private readonly IService<SkincareProduct> _skincareProductService;
         private Boolean isAddFeature;
+        private User? user;
+
         private string imagePath = null;
         private SkincareProduct SkincareProduct { get; set; }
-        public AddEditPopup(SkincareProduct? product, bool isAddFeature)
+        public AddEditPopup(SkincareProduct? product, bool isAddFeature, User user)
         {
             InitializeComponent();
+            this.user = user;
             _categoryService = CategoryService.GetInstance();
             _brandService = BrandService.GetInstance();
             _skincareProductService = SkincareProductService.GetInstance();
@@ -127,7 +128,7 @@ namespace Wpf_SkincareUI.Popup
             var unitPriceText = txtUnitPrice.Text.Trim();
             var quantityText = txtQuantity.Text.Trim();
             var image = imagePath;
-            var username = "staff@gmail.com";
+            var username = user.Username;
 
             // Kiểm tra tên sản phẩm
             if (string.IsNullOrWhiteSpace(name))
@@ -222,7 +223,7 @@ namespace Wpf_SkincareUI.Popup
             }
             else
             {
-                if(SkincareProduct == null)
+                if (SkincareProduct == null)
                 {
                     MessageBox.Show("Không tìm thấy sản phẩm cần chỉnh sửa.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
@@ -237,7 +238,7 @@ namespace Wpf_SkincareUI.Popup
                 SkincareProduct.Image = image;
                 SkincareProduct.Quantity = quantity;
                 SkincareProduct.Username = username;
-                if(_skincareProductService.Update(SkincareProduct))
+                if (_skincareProductService.Update(SkincareProduct))
                 {
                     MessageBox.Show("Cập nhật sản phẩm thành công.", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -247,12 +248,12 @@ namespace Wpf_SkincareUI.Popup
                 }
             }
             // Tạo đối tượng sản phẩm
-            
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            ProductPage productPage = new ProductPage();
+            ProductPage productPage = new ProductPage(user);
             productPage.Show();
             this.Close();
         }

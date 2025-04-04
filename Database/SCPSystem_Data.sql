@@ -70,3 +70,32 @@ INSERT INTO [Order](DateCreated, Username) values
 INSERT INTO OrderDetails(OrderId, SkincareProductId, Quantity, TotalPrice) values
 (1, 2, 1, 1 * 140000),
 (1, 4, 3, 3 * 277000);
+
+select * from [Order]
+
+select * from OrderDetails
+
+select * from SkincareProduct
+
+select * from [Category]
+
+select * from [Brand]
+
+select * from [Order]
+inner join OrderDetails
+on [Order].OrderId = OrderDetails.OrderId
+
+SELECT 
+    o.OrderId,
+    SUM(od.TotalPrice) AS TotalRevenue
+FROM [Order] o
+INNER JOIN OrderDetails od ON o.OrderId = od.OrderId
+GROUP BY o.OrderId;
+
+select * from [User]
+
+select * from [Role]
+
+select * from [Brand]
+
+select * from TypeOfSkin

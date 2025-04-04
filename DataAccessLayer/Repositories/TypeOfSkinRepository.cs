@@ -33,7 +33,7 @@ namespace DataAccessLayer.Repositories
 
         public List<TypeOfSkin> GetAll()
         {
-            return [];
+            return __SkincareProductSystemContext.TypeOfSkins.ToList();
         }
 
         public List<TypeOfSkin> Search(string? keyword)

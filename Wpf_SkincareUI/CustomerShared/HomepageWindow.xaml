@@ -39,7 +39,7 @@
                 <Button x:Name="btnLogin" Content="Login" Width="180" Height="40" Margin="8" FontSize="18" Click="btnLogin_Click"/>
             </StackPanel>
             <StackPanel x:Name="spAuthorize" Visibility="Hidden">
-                <Button Content="Profile" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
+                <Button x:Name="btnProfile" Content="Profile" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0" Click="btnProfile_Click" />
                 <Button x:Name="btnCart" Content="Cart" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0" Click="btnCart_Click"/>
                 <Button x:Name="btnMyOrders" Content="My orders" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0" Click="btnMyOrders_Click"/>
                 <Button Content="Skin type test" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>

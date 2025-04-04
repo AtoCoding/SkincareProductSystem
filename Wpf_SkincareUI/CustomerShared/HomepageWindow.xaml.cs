@@ -101,5 +101,15 @@ namespace Wpf_SkincareUI
             ordersWindow.Show();
             this.Close();
         }
+
+        private void btnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            if(user != null)
+            {
+                ProfileWindow profileWindow = new(user);
+                profileWindow.ShowDialog();
+                this.Close();
+            }
+        }
     }
 }

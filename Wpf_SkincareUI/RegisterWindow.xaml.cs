@@ -26,7 +26,8 @@ namespace Wpf_SkincareUI
                 Username = txtUsername.Text,
                 Password = txtPassword.Password,
                 Fullname = txtFullName.Text,
-                Gender = new[] {rbMale, rbFemale}.FirstOrDefault(r => r.IsChecked == true)?.Content.ToString() ?? string.Empty
+                Gender = new[] {rbMale, rbFemale}.FirstOrDefault(r => r.IsChecked == true)?.Content.ToString() ?? string.Empty,
+                DateCreated = DateOnly.FromDateTime(DateTime.Now)
             };
 
             var validationResults = new List<ValidationResult>();
@@ -49,8 +50,8 @@ namespace Wpf_SkincareUI
                 if (isSuccess)
                 {
                     MessageBox.Show("Register successfully!");
-                    HomepageWindow homepageWindow = new HomepageWindow(user, []);
-                    homepageWindow.Show();
+                    CustomerWindow customerWindow = new(user);
+                    customerWindow.Show();
                     this.Close();
                 }
                 else

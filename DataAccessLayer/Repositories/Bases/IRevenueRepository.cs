@@ -1,4 +1,9 @@
-﻿using BusinessLogicLayer.Dtos;
+﻿using DataAccessLayer.DTOs;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories.Bases
 {
@@ -9,8 +14,9 @@ namespace DataAccessLayer.Repositories.Bases
         int GetTotalBuyers();
         int GetTotalProductsSold();
         int GetTotalOrders();
-        List<ProductDto> GetTopProductsSold();
-        List<ProductDto> GetLowSalesProducts();
-        List<ProductDto> GetTopProductsInMonth();
+        List<ProductDTO> GetTopProductsSold();
+        List<ProductDTO> GetLowSalesProducts();
+        List<ProductDTO> GetTopProductsInMonth();
+
     }
 }

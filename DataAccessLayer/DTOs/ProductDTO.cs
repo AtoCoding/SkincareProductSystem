@@ -1,6 +1,12 @@
-﻿namespace BusinessLogicLayer.Dtos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataAccessLayer.DTOs
 {
-    public class ProductDto
+    public class ProductDTO
     {
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }

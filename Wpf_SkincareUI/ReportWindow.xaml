@@ -1,0 +1,255 @@
+﻿<Window x:Class="Wpf_SkincareUI.ReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_SkincareUI"
+        mc:Ignorable="d"
+        Title="Report" Height="1450" Width="1500"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        FontSize="18" Loaded="Window_Loaded"
+        >
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Foreground="Red" VerticalAlignment="Top">
+        <StackPanel>
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD8F9FF" Offset="1"/>
+                    <GradientStop Color="White" Offset="0"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <!--Header-->
+            <StackPanel Width="1470" Height="120" >
+                <Border
+                    Width="1470" Height="110"
+                    CornerRadius="0,0,20,20"
+                    >
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                    <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FFAFFFF2" Offset="0"/>
+                            <GradientStop Color="#FFB2E5FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4" />
+                    </Border.Effect>
+                    <Label Content="BÁO CÁO TRONG THÁNG" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45" FontWeight="Bold"/>
+                </Border>
+            </StackPanel>
+            <!--Content 1-->
+            <StackPanel Orientation="Horizontal" Margin="0,20" HorizontalAlignment="Center">
+                <!--Doanh thu 3 tháng gần nhất-->
+                <Border Width="590" Height="260" Background="#FFAFFFF2" CornerRadius="30" Margin="20" VerticalAlignment="Top">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
+                    </Border.Effect>
+                    <StackPanel VerticalAlignment="Center" Height="260">
+                        <Label Content="Doanh thu 3 tháng gần nhất" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
+                        <DataGrid x:Name="dgRevenue" AutoGenerateColumns="False"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                  MaxHeight="240"
+                                  MaxWidth="500"
+                                  RowHeight="40" 
+                                  VerticalAlignment="Center"
+                                  GridLinesVisibility="None"
+                                  IsReadOnly="True">
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Padding" Value="5"/>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Tháng" Binding="{Binding Month}" Width="*" />
+                                <DataGridTextColumn Header="Tổng doanh thu" Binding="{Binding Revenue}" Width="2*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </Border>
+                <!--Thống kê-->
+                <Border Width="800" Height="260" Background="#FFB2E5FF" CornerRadius="30" Margin="20">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
+                    </Border.Effect>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="260">
+                        <Label Content="Thống kê" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10" />
+                        <StackPanel Width="710" Height="160" Background="White" >
+                            <StackPanel Orientation="Horizontal" Margin="20,0" Height="40" Width="680" HorizontalAlignment="Center" >
+                                <Label Content="Tổng số người dùng đăng ký mới" Width="280"/>
+                                <TextBox x:Name="txtTotalNewUsers" Width="395" IsReadOnly="True" BorderThickness="0,0,0,1" VerticalContentAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="20,0" Height="40" Width="680" HorizontalAlignment="Center">
+                                <Label Content="Tổng số khách mua hàng" Width="280"/>
+                                <TextBox x:Name="txtTotalBuyer" Width="395" IsReadOnly="True" BorderThickness="0,0,0,1" VerticalContentAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="20,0" Height="40" Width="680" HorizontalAlignment="Center">
+                                <Label Content="Tổng sản phẩm bán ra" Width="280"/>
+                                <TextBox x:Name="txtTotalProductsSold" Width="395" IsReadOnly="True" BorderThickness="0,0,0,1" VerticalContentAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="20,0" Height="40" Width="680" HorizontalAlignment="Center">
+                                <Label Content="Tổng đơn hàng trong tháng" Width="280"/>
+                                <TextBox x:Name="txtTotalOrders" Width="395" IsReadOnly="True" BorderThickness="0,0,0,1" VerticalContentAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <!--Content 2-->
+            <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Center">
+                <!--Top sản phẩm bán chạy-->
+                <Border Width="450" Height="830" CornerRadius="30" Background="White" Margin="20,10">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <Label Content="Top sản phẩm bán chạy" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
+                        <StackPanel>
+                            <StackPanel x:Name="spProduct1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                <Border x:Name="border1" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2">
+                                </Border>
+                                <StackPanel VerticalAlignment="Center" Margin="20">
+                                    <TextBox x:Name="txtName1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsReadOnly="true" TextWrapping="NoWrap"/>
+                                    <TextBox x:Name="txtPrice1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtBrand1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtCategory1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="spProduct2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                <Border x:Name="border2" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2">
+                                </Border>
+                                <StackPanel VerticalAlignment="Center" Margin="20">
+                                    <TextBox x:Name="txtName2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsReadOnly="true" TextWrapping="NoWrap"/>
+                                    <TextBox x:Name="txtPrice2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtBrand2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtCategory2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="spProduct3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                <Border x:Name="border3" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2">
+                                </Border>
+                                <StackPanel VerticalAlignment="Center" Margin="20">
+                                    <TextBox x:Name="txtName3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsReadOnly="true" TextWrapping="NoWrap"/>
+                                    <TextBox x:Name="txtPrice3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtBrand3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtCategory3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <!--Top sản phảm trong tháng-->
+                <Border Width="450" Height="830" CornerRadius="30" Background="White" Margin="20,10">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <Label Content="Top sản phẩm trong tháng" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
+                        <StackPanel>
+                            <StackPanel x:Name="spProductTop1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                <Border x:Name="borderTop1" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2">
+                                </Border>
+                                <StackPanel VerticalAlignment="Center" Margin="20">
+                                    <TextBox x:Name="txtNameTop1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsReadOnly="true" TextWrapping="NoWrap"/>
+                                    <TextBox x:Name="txtPriceTop1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtBrandTop1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtCategoryTop1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="spProductTop2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                <Border x:Name="borderTop2" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2" ClipToBounds="True">
+                                </Border>
+                                <StackPanel VerticalAlignment="Center" Margin="20">
+                                    <TextBox x:Name="txtNameTop2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsReadOnly="true" TextWrapping="NoWrap"/>
+                                    <TextBox x:Name="txtPriceTop2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtBrandTop2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox Name="txtCategoryTop2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="spProductTop3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                <Border x:Name="borderTop3" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2">
+                                </Border>
+                                <StackPanel VerticalAlignment="Center" Margin="20">
+                                    <TextBox x:Name="txtNameTop3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsReadOnly="true" TextWrapping="NoWrap"/>
+                                    <TextBox x:Name="txtPriceTop3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtBrandTop3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtCategoryTop3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <!--Sản phảm có lượt bán thấp-->
+                <Border Width="450" Height="830" CornerRadius="30" Background="White" Margin="20,10">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <Label Content="Sản phẩm có lượt bán thấp" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
+                        <StackPanel>
+                            <StackPanel x:Name="spProductLow1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                <Border x:Name="borderLow1" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2">
+                                </Border>
+                                <StackPanel VerticalAlignment="Center" Margin="20">
+                                    <TextBox x:Name="txtNameLow1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsReadOnly="true" TextWrapping="NoWrap"/>
+                                    <TextBox x:Name="txtPriceLow1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtBrandLow1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtCategoryLow1" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="spProductLow2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                <Border x:Name="borderLow2" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2" ClipToBounds="True">
+                                </Border>
+                                <StackPanel VerticalAlignment="Center" Margin="20">
+                                    <TextBox x:Name="txtNameLow2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsReadOnly="true" TextWrapping="NoWrap"/>
+                                    <TextBox x:Name="txtPriceLow2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtBrandLow2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtCategoryLow2" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="spProductLow3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                <Border x:Name="borderLow3" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2" ClipToBounds="True">
+                                </Border>
+                                <StackPanel VerticalAlignment="Center" Margin="20">
+                                    <TextBox x:Name="txtNameLow3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsReadOnly="true" TextWrapping="NoWrap"/>
+                                    <TextBox x:Name="txtPriceLow3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtBrandLow3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                    <TextBox x:Name="txtCategoryLow3" Width="200" Margin="0,10" BorderBrush="{x:Null}" IsEnabled="False"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <!--Button-->
+            <StackPanel Orientation="Horizontal" Margin="0,40" HorizontalAlignment="Center">
+                <Border 
+                    Height="40" 
+                    Width="150" 
+                    Margin="30px 0px" 
+                    CornerRadius="15" BorderThickness="2" Background="White" BorderBrush="Black">
+                    <Button 
+                        FontSize="15"
+                        x:Name="btnClose"
+                        Content="Close" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" 
+                        Foreground="Black" 
+                        FontWeight="Bold" 
+                        Width="150" 
+                        Height="40" 
+                        BorderBrush="{x:Null}" Background="{x:Null}" Click="btnClose_Click"/>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>

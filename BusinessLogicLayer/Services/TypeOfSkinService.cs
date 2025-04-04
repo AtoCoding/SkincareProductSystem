@@ -34,7 +34,7 @@ namespace BusinessLogicLayer.Services
 
         public List<TypeOfSkin> GetAll()
         {
-            return _TypeOfSkinRepository.GetAll();
+            return [];
         }
 
         public List<TypeOfSkin> Search(string? keyword)

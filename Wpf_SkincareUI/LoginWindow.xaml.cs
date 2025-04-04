@@ -40,8 +40,8 @@ namespace Wpf_SkincareUI
                 {
                     case 1:
                         {
-                            //AdminWindow adminWindow = new AdminWindow(user);
-                            //adminWindow.Show();
+                            AdminWindow adminWindow = new AdminWindow(user);
+                            adminWindow.Show();
                             break;
                         }
                     case 2:

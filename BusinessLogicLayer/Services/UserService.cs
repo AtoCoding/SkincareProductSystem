@@ -10,16 +10,21 @@ namespace BusinessLogicLayer.Services
 
         private readonly IUserRepo _UserRepository;
 
+        private readonly UserRepository _userRepository;
+
+
         private UserService()
         {
             _UserRepository = UserRepository.GetInstance();
+
+            _userRepository = UserRepository.GetInstance();
         }
 
         public static UserService GetInstance() => _Instance ??= new UserService();
 
         public bool Add(User data)
         {
-            return false;
+            return _UserRepository.Add(data);
         }
 
         public User? CheckLogin(string email, string password)
@@ -29,14 +34,14 @@ namespace BusinessLogicLayer.Services
             return users.FirstOrDefault(user => user.Username == email && user.Password == password);
         }
 
-        public bool Delete(int id)
+        public bool DeleteByUsername(string username)
         {
-            return false;
+            return _UserRepository.DeleteByUsername(username);
         }
 
         public User? Get(int id)
         {
-            return null!;
+            return _UserRepository.Get(id);
         }
 
         public User? GetByUserName (string username)
@@ -44,30 +49,8 @@ namespace BusinessLogicLayer.Services
             return _UserRepository.GetByUserName(username);
         }
 
-        public List<User> GetAll()
-        {
-            return _UserRepository.GetAll();
-        }
+        public List<User> GetAll() => _UserRepository.GetAll();
 
-        public List<User> GetAllByRoleId(int roleId)
-        {
-            var users = _UserRepository.GetAll()
-                .Where(user => user.RoleId == roleId) // Only get customers
-                .Select(user => new User
-                {
-                    Username = user.Username,
-                    Fullname = user.Fullname,
-                    IsActive = user.IsActive,
-                    Gender = user.Gender,
-                    RoleId = user.RoleId,
-                    TypeOfSkinId = user.TypeOfSkinId,
-                    TypeOfSkin = new TypeOfSkin { Name = user.TypeOfSkin.Name },
-                    Role = new Role { Name = user.Role.Name }
-                })
-                .ToList();
-
-            return users ?? new List<User>();
-        }
 
         public bool RegisterNewAccount(User user)
         {
@@ -82,14 +65,21 @@ namespace BusinessLogicLayer.Services
             return false;
         }
 
-        public List<User> Search(string? keyword)
-        {
-            return [];
-        }
+        public List<User> Search(string? keyword) => _UserRepository.Search(keyword);
+
 
         public bool Update(User data)
         {
             return _UserRepository.Update(data);
+        }
+        public bool IsUsernameExists(string username)
+        {
+            return _userRepository.IsUsernameExists(username); 
+        }
+
+        public bool Delete(int id)
+        {
+            return _userRepository.Delete(id);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using BusinessLogicLayer.Dtos;
+﻿using DataAccessLayer.DTOs;
 
 namespace BusinessLogicLayer.Services.Bases
 {
@@ -6,8 +6,8 @@ namespace BusinessLogicLayer.Services.Bases
     {
         List<object> GetRevenueList();
         List<int> GetStatistical();
-        List<ProductDto> GetTopProductsSold();
-        List<ProductDto> GetLowSalesProducts();
-        List<ProductDto> GetTopProductsInMonth();
+        List<ProductDTO> GetTopProductsSold();
+        List<ProductDTO> GetLowSalesProducts();
+        List<ProductDTO> GetTopProductsInMonth();
     }
 }

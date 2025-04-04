@@ -43,10 +43,6 @@ namespace BusinessLogicLayer.Services
                     if (product != null && product.Quantity >= orderDetail.Quantity)
                     {
                         product.Quantity -= orderDetail.Quantity;
-                        if (product.Quantity == 0)
-                        {
-                            product.IsAvailable = false;
-                        }
                         if (!_SkincareProductService.Update(product)) break;
                     }
                 }
@@ -71,7 +67,7 @@ namespace BusinessLogicLayer.Services
 
         public List<Order> GetAll()
         {
-            return _OrderRepository.GetAll();
+            return [];
         }
 
         public List<Order> Search(string? keyword)

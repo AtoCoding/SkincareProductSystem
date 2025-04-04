@@ -23,17 +23,5 @@ namespace BusinessLogicLayer
                 Category = product.Category,
             };
         }
-
-        public static void ProcessImage(List<SkincareProduct> products)
-        {
-            string projectDirectory = AppContext.BaseDirectory;
-            string imageFolder = Path.Combine(projectDirectory, @"..\..\..\Image");
-            imageFolder = Path.GetFullPath(imageFolder);
-
-            foreach (var product in products)
-            {
-                product.Image = Path.Combine(imageFolder, product.Image);
-            }
-        }
     }
 }

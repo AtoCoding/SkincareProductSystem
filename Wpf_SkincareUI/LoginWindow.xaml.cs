@@ -52,8 +52,8 @@ namespace Wpf_SkincareUI
                         }
                     default:
                         {
-                            HomepageWindow homepageWindow = new HomepageWindow(user, []);
-                            homepageWindow.Show();
+                            CustomerWindow customerWindow = new(user);
+                            customerWindow.Show();
                             break;
                         }
                 }
@@ -74,8 +74,8 @@ namespace Wpf_SkincareUI
 
         private void txtMessage_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            HomepageWindow homepageWindow = new HomepageWindow(null, []);
-            homepageWindow.Show();
+            CustomerWindow customerWindow = new(null);
+            customerWindow.Show();
             this.Close();
         }
     }

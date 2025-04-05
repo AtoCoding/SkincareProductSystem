@@ -10,6 +10,61 @@
         WindowStartupLocation="CenterScreen"
         FontSize="18" Loaded="Window_Loaded">
     <Window.Resources>
+        <Style x:Key="btn_default" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Width" Value="150" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                    CornerRadius="15" 
+                    BorderThickness="2" 
+                    Padding="6,4,6,4" 
+                    Background="{TemplateBinding Background}">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                            <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#FF00FFD6" Offset="0"/>
+                                    <GradientStop Color="#FF00A9FF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <LinearGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                                    <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </LinearGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#FF00FFD6" Offset="0"/>
+                                            <GradientStop Color="#FF00A9FF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="White"/>
             <Setter Property="BorderBrush" Value="#FFABADB3" />
@@ -30,6 +85,12 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="Cursor" Value="Arrow" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF00A9FF" />
+                    <Setter Property="Cursor" Value="Hand" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
     <StackPanel>
@@ -62,31 +123,8 @@
                 <Border.Effect>
                     <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4" />
                 </Border.Effect>
-                <StackPanel Orientation="Horizontal" Margin="40, 0">
-                    <Button Content="Skincare Store" FontSize="40" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" VerticalAlignment="Center" />
-                    <Button Content="Profile" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" />
-                    <Button Content="Cart" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" />
-                    <Button Content="My Order" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" />
-                    <Button Content="Skin Type Test" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" />
-                    <StackPanel Orientation="Horizontal" Width="370" Margin="46,0">
-                        <TextBox Width="300">
-                            <TextBox.BorderBrush>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <LinearGradientBrush.RelativeTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
-                                            <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </LinearGradientBrush.RelativeTransform>
-                                    <GradientStop Color="#FF00FFD6" Offset="0"/>
-                                    <GradientStop Color="#FF00A9FF" Offset="1"/>
-                                </LinearGradientBrush>
-                            </TextBox.BorderBrush>
-                        </TextBox>
-                        <Button Width="70" Content="Search" Height="40" Background="#FF62CAFF" BorderBrush="#FF00A9FF" />
-                    </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="40, 0" HorizontalAlignment="Center">
+                    <Button x:Name="btnSkincareStore" Content="Skincare Store" FontSize="40" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" VerticalAlignment="Center" Click="btnSkincareStore_Click" />
                 </StackPanel>
             </Border>
         </StackPanel>
@@ -145,7 +183,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,20">
                         <Label Content="Password" Width="120"/>
-                        <PasswordBox x:Name="txtPassword" Width="300"/>
+                        <PasswordBox x:Name="txtPassword" Width="300" Height="40" Padding="10,0" BorderThickness="2" BorderBrush="#FFABADB3" VerticalContentAlignment="Center" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,20" IsEnabled="False">
                         <Label Content="Budget" Width="120"/>
@@ -158,40 +196,13 @@
                 </StackPanel>
             </Border>
             <!--Button-->
-            <Border 
-                Margin="1000,460,40,10"
-                     Height="40" 
-                     Width="150" 
-                     CornerRadius="15" BorderThickness="2" Background="White">
-                <Border.BorderBrush>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <LinearGradientBrush.RelativeTransform>
-                            <TransformGroup>
-                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                <SkewTransform CenterX="0.5" CenterY="0.5"/>
-                                <RotateTransform Angle="-90" CenterX="0.5" CenterY="0.5"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#FF00FFD6"/>
-                        <GradientStop Color="#FF00A9FF" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.BorderBrush>
-
+            <Border Margin="1000,460,40,10" Height="40">
                 <Button 
-                         FontSize="15"
-                         x:Name="btnUpdate"
-                         Content="Update" 
-                         HorizontalAlignment="Center" 
-                         VerticalAlignment="Center" 
-                         Foreground="Black" 
-                         FontWeight="Bold" 
-                         Width="150" 
-                         Height="40" Background="{x:Null}" Click="btnUpdate_Click">
-                </Button>
+                    x:Name="btnUpdate"
+                    Content="Update" 
+                    Click="btnUpdate_Click"
+                    Style="{StaticResource btn_default}"/>
             </Border>
         </Grid>
-        <!--Content-->
-        
     </StackPanel>
 </Window>

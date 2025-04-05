@@ -1,9 +1,9 @@
-﻿using BusinessLogicLayer.Services;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Windows;
+using System.Windows.Media;
+using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Services.IService;
 using DataAccessLayer.Entities;
-using System.ComponentModel.DataAnnotations;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace Wpf_SkincareUI
 {
@@ -15,7 +15,7 @@ namespace Wpf_SkincareUI
         private readonly IUser _userService;
         private readonly IService<TypeOfSkin> _typeOfSkinService;
         private User _account;
-        
+
         public ProfileWindow(User account)
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace Wpf_SkincareUI
             txtEmail.Text = _account.Username;
             txtPassword.Password = _account.Password;
             txtFullName.Text = _account.Fullname;
-            if(_account.Gender == "Nữ")
+            if (_account.Gender == "Nữ")
             {
                 rbFemale.IsChecked = true;
             }
@@ -84,7 +84,15 @@ namespace Wpf_SkincareUI
             {
                 _userService.Update(_account);
                 MessageBox.Show("Update successfully!");
+                LoadData();
             }
+        }
+
+        private void btnSkincareStore_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerWindow customerWindow = new(_account);
+            customerWindow.Show();
+            this.Close();
         }
     }
 }

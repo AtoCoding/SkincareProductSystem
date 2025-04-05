@@ -10,6 +10,90 @@
         FontFamily="The Medic Demo"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="btn_default" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Width" Value="150" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                    CornerRadius="15" 
+                    BorderThickness="2" 
+                    Padding="6,4,6,4" 
+                    Background="{TemplateBinding Background}">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                            <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#FF00FFD6" Offset="0"/>
+                                    <GradientStop Color="#FF00A9FF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <LinearGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                                    <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </LinearGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#FF00FFD6" Offset="0"/>
+                                            <GradientStop Color="#FF00A9FF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FFABADB3" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Padding" Value="10,0" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Width" Value="90" />
+        </Style>
+        <Style x:Key="HoverButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Cursor" Value="Arrow" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF00A9FF" />
+                    <Setter Property="Cursor" Value="Hand" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -22,33 +106,68 @@
 
         <!-- Header -->
         <Border Grid.ColumnSpan="2" Background="White" Height="60">
-            <Border.Effect>
-                <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="1" Opacity="0.7"/>
-            </Border.Effect>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Skincare Store" HorizontalAlignment="Center" Margin="10" FontSize="36" FontWeight="Bold" MouseLeftButtonDown="Homepage_MouseLeftButtonDown" Cursor="Hand"/>
-                <TextBox Width="250" Height="30" Margin="15" FontSize="16" VerticalAlignment="Center"/>
-                <TextBlock x:Name="txtWelcomMessage" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15" FontSize="16" FontWeight="SemiBold"/>
-                <TextBlock x:Name="txtAccountBalance" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15" FontSize="16" FontWeight="SemiBold"/>
+            <StackPanel Width="1280" Height="120" HorizontalAlignment="Center" >
+                <Border
+        Width="1270" Height="58"
+        CornerRadius="0,0,20,20"
+        >
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                    <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FFAFFFF2" Offset="0"/>
+                            <GradientStop Color="#FFB2E5FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4" />
+                    </Border.Effect>
+                    <StackPanel Orientation="Horizontal" Margin="30, 0">
+                        <Button x:Name="btnSkincareStore" Content="Skincare Store" FontSize="40" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" VerticalAlignment="Center" Click="btnSkincareStore_Click" />
+                        <Button x:Name="btnLogin" Content="Login" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" Click="btnLogin_Click"/>
+                        <Button x:Name="btnProfile" Content="Profile" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" Click="btnProfile_Click" />
+                        <Button x:Name="btnCart" Content="Cart" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" Click="btnCart_Click" />
+                        <Button x:Name="btnMyOrder" Content="My Order" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" Click="btnMyOrders_Click" />
+                        <Button x:Name="btnSkinTest" Content="Skin Type Test" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" />
+                        <StackPanel Orientation="Horizontal" Width="370" Margin="46,0">
+                            <TextBox Width="200">
+                                <TextBox.BorderBrush>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                                <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Color="#FF00FFD6" Offset="0"/>
+                                        <GradientStop Color="#FF00A9FF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </TextBox.BorderBrush>
+                            </TextBox>
+                            <Button Width="70" Content="Search" Height="40" Background="#FF62CAFF" BorderBrush="#FF00A9FF" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
             </StackPanel>
         </Border>
 
-        <!-- Sidebar -->
-        <StackPanel Grid.Column="0" Grid.Row="1" Background="#EEE">
-            <StackPanel x:Name="spUnauthorize" Visibility="Visible">
-                <Button x:Name="btnLogin" Content="Login" Width="180" Height="40" Margin="8" FontSize="18" Click="btnLogin_Click"/>
-            </StackPanel>
-            <StackPanel x:Name="spAuthorize" Visibility="Hidden">
-                <Button Content="Profile" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
-                <Button x:Name="btnCart" Content="Cart" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0" Click="btnCart_Click"/>
-                <Button x:Name="btnMyOrders" Content="My orders" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0" Click="btnMyOrders_Click"/>
-                <Button Content="Skin type test" Width="180" Height="40" Margin="8" FontSize="18" BorderThickness="0"/>
-            </StackPanel>
-        </StackPanel>
-
         <!-- Product List Window -->
-        <ScrollViewer x:Name="productListSession" Visibility="Visible" Grid.Column="1" Grid.Row="1" Background="#FFF1F1F1">
+        <ScrollViewer x:Name="productListSession" Visibility="Visible" Grid.ColumnSpan="2" Grid.Row="1" Background="#FFF1F1F1">
             <StackPanel>
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFD8F9FF" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
                 <TextBlock Text="All products" Margin="10" FontSize="28" FontWeight="Medium"/>
                 <StackPanel Margin="20 0">
                     <ItemsControl x:Name="icSkincareProduct">
@@ -97,8 +216,14 @@
         </ScrollViewer>
 
         <!-- Product Detail Window -->
-        <ScrollViewer x:Name="productDetailSession" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Background="#FFF1F1F1">
+        <ScrollViewer x:Name="productDetailSession" Visibility="Hidden" Grid.ColumnSpan="2" Grid.Row="1" Background="#FFF1F1F1">
             <StackPanel x:Name="spProductDetails" Margin="20">
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFD8F9FF" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
                 <TextBlock Text="Product Details" Margin="10" FontSize="28" FontWeight="Medium"/>
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <!-- Product Image -->
@@ -139,8 +264,14 @@
         </ScrollViewer>
 
         <!-- My Cart Window -->
-        <ScrollViewer x:Name="myCartSession" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Background="#FFF1F1F1">
+        <ScrollViewer x:Name="myCartSession" Visibility="Hidden" Grid.ColumnSpan="2" Grid.Row="1" Background="#FFF1F1F1">
             <StackPanel>
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFD8F9FF" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
                 <TextBlock Text="Shopping Cart" Margin="10" FontSize="28" FontWeight="Medium"/>
                 <ItemsControl x:Name="icCartItems">
                     <ItemsControl.ItemTemplate>
@@ -174,8 +305,14 @@
         </ScrollViewer>
 
         <!-- Checkout Window -->
-        <ScrollViewer x:Name="checkoutSession" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Background="#FFF1F1F1">
+        <ScrollViewer x:Name="checkoutSession" Visibility="Hidden" Grid.ColumnSpan="2" Grid.Row="1" Background="#FFF1F1F1">
             <StackPanel>
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFD8F9FF" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
                 <TextBlock Text="Checkout" Margin="10" FontSize="28" FontWeight="Medium"/>
 
                 <StackPanel Margin="20">
@@ -207,8 +344,14 @@
         </ScrollViewer>
 
         <!-- My Order Window -->
-        <ScrollViewer x:Name="myOrderSession" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Background="#FFF1F1F1">
+        <ScrollViewer x:Name="myOrderSession" Visibility="Hidden" Grid.ColumnSpan="2" Grid.Row="1" Background="#FFF1F1F1">
             <StackPanel>
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFD8F9FF" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
                 <TextBlock Text="My Orders" Margin="10" FontSize="28" FontWeight="Medium"/>
 
                 <ItemsControl x:Name="icOrderList">
@@ -252,8 +395,14 @@
         </ScrollViewer>
 
         <!-- Order Detail Window -->
-        <ScrollViewer x:Name="orderDetailWindow" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Background="#FFF1F1F1">
+        <ScrollViewer x:Name="orderDetailWindow" Visibility="Hidden" Grid.ColumnSpan="2" Grid.Row="1" Background="#FFF1F1F1">
             <StackPanel>
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFD8F9FF" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
                 <TextBlock Text="Order Details" Margin="10" FontSize="28" FontWeight="Medium"/>
 
                 <ItemsControl x:Name="icOrderDetail">

@@ -6,85 +6,156 @@
         xmlns:local="clr-namespace:Wpf_SkincareUI"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="450" Width="800"
-        Background="#FF929292"
+        Height="720" Width="1280"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Background="#FF868686"
+        FontSize="18">
+    <Window.Resources>
+        <Style x:Key="btn_default" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                            CornerRadius="15" 
+                            BorderThickness="2" 
+                            Padding="6,4,6,4" 
+                            Background="{TemplateBinding Background}">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                            <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#FF00FFD6" Offset="0"/>
+                                    <GradientStop Color="#FF00A9FF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <LinearGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                                    <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </LinearGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#FF00FFD6" Offset="0"/>
+                                            <GradientStop Color="#FF00A9FF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="link_default" TargetType="TextBox">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Border Width="404" Height="325" Background="White" CornerRadius="15" BorderBrush="#4C000000" BorderThickness="2" RenderTransformOrigin="0.5,0.5">
+        <Border Width="450" Height="500" CornerRadius="15" BorderThickness="3" RenderTransformOrigin="0.5,0.5" Background="White">
+            <Border.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF00FFD6" Offset="0"/>
+                    <GradientStop Color="#FF00A9FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
             <StackPanel>
+                <!--Header-->
                 <Label 
                     Content="WELCOME" 
-                    FontSize="30" 
+                    FontSize="40" 
                     Margin="0px 20px 0px 0px" 
-                    Foreground="Red" 
+                    Foreground="#FF00CAFF" 
                     FontWeight="Bold" 
-                    HorizontalAlignment="Center"/>
+                    HorizontalAlignment="Center" Background="{x:Null}"/>
                 <Label 
                     Content="Sign into your account" 
                     HorizontalAlignment="Center" 
                     Margin="0px 0px 0px 15px" 
-                    Foreground="Black"/>
-                <StackPanel 
-                    Orientation="Horizontal" 
-                    Margin="30px 15px">
+                    Foreground="Black"
+                    />
+                <!--Content-->
+                <StackPanel Margin="30,20">
                     <Label 
+                        Margin="0,5"
                         Content="Email" 
-                        Width="80" 
-                        VerticalAlignment="Center"
-                        FontSize="15px"/>
+                        VerticalAlignment="Center"/>
                     <TextBox 
+                        Margin="0,5"
                         x:Name="txtEmail" 
                         TextWrapping="Wrap" 
-                        Width="260" Height="40" 
-                        VerticalContentAlignment="Center"
-                        FontSize="15px"
-                        Padding="10px 0px"/>
-                </StackPanel>
-                <StackPanel 
-                    Orientation="Horizontal" 
-                    Margin="30px 15px">
-                    <Label 
-                        Content="Password" 
-                        Width="80" 
-                        VerticalAlignment="Center"
-                        FontSize="15px"/>
-                    <PasswordBox 
-                        x:Name="txtPassword" 
-                        Width="260" 
                         Height="40" 
                         VerticalContentAlignment="Center"
-                        FontSize="15px"
+                        Padding="10px 0px"/>
+                    <Label 
+                        Margin="0,5"
+                        Content="Password" 
+                        VerticalAlignment="Center"/>
+                    <PasswordBox 
+                        Margin="0,5"
+                        x:Name="txtPassword" 
+                        Height="40" 
+                        VerticalContentAlignment="Center"
                         Padding="10px 0px"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0px 10px">
-                    <Button 
-                        Name="btnLogin"
-                        Content="LOGIN" 
-                        Background="#D32F2F" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center" 
-                        Foreground="White" 
-                        FontWeight="Bold" 
-                        Width="100" 
-                        Height="30" 
-                        BorderBrush="Black"
-                        Click="btnLogin_Click"/>
-                    <Button 
-                        Name="btnRegister"
-                        Content="REGISTER" 
-                        Background="#1976D2" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center" 
-                        Foreground="White" 
-                        FontWeight="Bold" 
-                        Width="100" 
-                        Height="30" 
-                        BorderBrush="Black"
-                        Margin="10 0 0 0"
-                        Click="btnRegister_Click"/>
+                <!--Button-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0px 20px">
+
+                    <Border Margin="20,0">
+                        <Button 
+                            x:Name="btnLogin"
+                            Content="Login" 
+                            Click="btnLogin_Click"
+                            Style="{StaticResource btn_default}"/>
+                    </Border>
+                    <Border Margin="20,0">
+                        <Button 
+                            x:Name="btnRegister"
+                            Content="Register" 
+                            Click="btnRegister_Click"
+                            Style="{StaticResource btn_default}"/>
+                    </Border>
                 </StackPanel>
+                <!--Link-->
                 <TextBox 
+                    
+                    Margin="10"
+                    FontStyle="Italic"
                     x:Name="txtGuest" 
                     Width="102" 
                     Height="17"
@@ -94,6 +165,8 @@
                     TextAlignment="Center"
                     Cursor="Hand"
                     BorderThickness="0"
+                    TextDecorations="Underline"
+                    Style="{StaticResource link_default}"
                     PreviewMouseLeftButtonDown="txtMessage_MouseLeftButtonDown"/>
             </StackPanel>
         </Border>

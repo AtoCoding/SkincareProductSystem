@@ -5,36 +5,188 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_SkincareUI"
         mc:Ignorable="d"
-        Title="Register" Height="600" Width="500"
-        Background="#FF929292"
+        Title="Register" Height="720" Width="1280"
+        Background="#FF868686"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        FontSize="18">
+    <Window.Resources>
+        <Style x:Key="btn_default" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                        CornerRadius="15" 
+                        BorderThickness="2" 
+                        Padding="6,4,6,4" 
+                        Background="{TemplateBinding Background}">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                            <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#FF00FFD6" Offset="0"/>
+                                    <GradientStop Color="#FF00A9FF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <LinearGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                                    <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </LinearGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#FF00FFD6" Offset="0"/>
+                                            <GradientStop Color="#FF00A9FF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="btn_default_cancel" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="#FF737373" />
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                            CornerRadius="15" 
+                            BorderThickness="2" 
+                            Padding="6,4,6,4" 
+                            Background="{TemplateBinding Background}" BorderBrush="#FF737373">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF737373"/>
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Border Width="450" Background="White" CornerRadius="20" BorderBrush="#4C000000" BorderThickness="2">
-            <StackPanel Margin="30">
-                <Label Content="REGISTER" FontSize="30" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <Border Width="450" Height="650" Background="White" CornerRadius="20" BorderThickness="3">
+            <Border.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform Angle="-97" CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF00FFD6" Offset="0"/>
+                    <GradientStop Color="#FF00A9FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <StackPanel>
+                <!--Header-->
+                <Label Content="REGISTER" FontSize="40" 
+                        Margin="0px 20px 0px 0px" 
+                        Foreground="#FF00CAFF" 
+                        FontWeight="Bold" 
+                        HorizontalAlignment="Center" Background="{x:Null}"/>
 
-                <Label Content="Username (Email)" FontSize="16"/>
-                <TextBox x:Name="txtUsername" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14px" Padding="8px 0px" Width="400" Height="40"/>
+                <!--Content-->
+                <StackPanel Margin="30,20">
+                    <Label 
+                        Content="Username (Email)" 
+                        Margin="0,5"/>
+                    <TextBox x:Name="txtUsername" 
+                             TextWrapping="Wrap" 
+                             VerticalContentAlignment="Center"
+                             Margin="0,5"
+                             Padding="8px 0px"
+                             Height="40"/>
 
-                <Label Content="Password" FontSize="16"/>
-                <PasswordBox x:Name="txtPassword" VerticalContentAlignment="Center" FontSize="14px" Padding="8px 0px" Width="400" Height="40"/>
+                    <Label 
+                        Content="Password"
+                        Margin="0,5"/>
+                    <PasswordBox 
+                        x:Name="txtPassword" 
+                        VerticalContentAlignment="Center" 
+                        FontSize="14px" 
+                        Padding="8px 0px" 
+                        Margin="0,5"
+                        Height="40"/>
 
-                <Label Content="Confirm password" FontSize="16"/>
-                <PasswordBox x:Name="txtConfirmPassword" VerticalContentAlignment="Center" FontSize="14px" Padding="8px 0px" Width="400" Height="40"/>
+                    <Label 
+                        Content="Confirm password" 
+                        Margin="0,5"/>
+                    <PasswordBox 
+                        x:Name="txtConfirmPassword" 
+                        VerticalContentAlignment="Center" 
+                        Padding="8px 0px"
+                        Margin="0,5"
+                        Height="40"/>
 
-                <Label Content="Your name" FontSize="16"/>
-                <TextBox x:Name="txtFullName" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14px" Padding="8px 0px" Width="400" Height="40"/>
+                    <Label Content="Your name" 
+                           Margin="0,5"/>
+                    <TextBox x:Name="txtFullName" 
+                             TextWrapping="Wrap" 
+                             VerticalContentAlignment="Center"
+                             Padding="8px 0px" 
+                             Margin="0,5"
+                             Height="40"/>
 
-                <Label Content="Gender" FontSize="16"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <RadioButton x:Name="rbMale" Content="Nam" GroupName="Gender" Margin="10" FontSize="14"/>
-                    <RadioButton x:Name="rbFemale" Content="Nữ" GroupName="Gender" Margin="10" FontSize="14"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <Label Content="Gender"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="30,0">
+                            <RadioButton x:Name="rbMale" Content="Male" GroupName="Gender" Margin="20,0" VerticalContentAlignment="Center"/>
+                            <RadioButton x:Name="rbFemale" Content="Female" GroupName="Gender" Margin="20,0" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 30 0 0">
-                    <Button Name="btnRegister" Content="Register" Background="#1976D2" Foreground="White" FontWeight="Bold" Width="180" Height="50" Margin="5" FontSize="16" Click="btnRegister_Click"/>
-                    <Button Name="btnBackToLogin" Content="Back To Login" Background="#757575" Foreground="White" FontWeight="Bold" Width="180" Height="50" Margin="5" FontSize="16" Click="btnBackToLogin_Click"/>
+                <!--Button-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+                    <Border Margin="20,0">
+                        <Button 
+                            x:Name="btnRegister"
+                            Content="Register" 
+                            Click="btnRegister_Click"
+                            Style="{StaticResource btn_default}"/>
+                    </Border>
+                    <Border Margin="20,0">
+                        <Button 
+                            x:Name="btnBackToLogin"
+                            Content="Back To Login" 
+                            Click="btnBackToLogin_Click"
+                            Style="{StaticResource btn_default_cancel}"/>
+                    </Border>
                 </StackPanel>
             </StackPanel>
         </Border>

@@ -29,8 +29,8 @@ namespace Wpf_SkincareUI
         {
             InitializeComponent();
             _SkincareProductService = SkincareProductService.GetInstance();
-            _OrderService = OrderService.GetInstance();
             this.user = user;
+            _OrderService = OrderService.GetInstance();
             productsInCart = new();
             product = new();
             LoadButtonByPermission();
@@ -124,7 +124,12 @@ namespace Wpf_SkincareUI
         #endregion
 
         #region Profile
-
+        private void btnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWindow profileWindow = new(user);
+            profileWindow.Show();
+            this.Close();
+        }
         #endregion
 
         #region My Cart
@@ -151,8 +156,6 @@ namespace Wpf_SkincareUI
             }
 
             txtCartTotalPrice.Text = totalPrice.ToString("C");
-            txtWelcomMessage.Text = $"| Hello, {user.Fullname}";
-            txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
             icCartItems.ItemsSource = productsInCart;
             icCartItems.Items.Refresh();
         }
@@ -193,8 +196,6 @@ namespace Wpf_SkincareUI
         #region Checkout
         private void LoadCheckout()
         {
-            txtWelcomMessage.Text = $"| Hello, {user.Fullname}";
-            txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
             txtEmail.Text = user.Username;
             txtFullname.Text = user.Fullname;
 
@@ -251,8 +252,6 @@ namespace Wpf_SkincareUI
 
             orders.RemoveAll(x => !x.Username.Equals(user.Username));
 
-            txtWelcomMessage.Text = $"| Hello, {user.Fullname}";
-            txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
             icOrderList.ItemsSource = orders;
         }
 
@@ -296,8 +295,6 @@ namespace Wpf_SkincareUI
 
             ServiceCommon.ProcessImage(productsClone);
             txtGrandTotal.Text = grandTotal.ToString("C");
-            txtWelcomMessage.Text = $"| Hello, {user.Fullname}";
-            txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
             icOrderDetail.ItemsSource = productsClone;
         }
         #endregion
@@ -323,20 +320,23 @@ namespace Wpf_SkincareUI
         {
             if (user == null)
             {
-                spUnauthorize.Visibility = Visibility.Visible;
-                spAuthorize.Visibility = Visibility.Hidden;
-                txtWelcomMessage.Text = $"Hello, Guest";
+                btnLogin.Content = "Login";
+                btnProfile.Visibility = Visibility.Hidden;
+                btnCart.Visibility = Visibility.Hidden;
+                btnMyOrder.Visibility = Visibility.Hidden;
+                btnSkinTest.Visibility = Visibility.Hidden;
             }
             else
             {
-                txtWelcomMessage.Text = $"| Hello, {user.Fullname}";
-                txtAccountBalance.Text = $"| Account Balance: {user.Budget:C}";
-                spUnauthorize.Visibility = Visibility.Hidden;
-                spAuthorize.Visibility = Visibility.Visible;
+                btnLogin.Content = "Logout";
+                btnProfile.Visibility = Visibility.Visible;
+                btnCart.Visibility = Visibility.Visible;
+                btnMyOrder.Visibility = Visibility.Visible;
+                btnSkinTest.Visibility = Visibility.Visible;
             }
         }
 
-        private void Homepage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void btnSkincareStore_Click(object sender, RoutedEventArgs e)
         {
             productListSession.Visibility = Visibility.Visible;
             productDetailSession.Visibility = Visibility.Hidden;

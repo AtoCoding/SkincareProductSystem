@@ -136,7 +136,7 @@
                         <Button x:Name="btnMyOrder" Content="My Order" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" Click="btnMyOrders_Click" />
                         <Button x:Name="btnSkinTest" Content="Skin Type Test" FontSize="20" FontWeight="Bold" Margin="20,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource HoverButtonStyle}" />
                         <StackPanel Orientation="Horizontal" Width="370" Margin="46,0">
-                            <TextBox Width="200">
+                            <TextBox x:Name="txtSearchValue" Width="200">
                                 <TextBox.BorderBrush>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <LinearGradientBrush.RelativeTransform>
@@ -152,7 +152,7 @@
                                     </LinearGradientBrush>
                                 </TextBox.BorderBrush>
                             </TextBox>
-                            <Button Width="70" Content="Search" Height="40" Background="#FF62CAFF" BorderBrush="#FF00A9FF" />
+                            <Button x:Name="btnSearch" Width="70" Content="Search" Height="40" Background="#FF62CAFF" BorderBrush="#FF00A9FF" Click="btnSearch_Click"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>

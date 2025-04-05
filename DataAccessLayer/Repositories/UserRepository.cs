@@ -32,9 +32,14 @@ namespace BusinessLogicLayer.Services
 
         public bool DeleteByUsername(string username)
         {
-            User? user = _SkincareProductSystemContext.Users.FirstOrDefault(x => x.Username.Equals(username));
+            User? user = _SkincareProductSystemContext.Users.Include(x => x.Orders)
+                                                            .Include(x => x.SkincareProducts)
+                                                            .FirstOrDefault(x => x.Username.Equals(username));
 
-            _SkincareProductSystemContext.Users.Remove(user ?? new());
+            if (user != null && (user.Orders.Count == 0 && user.SkincareProducts.Count == 0))
+            {
+                _SkincareProductSystemContext.Users.Remove(user);
+            }
 
             return _SkincareProductSystemContext.SaveChanges() > 0;
         }

@@ -19,10 +19,9 @@ namespace DataAccessLayer.Repositories
 
         public bool Add(SkincareProduct data)
         {
-            if( _SkincareProductSystemContext.SkincareProducts.Add(data) != null)
-                _SkincareProductSystemContext.SaveChanges();
-               return true
-            ;
+            _SkincareProductSystemContext.SkincareProducts.Add(data);
+
+            return _SkincareProductSystemContext.SaveChanges() > 0;
         }
 
         public bool Delete(int id)
@@ -56,7 +55,8 @@ namespace DataAccessLayer.Repositories
 
             return _SkincareProductSystemContext.SkincareProducts
                 .Where(x => x.Name.ToLower().Trim().Contains(normalizedKeyword) ||
-                            (x.Brand != null && x.Brand.Name.ToLower().Trim().Contains(normalizedKeyword)))
+                           (x.Brand != null && x.Brand.Name.ToLower().Trim().Contains(normalizedKeyword)) ||
+                           (!string.IsNullOrEmpty(x.Description) && x.Description.ToLower().Trim().Contains(normalizedKeyword)))
                 .ToList();
         }
 

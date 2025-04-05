@@ -38,7 +38,7 @@ namespace Wpf_SkincareUI
             txtUsername.Text = userToView.Username;
             txtPassword.Text = userToView.Password;
             txtFullname.Text = userToView.Fullname;
-            if (userToView.Gender == "Nữ")
+            if (userToView.Gender == "Female")
             {
                 rbFemale.IsChecked = true;
             }

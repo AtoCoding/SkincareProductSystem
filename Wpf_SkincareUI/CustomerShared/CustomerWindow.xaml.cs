@@ -296,6 +296,7 @@ namespace Wpf_SkincareUI
             ServiceCommon.ProcessImage(productsClone);
             txtGrandTotal.Text = grandTotal.ToString("C");
             icOrderDetail.ItemsSource = productsClone;
+            productsInCart = [];
         }
         #endregion
 
@@ -370,6 +371,21 @@ namespace Wpf_SkincareUI
             orderDetailWindow.Visibility = Visibility.Hidden;
 
             LoadCart();
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string searchValue = txtSearchValue.Text;
+
+            List<SkincareProduct> products = _SkincareProductService.Search(searchValue);
+            List<SkincareProduct> productsClone = new();
+            foreach (SkincareProduct product in products)
+            {
+                productsClone.Add(ServiceCommon.CloneObject(product));
+            }
+            ServiceCommon.ProcessImage(productsClone);
+
+            icSkincareProduct.ItemsSource = productsClone;
         }
         #endregion
     }

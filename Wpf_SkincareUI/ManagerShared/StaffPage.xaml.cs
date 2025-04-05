@@ -12,11 +12,15 @@ namespace Wpf_SkincareUI
     {
         private User? user;
         private readonly IService<SkincareProduct> _skincareProductService;
+        private readonly IUser _userService;
+        private readonly IService<Order> _orderService;
 
         public StaffPage(User? user)
         {
             InitializeComponent();
             _skincareProductService = SkincareProductService.GetInstance();
+            _userService = UserService.GetInstance();
+            _orderService = OrderService.GetInstance();
             this.user = user;
             Load_Data();
         }
@@ -26,8 +30,9 @@ namespace Wpf_SkincareUI
             if (user.RoleId == 1) ReportBtn.IsEnabled = true;
             else ReportBtn.IsEnabled = false;
 
-            var totalProduct = _skincareProductService.GetAll().Count();
-            txtProducts.Text = totalProduct.ToString();
+            txtNumberProducts.Text = _skincareProductService.GetAll().Count().ToString();
+            txtNumberCustomers.Text = _userService.GetAll().Count().ToString();
+            txtNumberOrders.Text = _orderService.GetAll().Count().ToString();
         }
 
         private void ProductManagement_Click(object sender, RoutedEventArgs e)

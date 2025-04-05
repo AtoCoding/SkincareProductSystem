@@ -99,7 +99,7 @@
                                 <Grid Margin="15">
                                     <StackPanel>
                                         <TextBlock Text="Total Products" Foreground="#7f8c8d" FontSize="14"/>
-                                        <TextBlock x:Name="txtProducts" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
+                                        <TextBlock x:Name="txtNumberProducts" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
                                     </StackPanel>
                                 </Grid>
                             </Border>
@@ -109,7 +109,7 @@
                                 <Grid Margin="15">
                                     <StackPanel>
                                         <TextBlock Text="Total Customers" Foreground="#7f8c8d" FontSize="14"/>
-                                        <TextBlock Text="1,245" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
+                                        <TextBlock x:Name="txtNumberCustomers" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
                                     </StackPanel>
                                 </Grid>
                             </Border>
@@ -119,7 +119,7 @@
                                 <Grid Margin="15">
                                     <StackPanel>
                                         <TextBlock Text="Total Orders" Foreground="#7f8c8d" FontSize="14"/>
-                                        <TextBlock Text="356" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
+                                        <TextBlock x:Name="txtNumberOrders" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
                                     </StackPanel>
                                 </Grid>
                             </Border>

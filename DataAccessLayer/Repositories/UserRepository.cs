@@ -30,6 +30,15 @@ namespace BusinessLogicLayer.Services
             return false;
         }
 
+        public bool DeleteByUsername(string username)
+        {
+            User? user = _SkincareProductSystemContext.Users.FirstOrDefault(x => x.Username.Equals(username));
+
+            _SkincareProductSystemContext.Users.Remove(user ?? new());
+
+            return _SkincareProductSystemContext.SaveChanges() > 0;
+        }
+
         public User? Get(int id)
         {
             return null;

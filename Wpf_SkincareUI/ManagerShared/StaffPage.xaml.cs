@@ -23,8 +23,8 @@ namespace Wpf_SkincareUI
 
         private void Load_Data()
         {
-            if (user.RoleId == 1) ReportBtn.Visibility = Visibility.Visible;
-            else ReportBtn.Visibility = Visibility.Hidden;
+            if (user.RoleId == 1) ReportBtn.IsEnabled = true;
+            else ReportBtn.IsEnabled = false;
 
             var totalProduct = _skincareProductService.GetAll().Count();
             txtProducts.Text = totalProduct.ToString();

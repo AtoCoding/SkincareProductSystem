@@ -8,5 +8,6 @@ namespace BusinessLogicLayer.Services.IService
         bool RegisterNewAccount(User user);
         User? GetByUserName(string username);
         List<User> GetAllByRoleId(int roleId);
+        bool DeleteByUsername(string username);
     }
 }

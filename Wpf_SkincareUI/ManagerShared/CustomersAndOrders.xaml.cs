@@ -105,7 +105,7 @@ namespace Wpf_SkincareUI
             //load Customer data to the grid
             try
             {
-                List<User> customers = _UserService.GetAllByRoleId(3);
+                List<User> customers = user.RoleId == 1 ? _UserService.GetAll() : _UserService.GetAllByRoleId(3);
 
                 if (customers == null || customers.Count == 0)
                 {

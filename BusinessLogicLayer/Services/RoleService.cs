@@ -34,7 +34,7 @@ namespace BusinessLogicLayer.Services
 
         public List<Role> GetAll()
         {
-            return [];
+            return _RoleRepository.GetAll();
         }
 
         public List<Role> Search(string? keyword)

@@ -5,29 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_SkincareUI"
         mc:Ignorable="d"
-        Title="CustomerDetailsWindow" Height="450" Width="639"
+        Title="CustomerDetailsWindow"
+        Height="502" Width="639"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <StackPanel Margin="50">
+        <StackPanel Margin="50,50,50,33">
             <TextBlock Text="Username:" FontWeight="Bold"/>
-            <TextBox Name="txtUsername" IsReadOnly="True" Margin="0,0,0,10"/>
+            <TextBox Name="txtUsername" IsEnabled="False" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Password:" FontWeight="Bold"/>
+            <TextBox Name="txtPassword" IsEnabled="False" Margin="0,0,0,10"/>
 
             <TextBlock Text="Full Name:" FontWeight="Bold"/>
-            <TextBox Name="txtFullname" IsReadOnly="True" Margin="0,0,0,10"/>
+            <TextBox Name="txtFullname" IsEnabled="False" Margin="0,0,0,10"/>
 
-            <TextBlock Text="Gender:" FontWeight="Bold"/>
-            <TextBox Name="txtGender" IsReadOnly="True" Margin="0,0,0,10"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20">
+                <Label Content="Gender" Width="120"/>
+                <StackPanel Orientation="Horizontal" Width="400">
+                    <RadioButton x:Name="rbMale" IsEnabled="False" Content="Male" GroupName="Gender" Margin="20,0" VerticalContentAlignment="Center"/>
+                    <RadioButton x:Name="rbFemale" IsEnabled="False" Content="Female" GroupName="Gender" Margin="20,0" VerticalContentAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
 
             <TextBlock Text="Role:" FontWeight="Bold"/>
-            <TextBox Name="txtRole" IsReadOnly="True" Margin="0,0,0,10"/>
+            <ComboBox x:Name="cbxRole" IsEnabled="False" Margin="0,0,0,10"/>
 
             <TextBlock Text="Skin Type:" FontWeight="Bold"/>
-            <TextBox Name="txtSkinType" IsReadOnly="True" Margin="0,0,0,10"/>
+            <ComboBox x:Name="cbxTypeOfSkin" IsEnabled="False" Margin="0,0,0,10"/>
 
             <TextBlock Text="Active Status:" FontWeight="Bold"/>
             <CheckBox Name="chkIsActive" Content="Is Active" Margin="0,0,0,10" IsEnabled="False"/>
 
-            <Button Content="Ok" Width="120" Margin="10" Click="Ok_Click"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="43">
+                <Button x:Name="btnUpdate" IsEnabled="False" Content="Update" Width="120" Margin="10" Click="btnUpdate_Click"/>
+                <Button x:Name="btnDelete" IsEnabled="False" Content="Delete" Width="120" Margin="10" Click="btnDelete_Click"/>
+                <Button x:Name="btnBack" Content="Back" Width="120" Margin="10" Click="btnBack_Click"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

@@ -91,5 +91,10 @@ namespace BusinessLogicLayer.Services
         {
             return _UserRepository.Update(data);
         }
+
+        public bool DeleteByUsername(string username)
+        {
+            return _UserRepository.DeleteByUsername(username);
+        }
     }
 }

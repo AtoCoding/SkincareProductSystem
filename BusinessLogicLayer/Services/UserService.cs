@@ -26,7 +26,7 @@ namespace BusinessLogicLayer.Services
         {
             List<User> users = _UserRepository.GetAll();
 
-            return users.FirstOrDefault(user => user.Username == email && user.Password == password);
+            return users.FirstOrDefault(user => user.Username == email && user.Password == password && user.IsActive);
         }
 
         public bool Delete(int id)

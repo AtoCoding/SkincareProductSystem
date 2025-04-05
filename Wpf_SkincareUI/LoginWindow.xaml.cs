@@ -38,13 +38,7 @@ namespace Wpf_SkincareUI
             {
                 switch(user.RoleId)
                 {
-                    case 1:
-                        {
-                            //AdminWindow adminWindow = new AdminWindow(user);
-                            //adminWindow.Show();
-                            break;
-                        }
-                    case 2:
+                    case 1 or 2:
                         {
                             StaffPage staffWindow = new StaffPage(user);
                             staffWindow.Show();

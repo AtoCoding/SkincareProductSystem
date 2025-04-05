@@ -4,6 +4,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Services.Bases;
+using DataAccessLayer.Entities;
 
 namespace Wpf_SkincareUI
 {
@@ -12,10 +13,13 @@ namespace Wpf_SkincareUI
     /// </summary>
     public partial class ReportWindow : Window
     {
+        private User user;
         private readonly IRevenueService _iRevenueService = new RevenueService();
-        public ReportWindow()
+
+        public ReportWindow(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

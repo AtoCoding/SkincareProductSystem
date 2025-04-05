@@ -11,24 +11,25 @@ namespace Wpf_SkincareUI
     public partial class CustomerDetailsWindow : Window
     {
         private readonly User user;
+        private readonly User userToView;
         private readonly IUser _userService;
-        public CustomerDetailsWindow(User customer)
+        public CustomerDetailsWindow(User user, User userToView)
         {
             InitializeComponent();
             _userService = UserService.GetInstance();
-            this.user = customer;
-            LoadInfo(customer);
+            this.user = user;
+            this.userToView = userToView;
+            LoadInfo();
         }
 
-        private void LoadInfo(User customer)
+        private void LoadInfo()
         {
-            txtUsername.Text = customer.Username;
-            txtFullname.Text = customer.Fullname;
-            txtGender.Text = customer.Gender;
-            txtRole.Text = customer.Role.Name;
-            txtSkinType.Text = customer.TypeOfSkin.Name;
-            chkIsActive.IsChecked = customer.IsActive;
-
+            txtUsername.Text = userToView.Username;
+            txtFullname.Text = userToView.Fullname;
+            txtGender.Text = userToView.Gender;
+            txtRole.Text = userToView.Role.Name;
+            txtSkinType.Text = userToView.TypeOfSkin.Name;
+            chkIsActive.IsChecked = userToView.IsActive;
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)

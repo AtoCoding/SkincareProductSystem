@@ -88,7 +88,7 @@ namespace Wpf_SkincareUI
                     var customer = _UserService.GetByUserName(((User)CustomerGrid.SelectedItem).Username);
 
                     // Open Customer Details Window
-                    CustomerDetailsWindow detailsWindow = new CustomerDetailsWindow(customer);
+                    CustomerDetailsWindow detailsWindow = new CustomerDetailsWindow(user, customer);
                     detailsWindow.ShowDialog();
                 }
             }

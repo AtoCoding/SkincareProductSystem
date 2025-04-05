@@ -23,6 +23,9 @@ namespace Wpf_SkincareUI
 
         private void Load_Data()
         {
+            if (user.RoleId == 1) ReportBtn.Visibility = Visibility.Visible;
+            else ReportBtn.Visibility = Visibility.Hidden;
+
             var totalProduct = _skincareProductService.GetAll().Count();
             txtProducts.Text = totalProduct.ToString();
         }
@@ -52,6 +55,12 @@ namespace Wpf_SkincareUI
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ReportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ReportWindow reportWindow = new(user);
+            reportWindow.ShowDialog();
         }
     }
 }

@@ -55,6 +55,14 @@
                     </StackPanel>
                 </Button>
 
+                <!-- Report -->
+                <Button x:Name="ReportBtn" Height="50" Background="Transparent" BorderThickness="0" Cursor="Hand" Click="ReportBtn_Click" Tag="Customers">
+                    <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
+                        <TextBlock Text="👤" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                        <TextBlock Text="Report" Foreground="White" FontSize="14" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
                 <!-- Settings -->
                 <Button x:Name="SettingsBtn" Height="50" Background="Transparent" BorderThickness="0" Cursor="Hand" Click="Logout_Click" Tag="Settings">
                     <StackPanel Orientation="Horizontal" Margin="15,0,0,0">

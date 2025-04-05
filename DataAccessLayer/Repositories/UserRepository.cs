@@ -45,7 +45,10 @@ namespace BusinessLogicLayer.Services
 
         public User? GetByUserName(string username)
         {
-            return _SkincareProductSystemContext.Users.FirstOrDefault(user => user.Username.Equals(username));
+            return _SkincareProductSystemContext.Users
+                .Include (user => user.TypeOfSkin)
+                .Include(user => user.Role)
+                .FirstOrDefault(user => user.Username.Equals(username));
         }
 
         public List<User> Search(string? keyword)
@@ -55,8 +58,6 @@ namespace BusinessLogicLayer.Services
 
         public bool Update(User data)
         {
-            _SkincareProductSystemContext.Users.Update(data);
-
             return _SkincareProductSystemContext.SaveChanges() > 0;
         }
     }

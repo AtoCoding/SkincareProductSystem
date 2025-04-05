@@ -66,9 +66,9 @@
                         <!-- Order DataGrid -->
                         <DataGrid Name="OrderGrid" AutoGenerateColumns="False" Height="350" Margin="10" CanUserAddRows="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Order ID" Binding="{Binding OrderId}" Width="100"/>
-                                <DataGridTextColumn Header="Date Created" Binding="{Binding DateCreated}" Width="150"/>
-                                <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="150"/>
+                                <DataGridTextColumn Header="Order ID" Binding="{Binding OrderId}" Width="100" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Date Created" Binding="{Binding DateCreated}" Width="150" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="150" IsReadOnly="True"/>
                             </DataGrid.Columns>
                         </DataGrid>
 

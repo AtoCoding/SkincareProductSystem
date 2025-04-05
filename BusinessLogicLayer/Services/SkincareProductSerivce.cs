@@ -30,7 +30,7 @@ namespace BusinessLogicLayer.Services
 
         public SkincareProduct? Get(int id)
         {
-            return null;
+            return _SkincareProductRepository.Get(id);
         }
 
         public List<SkincareProduct> GetAll()
@@ -45,13 +45,24 @@ namespace BusinessLogicLayer.Services
 
         public bool Update(SkincareProduct data)
         {
-            return _SkincareProductRepository.Update(data);
-        }
+            SkincareProduct? product = _SkincareProductRepository.Get(data.SkincareProductId);
 
-        // Product management service 
-        //public List<SkincareProduct> GetAllWithBrandAndCategory()
-        //{
-        //    return _SkincareProductRepository.GetAllWithBrandAndCategory();
-        //}
+            if (product != null)
+            {
+                product.Name = data.Name;
+                product.Description = data.Description;
+                product.Capacity = data.Capacity;
+                product.UnitPrice = data.UnitPrice;
+                product.Quantity = data.Quantity;
+                product.Image = Path.GetFileName(data.Image);
+                product.IsAvailable = data.IsAvailable;
+                product.CategoryId = data.CategoryId;
+                product.BrandId = data.BrandId;
+
+                return _SkincareProductRepository.Update(product);
+            }
+
+            return false;
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace DataAccessLayer.Repositories
 
         public SkincareProduct? Get(int id)
         {
-            return null;
+            return _SkincareProductSystemContext.SkincareProducts.FirstOrDefault(x => x.SkincareProductId == id);
         }
 
         public List<SkincareProduct> GetAll()
@@ -62,8 +62,6 @@ namespace DataAccessLayer.Repositories
 
         public bool Update(SkincareProduct data)
         {
-            _SkincareProductSystemContext.SkincareProducts.Update(data);
-
             return _SkincareProductSystemContext.SaveChanges() > 0;
         }
 

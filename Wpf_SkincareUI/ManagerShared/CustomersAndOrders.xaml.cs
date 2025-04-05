@@ -9,19 +9,23 @@ using DataAccessLayer.Entities;
 namespace Wpf_SkincareUI
 {
     /// <summary>
-    /// Interaction logic for StaffWindow.xaml
+    /// Interaction logic for CustomersAndOrders.xaml
     /// </summary>
     public partial class CustomersAndOrders : Window
     {
         private User user;
         private readonly IUser _UserService;
+        private readonly IService<Order> _OrderService;
+
         public CustomersAndOrders(User user)
         {
             InitializeComponent();
             this.user = user;
             this.Closing += CustomersAndOrders_Closing;
             _UserService = UserService.GetInstance();
+            _OrderService = OrderService.GetInstance();
             LoadCustomerData();
+            LoadOrderData();
         }
 
         #region CUSTOMER TAB
@@ -96,39 +100,6 @@ namespace Wpf_SkincareUI
             LoadCustomerData();
         }
 
-        //private void SaveChanges_Click(object sender, RoutedEventArgs e)
-        //{
-        //    bool changesMade = false;
-
-        //    foreach (var item in CustomerGrid.Items)
-        //    {
-        //        if (item is User user)
-        //        {
-        //            // Retrieve the latest values from DataGrid
-        //            bool newIsActive = user.IsActive;
-
-        //            // Update the user in the database
-        //            if (_UserService.Update(user))
-        //            {
-        //                changesMade = true;
-        //            }
-        //        }
-        //    }
-
-        //    if (changesMade)
-        //    {
-        //        MessageBox.Show("Changes saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("No changes detected or failed to save.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-        //    }
-
-        //    // Refresh the grid after saving
-        //    LoadCustomerData();
-        //}
-
-
         private void LoadCustomerData()
         {
             //load Customer data to the grid
@@ -150,6 +121,7 @@ namespace Wpf_SkincareUI
             }
 
         }
+
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -168,11 +140,30 @@ namespace Wpf_SkincareUI
             }
             return null;
         }
-
-
         #endregion
 
         #region ORDER HISTORY
+        private void LoadOrderData()
+        {
+            try
+            {
+                List<Order> orders = _OrderService.GetAll();
+
+                if (orders.Count == 0)
+                {
+                    MessageBox.Show("No customers found.");
+                    return;
+                }
+
+                OrderGrid.ItemsSource = orders;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading customers: {ex.Message}");
+            }
+
+        }
+
         private void SearchOrder_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Search functionality not implemented yet.");
@@ -185,14 +176,15 @@ namespace Wpf_SkincareUI
 
         private void ViewOrderDetails_Click(object sender, RoutedEventArgs e)
         {
-            if (OrderGrid.SelectedItem == null)
+            Order order = (Order)OrderGrid.SelectedItem;
+            if (order == null)
             {
                 MessageBox.Show("Please select an order.");
                 return;
             }
             // Open Order Details Window
-            //OrderDetailsWindow detailsWindow = new OrderDetailsWindow();
-            //detailsWindow.ShowDialog();
+            OrderDetailWindow orderDetailWindow = new(order);
+            orderDetailWindow.ShowDialog();
         }
         #endregion
 
@@ -201,9 +193,5 @@ namespace Wpf_SkincareUI
             StaffPage staffPage = new StaffPage(user);
             staffPage.Show();
         }
-
-
     }
-
-
 }

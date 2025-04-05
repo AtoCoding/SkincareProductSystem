@@ -237,13 +237,12 @@ namespace Wpf_SkincareUI.Popup
                     MessageBox.Show("Cập nhật sản phẩm thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            // Tạo đối tượng sản phẩm
-
+            ProductPage productPage = new(user);
+            productPage.Show();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-
             this.Close();
         }
 

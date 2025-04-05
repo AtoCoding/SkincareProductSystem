@@ -26,14 +26,19 @@ namespace BusinessLogicLayer
 
         public static void ProcessImage(List<SkincareProduct> products)
         {
-            string projectDirectory = AppContext.BaseDirectory;
-            string imageFolder = Path.Combine(projectDirectory, @"..\..\..\Image");
-            imageFolder = Path.GetFullPath(imageFolder);
+            string imageFolder = GetImageFolderPath();
 
             foreach (var product in products)
             {
                 product.Image = Path.Combine(imageFolder, product.Image);
             }
+        }
+
+        public static string GetImageFolderPath()
+        {
+            string projectDirectory = AppContext.BaseDirectory;
+            string imageFolder = Path.Combine(projectDirectory, @"..\..\..\Image");
+            return imageFolder = Path.GetFullPath(imageFolder);
         }
     }
 }

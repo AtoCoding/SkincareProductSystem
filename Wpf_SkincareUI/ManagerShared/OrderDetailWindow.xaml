@@ -1,0 +1,30 @@
+﻿<Window x:Class="Wpf_SkincareUI.OrderDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_SkincareUI"
+        mc:Ignorable="d"
+        Title="OrderDetailWindow" Height="450" Width="639"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Margin="50,70,50,30">
+            <TextBlock Text="Order ID:" FontWeight="Bold"/>
+            <TextBox Name="txtOrderId" IsEnabled="False" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Skincare Product ID:" FontWeight="Bold"/>
+            <ComboBox Name="cmbSkincareProductId" Margin="0,0,0,10" SelectionChanged="cmbSkincareProductId_SelectionChanged"/>
+
+            <TextBlock Text="Quantity:" FontWeight="Bold"/>
+            <TextBox Name="txtQuantity" IsEnabled="False" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Total Price:" FontWeight="Bold"/>
+            <TextBox Name="txtTotalPrice" IsEnabled="False" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Grand Total:" FontWeight="Bold"/>
+            <TextBox Name="txtGrandTotal" IsEnabled="False" Margin="0,0,0,10"/>
+
+            <Button Content="Ok" Width="120" Margin="10" Click="Ok_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

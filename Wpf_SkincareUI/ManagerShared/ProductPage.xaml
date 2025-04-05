@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_SkincareUI"
-        Title="Product Management" Height="650" Width="1310" WindowStartupLocation="CenterScreen">
+        Title="Product Management" 
+        Height="650" Width="1310" 
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="SidebarColumn" Width="220"/>
@@ -16,7 +18,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="*"/>
-
             </Grid.RowDefinitions>
 
             <!-- Logo / Title -->
@@ -25,7 +26,6 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
                         <TextBlock Text="Admin Panel" Foreground="White" FontSize="18" FontWeight="SemiBold"/>
                     </StackPanel>
-
                 </Grid>
             </Border>
 
@@ -71,51 +71,35 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="50"/>
-
             </Grid.RowDefinitions>
 
             <!-- Top Header -->
             <Border Grid.Row="0" Background="White" BorderThickness="0,0,0,1" BorderBrush="#e0e0e0">
                 <Grid>
-
                     <!-- Thanh tìm kiếm và bộ lọc -->
                     <StackPanel Orientation="Horizontal" Margin="0 10 10 10">
-                        <TextBlock Text="Quản lý sản phẩm" FontSize="18" FontWeight="Bold" 
-                   Foreground="#2c3e50" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <TextBlock Text="Quản lý sản phẩm" FontSize="18" FontWeight="Bold" Foreground="#2c3e50" VerticalAlignment="Center" Margin="0 0 10 0"/>
 
                         <!-- Ô tìm kiếm -->
-                        <TextBox x:Name="txtSearch" Width="250" Height="36" 
-                 VerticalAlignment="Center" Margin="0 0 10 0"
-                 
-                 BorderBrush="#bdc3c7" BorderThickness="1" />
+                        <TextBox x:Name="txtSearch" Width="250" Height="36" VerticalAlignment="Center" Margin="0 0 10 0" BorderBrush="#bdc3c7" BorderThickness="1"/>
 
                         <!-- Nút tìm kiếm -->
-                        <Button Content="🔍 Tìm kiếm" Width="120" Height="36" Cursor="Hand"
-                Background="#3498db" Foreground="White" FontSize="14" FontWeight="SemiBold"
-                BorderThickness="0"  Margin="0 0 10 0" Click="btnSearch_Click"/>
+                        <Button Content="🔍 Tìm kiếm" Width="120" Height="36" Cursor="Hand" Background="#3498db" Foreground="White" FontSize="14" FontWeight="SemiBold" BorderThickness="0"  Margin="0 0 10 0" Click="btnSearch_Click"/>
 
                         <!-- Nút thêm sản phẩm -->
-                        <Button Content="➕ Thêm sản phẩm" Width="140" Height="36" Cursor="Hand"
-                Background="#27ae60" Foreground="White" FontSize="14" FontWeight="SemiBold"
-                BorderThickness="0"  Click="AddProduct_Click"/>
+                        <Button Content="➕ Thêm sản phẩm" Width="140" Height="36" Cursor="Hand" Background="#27ae60" Foreground="White" FontSize="14" FontWeight="SemiBold" BorderThickness="0"  Click="AddProduct_Click"/>
                     </StackPanel>
-
                 </Grid>
             </Border>
 
             <!-- Page Content -->
             <StackPanel Grid.Row="1" Margin="20">
-
-
                 <DataGrid x:Name="dgProducts" AutoGenerateColumns="False" Height="auto" Margin="0 10 0 0"
-          BorderThickness="1" BorderBrush="#E0E0E0" RowBackground="#FFFFFF" AlternatingRowBackground="#F5F5F5"
-          CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="True"
-          GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#E0E0E0"
-          RowHeaderWidth="0" Background="White"
-          FontFamily="Segoe UI" FontSize="12"
-                             
-                              
-                              >
+                          BorderThickness="1" BorderBrush="#E0E0E0" RowBackground="#FFFFFF" AlternatingRowBackground="#F5F5F5"
+                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="True"
+                          GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#E0E0E0"
+                          RowHeaderWidth="0" Background="White"
+                          FontFamily="Segoe UI" FontSize="12">
                     <DataGrid.Resources>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="#4267B2"/>
@@ -132,10 +116,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="DataGridCell">
-                                        <Border Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                Background="{TemplateBinding Background}"
-                                SnapsToDevicePixels="True">
+                                        <Border Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                                             <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                         </Border>
                                     </ControlTemplate>
@@ -157,15 +138,6 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <!--<DataGridTextColumn Header="ID" Binding="{Binding SkincareProductId}" Width="45">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                    <Setter Property="VerticalAlignment" Value="Center" />
-                                    <Setter Property="FontWeight" Value="Bold" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>-->
                         <DataGridTextColumn Header="Tên sản phẩm" Binding="{Binding Name}" Width="150">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
@@ -254,8 +226,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Width="40" Height="30" Margin="5,0" Click="EditProduct_Click"
-                                Background="#4267B2" BorderBrush="#3b5998" Foreground="White">
+                                        <Button Width="40" Height="30" Margin="5,0" Click="EditProduct_Click" Background="#4267B2" BorderBrush="#3b5998" Foreground="White">
                                             <Button.Resources>
                                                 <Style TargetType="Border">
                                                     <Setter Property="CornerRadius" Value="5"/>
@@ -266,8 +237,7 @@
                                             </Button.Content>
                                             <Button.ToolTip>Chỉnh sửa</Button.ToolTip>
                                         </Button>
-                                        <Button Width="40" Height="30" Margin="5,0" Click="DeleteProduct_Click"
-                                Background="#DC3545" BorderBrush="#C82333" Foreground="White">
+                                        <Button Width="40" Height="30" Margin="5,0" Click="DeleteProduct_Click" Background="#DC3545" BorderBrush="#C82333" Foreground="White">
                                             <Button.Resources>
                                                 <Style TargetType="Border">
                                                     <Setter Property="CornerRadius" Value="5"/>
@@ -284,47 +254,9 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-
-
-
-                <!--<DataGrid x:Name="dgProducts" AutoGenerateColumns="False" Height="400" Margin="0 10 0 0">
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Ảnh sản phẩm">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="3">
-                                        <Image Source="{Binding Image}" Width="50" Height="50"/>
-
-                                    </Border>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="ID" Binding="{Binding SkincareProductId}" Width="25"/>
-                        <DataGridTextColumn Header="Tên sản phẩm" Binding="{Binding Name}" Width="100"/>
-                        <DataGridTextColumn Header="Mô tả" Binding="{Binding Description}" Width="100"/>
-                        <DataGridTextColumn Header="Dung tích" Binding="{Binding Capacity}" Width="80"/>
-                        <DataGridTextColumn Header="Đơn giá" Binding="{Binding UnitPrice}" Width="80"/>
-                        <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}" Width="80"/>
-                        <DataGridTextColumn Header="Thương hiệu" Binding="{Binding Brand.Name}" Width="80"/>
-                        <DataGridTextColumn Header="Loại sản phẩm" Binding="{Binding Category.Name}" Width="90"/>
-                        <DataGridTextColumn Header="Trạng thái" Binding="{Binding IsAvailable}" Width="80"/>
-                        <DataGridTemplateColumn Header="Hành động" Width="150">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Content="✏" Width="30" Margin="5" Click="EditProduct_Click"/>
-                                        <Button Content="🗑" Width="30" Margin="5" Click="DeleteProduct_Click"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>-->
-
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
-                <Button x:Name="btnFirst" Width="40" Height="30" Margin="3,0" Click="btnFirst_Click" 
-            Background="#f0f0f0" BorderBrush="#d0d0d0">
+                <Button x:Name="btnFirst" Width="40" Height="30" Margin="3,0" Click="btnFirst_Click" Background="#f0f0f0" BorderBrush="#d0d0d0">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="4"/>
@@ -333,8 +265,7 @@
                     <TextBlock Text="⟪" FontWeight="Bold" Foreground="#4267B2"/>
                 </Button>
 
-                <Button x:Name="btnPrevious" Width="40" Height="30" Margin="3,0" Click="btnPrevious_Click" 
-            Background="#f0f0f0" BorderBrush="#d0d0d0">
+                <Button x:Name="btnPrevious" Width="40" Height="30" Margin="3,0" Click="btnPrevious_Click" Background="#f0f0f0" BorderBrush="#d0d0d0">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="4"/>
@@ -352,8 +283,7 @@
                     </StackPanel>
                 </Border>
 
-                <Button x:Name="btnNext" Width="40" Height="30" Margin="3,0" Click="btnNext_Click" 
-            Background="#f0f0f0" BorderBrush="#d0d0d0">
+                <Button x:Name="btnNext" Width="40" Height="30" Margin="3,0" Click="btnNext_Click" Background="#f0f0f0" BorderBrush="#d0d0d0">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="4"/>
@@ -362,8 +292,7 @@
                     <TextBlock Text="▸" FontWeight="Bold" Foreground="#4267B2"/>
                 </Button>
 
-                <Button x:Name="btnLast" Width="40" Height="30" Margin="3,0" Click="btnLast_Click" 
-            Background="#f0f0f0" BorderBrush="#d0d0d0">
+                <Button x:Name="btnLast" Width="40" Height="30" Margin="3,0" Click="btnLast_Click" Background="#f0f0f0" BorderBrush="#d0d0d0">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="4"/>
@@ -376,7 +305,6 @@
                     <ComboBox x:Name="cboPageSize" Width="60" SelectionChanged="cboPageSize_SelectionChanged" BorderThickness="0">
                         <ComboBoxItem Content="2"/>
                         <ComboBoxItem Content="4" IsSelected="True"/>
-                        <ComboBoxItem Content="5"/>
                     </ComboBox>
                 </Border>
 

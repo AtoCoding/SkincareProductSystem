@@ -41,7 +41,7 @@
                     <Border.Effect>
                         <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4" />
                     </Border.Effect>
-                    <Label Content="BÁO CÁO TRONG THÁNG" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45" FontWeight="Bold"/>
+                    <Label Content="REPORT STATISTIC" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45" FontWeight="Bold"/>
                 </Border>
             </StackPanel>
             <!--Content 1-->
@@ -52,7 +52,7 @@
                         <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
                     </Border.Effect>
                     <StackPanel VerticalAlignment="Center" Height="260">
-                        <Label Content="Doanh thu 3 tháng gần nhất" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
+                        <Label Content="Revenue in the Last 3 Months" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
                         <DataGrid x:Name="dgRevenue" AutoGenerateColumns="False"
                                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
@@ -69,8 +69,8 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Tháng" Binding="{Binding Month}" Width="*" />
-                                <DataGridTextColumn Header="Tổng doanh thu" Binding="{Binding Revenue}" Width="2*"/>
+                                <DataGridTextColumn Header="Month" Binding="{Binding Month}" Width="*" />
+                                <DataGridTextColumn Header="Total Revenue" Binding="{Binding Revenue}" Width="2*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>
@@ -81,22 +81,22 @@
                         <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
                     </Border.Effect>
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="260">
-                        <Label Content="Thống kê" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10" />
+                        <Label Content="Statistics" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10" />
                         <StackPanel Width="710" Height="160" Background="White" >
                             <StackPanel Orientation="Horizontal" Margin="20,0" Height="40" Width="680" HorizontalAlignment="Center" >
-                                <Label Content="Tổng số người dùng đăng ký mới" Width="280"/>
+                                <Label Content="Total new users" Width="280"/>
                                 <TextBox x:Name="txtTotalNewUsers" Width="395" IsReadOnly="True" BorderThickness="0,0,0,1" VerticalContentAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="20,0" Height="40" Width="680" HorizontalAlignment="Center">
-                                <Label Content="Tổng số khách mua hàng" Width="280"/>
+                                <Label Content="Total purchasing customers" Width="280"/>
                                 <TextBox x:Name="txtTotalBuyer" Width="395" IsReadOnly="True" BorderThickness="0,0,0,1" VerticalContentAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="20,0" Height="40" Width="680" HorizontalAlignment="Center">
-                                <Label Content="Tổng sản phẩm bán ra" Width="280"/>
+                                <Label Content="Total products sold" Width="280"/>
                                 <TextBox x:Name="txtTotalProductsSold" Width="395" IsReadOnly="True" BorderThickness="0,0,0,1" VerticalContentAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="20,0" Height="40" Width="680" HorizontalAlignment="Center">
-                                <Label Content="Tổng đơn hàng trong tháng" Width="280"/>
+                                <Label Content="Total orders this month" Width="280"/>
                                 <TextBox x:Name="txtTotalOrders" Width="395" IsReadOnly="True" BorderThickness="0,0,0,1" VerticalContentAlignment="Center" />
                             </StackPanel>
                         </StackPanel>
@@ -111,7 +111,7 @@
                         <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
                     </Border.Effect>
                     <StackPanel>
-                        <Label Content="Top sản phẩm bán chạy" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
+                        <Label Content="Top selling products" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
                         <StackPanel>
                             <StackPanel x:Name="spProduct1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                                 <Border x:Name="border1" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2">
@@ -152,7 +152,7 @@
                         <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
                     </Border.Effect>
                     <StackPanel>
-                        <Label Content="Top sản phẩm trong tháng" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
+                        <Label Content="Top products of the month" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
                         <StackPanel>
                             <StackPanel x:Name="spProductTop1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                                 <Border x:Name="borderTop1" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2">
@@ -193,7 +193,7 @@
                         <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
                     </Border.Effect>
                     <StackPanel>
-                        <Label Content="Sản phẩm có lượt bán thấp" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
+                        <Label Content="Products with low sales" FontSize="30" FontWeight="Medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="10"/>
                         <StackPanel>
                             <StackPanel x:Name="spProductLow1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                                 <Border x:Name="borderLow1" CornerRadius="30" Height="200" Width="170" Background="#FFAFFFF2">
@@ -251,5 +251,4 @@
             </StackPanel>
         </StackPanel>
     </ScrollViewer>
-
 </Window>

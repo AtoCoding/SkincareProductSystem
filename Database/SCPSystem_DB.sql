@@ -6,21 +6,21 @@ GO
 
 CREATE TABLE Brand (
   BrandId     int IDENTITY NOT NULL,
-  [Name]      nvarchar(100) NOT NULL,
+  [Name]      varchar(100) NOT NULL,
   IsAvailable bit NOT NULL,
   Username    varchar(50) NOT NULL,
   PRIMARY KEY (BrandId));
 
 CREATE TABLE Category (
   CategoryId  int IDENTITY NOT NULL, 
-  [Name]      nvarchar(50) NOT NULL,
+  [Name]      varchar(50) NOT NULL,
   IsAvailable bit NOT NULL, 
   Username    varchar(50) NOT NULL, 
   PRIMARY KEY (CategoryId));
 
 CREATE TABLE [Order] (
   OrderId     int IDENTITY NOT NULL, 
-  DateCreated  date NOT NULL,
+  DateCreated date NOT NULL,
   Username    varchar(50) NOT NULL, 
   PRIMARY KEY (OrderId));
 
@@ -33,8 +33,8 @@ CREATE TABLE OrderDetails (
 
 CREATE TABLE Question (
   QuestionId int IDENTITY NOT NULL, 
-  Title      nvarchar(255) NOT NULL, 
-  Answer     nvarchar(255) NOT NULL, 
+  Title      varchar(255) NOT NULL, 
+  Answer     varchar(255) NOT NULL, 
   [Type]     varchar(50) NOT NULL, 
   PRIMARY KEY (QuestionId));
 
@@ -45,8 +45,8 @@ CREATE TABLE [Role] (
 
 CREATE TABLE SkincareProduct (
   SkincareProductId int IDENTITY NOT NULL, 
-  [Name]            nvarchar(150) NOT NULL, 
-  [Description]     nvarchar(255) NULL, 
+  [Name]            varchar(150) NOT NULL, 
+  [Description]     varchar(255) NULL, 
   Capacity          varchar(100) NULL, 
   UnitPrice         decimal(9, 2) NOT NULL, 
   Quantity			int NOT NULL,
@@ -59,14 +59,14 @@ CREATE TABLE SkincareProduct (
 
 CREATE TABLE TypeOfSkin (
   TypeOfSkinId int IDENTITY NOT NULL, 
-  [Name]       nvarchar(255) NOT NULL, 
+  [Name]       varchar(255) NOT NULL, 
   PRIMARY KEY (TypeOfSkinId));
 
 CREATE TABLE [User] (
   Username     varchar(50) NOT NULL, 
   [Password]   varchar(50) NOT NULL, 
-  Fullname     nvarchar(100) NOT NULL, 
-  Gender	   nvarchar(5) NOT NULL,
+  Fullname     varchar(100) NOT NULL, 
+  Gender	   varchar(10) NOT NULL,
   Budget       decimal(11, 2) NOT NULL, 
   IsActive     bit NOT NULL,
   DateCreated  date NOT NULL,

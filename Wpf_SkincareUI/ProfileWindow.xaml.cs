@@ -35,7 +35,7 @@ namespace Wpf_SkincareUI
             txtEmail.Text = _account.Username;
             txtPassword.Password = _account.Password;
             txtFullName.Text = _account.Fullname;
-            if (_account.Gender == "Nữ")
+            if (_account.Gender == "Female")
             {
                 rbFemale.IsChecked = true;
             }
@@ -63,11 +63,11 @@ namespace Wpf_SkincareUI
             _account.Fullname = txtFullName.Text;
             if (rbFemale.IsChecked == true)
             {
-                _account.Gender = "Nữ";
+                _account.Gender = "Female";
             }
             else
             {
-                _account.Gender = "Nam";
+                _account.Gender = "Male";
             }
             _account.TypeOfSkinId = (int)cbxTypeOfSkin.SelectedValue;
             var validationResults = new List<System.ComponentModel.DataAnnotations.ValidationResult>();

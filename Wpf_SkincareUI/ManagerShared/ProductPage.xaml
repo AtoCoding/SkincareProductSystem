@@ -78,16 +78,16 @@
                 <Grid>
                     <!-- Thanh tìm kiếm và bộ lọc -->
                     <StackPanel Orientation="Horizontal" Margin="0 10 10 10">
-                        <TextBlock Text="Quản lý sản phẩm" FontSize="18" FontWeight="Bold" Foreground="#2c3e50" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <TextBlock Text="Product management" FontSize="18" FontWeight="Bold" Foreground="#2c3e50" VerticalAlignment="Center" Margin="0 0 10 0"/>
 
                         <!-- Ô tìm kiếm -->
                         <TextBox x:Name="txtSearch" Width="250" Height="36" VerticalAlignment="Center" Margin="0 0 10 0" BorderBrush="#bdc3c7" BorderThickness="1"/>
 
                         <!-- Nút tìm kiếm -->
-                        <Button Content="🔍 Tìm kiếm" Width="120" Height="36" Cursor="Hand" Background="#3498db" Foreground="White" FontSize="14" FontWeight="SemiBold" BorderThickness="0"  Margin="0 0 10 0" Click="btnSearch_Click"/>
+                        <Button Content="🔍 Search" Width="120" Height="36" Cursor="Hand" Background="#3498db" Foreground="White" FontSize="14" FontWeight="SemiBold" BorderThickness="0"  Margin="0 0 10 0" Click="btnSearch_Click"/>
 
                         <!-- Nút thêm sản phẩm -->
-                        <Button Content="➕ Thêm sản phẩm" Width="140" Height="36" Cursor="Hand" Background="#27ae60" Foreground="White" FontSize="14" FontWeight="SemiBold" BorderThickness="0"  Click="AddProduct_Click"/>
+                        <Button Content="➕ Add" Width="140" Height="36" Cursor="Hand" Background="#27ae60" Foreground="White" FontSize="14" FontWeight="SemiBold" BorderThickness="0"  Click="AddProduct_Click"/>
                     </StackPanel>
                 </Grid>
             </Border>
@@ -125,7 +125,7 @@
                         </Style>
                     </DataGrid.Resources>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Ảnh sản phẩm">
+                        <DataGridTemplateColumn Header="Image">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5" Padding="3" Margin="3">
@@ -138,7 +138,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Tên sản phẩm" Binding="{Binding Name}" Width="150">
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="150">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="TextWrapping" Value="Wrap" />
@@ -146,21 +146,21 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Mô tả" Binding="{Binding Description}" Width="100">
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="100">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="TextWrapping" Value="Wrap" />
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Dung tích" Binding="{Binding Capacity}" Width="80">
+                        <DataGridTextColumn Header="Capacity" Binding="{Binding Capacity}" Width="80">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="HorizontalAlignment" Value="Center" />
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Đơn giá" Binding="{Binding UnitPrice, StringFormat='{}{0:N0} VNĐ'}" Width="100">
+                        <DataGridTextColumn Header="Unit price" Binding="{Binding UnitPrice, StringFormat='{}{0:N0} VNĐ'}" Width="100">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="HorizontalAlignment" Value="Right" />
@@ -168,14 +168,14 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}" Width="80">
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="80">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="HorizontalAlignment" Value="Center" />
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Thương hiệu" Binding="{Binding Brand.Name}" Width="100">
+                        <DataGridTextColumn Header="Brand" Binding="{Binding Brand.Name}" Width="100">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="FontStyle" Value="Italic" />
@@ -183,14 +183,14 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Loại sản phẩm" Binding="{Binding Category.Name}" Width="100">
+                        <DataGridTextColumn Header="Category" Binding="{Binding Category.Name}" Width="100">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="HorizontalAlignment" Value="Center" />
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTemplateColumn Header="Trạng thái" Width="80">
+                        <DataGridTemplateColumn Header="Status" Width="80">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border CornerRadius="12" Padding="8,3" HorizontalAlignment="Center">
@@ -207,11 +207,11 @@
                                         <TextBlock>
                                             <TextBlock.Style>
                                                 <Style TargetType="TextBlock">
-                                                    <Setter Property="Text" Value="Có sẵn" />
+                                                    <Setter Property="Text" Value="In stock" />
                                                     <Setter Property="Foreground" Value="#28A745" />
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding IsAvailable}" Value="False">
-                                                            <Setter Property="Text" Value="Hết hàng" />
+                                                            <Setter Property="Text" Value="Out of stock" />
                                                             <Setter Property="Foreground" Value="#DC3545" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -222,7 +222,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Hành động" Width="110">
+                        <DataGridTemplateColumn Header="Action" Width="110">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -235,7 +235,7 @@
                                             <Button.Content>
                                                 <TextBlock Text="✏" FontSize="14" VerticalAlignment="Center"/>
                                             </Button.Content>
-                                            <Button.ToolTip>Chỉnh sửa</Button.ToolTip>
+                                            <Button.ToolTip>Update</Button.ToolTip>
                                         </Button>
                                         <Button Width="40" Height="30" Margin="5,0" Click="DeleteProduct_Click" Background="#DC3545" BorderBrush="#C82333" Foreground="White">
                                             <Button.Resources>
@@ -246,7 +246,7 @@
                                             <Button.Content>
                                                 <TextBlock Text="🗑" FontSize="14" VerticalAlignment="Center"/>
                                             </Button.Content>
-                                            <Button.ToolTip>Xóa</Button.ToolTip>
+                                            <Button.ToolTip>Delete</Button.ToolTip>
                                         </Button>
                                     </StackPanel>
                                 </DataTemplate>
@@ -276,7 +276,7 @@
 
                 <Border Background="#4267B2" CornerRadius="4" Padding="10,5" Margin="8,0">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Trang " Foreground="White"/>
+                        <TextBlock Text="Page " Foreground="White"/>
                         <TextBlock x:Name="txtCurrentPage" Text="1" Foreground="White" FontWeight="Bold"/>
                         <TextBlock Text=" / " Foreground="White"/>
                         <TextBlock x:Name="txtTotalPages" Text="1" Foreground="White"/>
@@ -308,7 +308,7 @@
                     </ComboBox>
                 </Border>
 
-                <TextBlock Text="dòng/trang" VerticalAlignment="Center" Margin="5,0" Foreground="#666"/>
+                <TextBlock Text="products/page" VerticalAlignment="Center" Margin="5,0" Foreground="#666"/>
             </StackPanel>
         </Grid>
     </Grid>

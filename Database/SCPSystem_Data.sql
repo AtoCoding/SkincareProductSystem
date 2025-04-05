@@ -5,17 +5,17 @@
 
 INSERT INTO TypeOfSkin([Name]) values
 (N'None'),
-(N'Da thường'),
-(N'Da dầu'),
-(N'Da khô'),
-(N'Da nhạy cảm');
+(N'Normal Skin'),
+(N'Oily Skin'),
+(N'Dry Skin'),
+(N'Sensitive Skin');
 
 INSERT INTO [User](Username, [Password], Fullname, Gender, Budget, IsActive, DateCreated, RoleId, TypeOfSkinId) values
-('admin@gmail.com', '@123', N'Nguyễn Phi Nhạn', N'Nam', 999999999.99, 1, '20250101', 1, 1),
-('staff@gmail.com', '@123', N'Trần Phi Mai', N'Nữ', 999999999.99, 1, '20250101', 2, 1),
-('customer1@gmail.com', '@123', N'Phạm Nhật Ánh', N'Nữ', 999999999.99, 1, '20250201', 3, 2),
-('customer2@gmail.com', '@123', N'Lu Tử Kiệt', N'Nam', 999999999.99, 0, '20250301', 3, 1),
-('customer3@gmail.com', '@123', N'Trần Khắc Trung', N'Nam', 999999999.99, 1, '20241218', 3, 1);
+('admin@gmail.com', '@123', N'Nguyen Phi Nhan', N'Male', 999999999.99, 1, '20250101', 1, 1),
+('staff@gmail.com', '@123', N'Tran Phi Mai', N'Female', 999999999.99, 1, '20250101', 2, 1),
+('customer1@gmail.com', '@123', N'Pham Nhat Anh', N'Female', 999999999.99, 1, '20250201', 3, 2),
+('customer2@gmail.com', '@123', N'Lu Tu Kiet', N'Male', 999999999.99, 0, '20250301', 3, 1),
+('customer3@gmail.com', '@123', N'Tran Khac Trung', N'Male', 999999999.99, 1, '20241218', 3, 1);
 
 INSERT INTO Brand([Name], IsAvailable, Username) values
 ('Cocoon', 1, 'admin@gmail.com'),
@@ -23,45 +23,45 @@ INSERT INTO Brand([Name], IsAvailable, Username) values
 ('3CE', 1, 'staff@gmail.com');
 
 INSERT INTO Category([Name], IsAvailable, Username) values
-(N'Sữa rửa mặt', 1, 'staff@gmail.com'),
-(N'Mặt nạ', 1, 'staff@gmail.com'),
-(N'Nước tẩy trang', 1, 'staff@gmail.com'),
-(N'Son môi', 1, 'staff@gmail.com');
+(N'Facial Cleanser', 1, 'staff@gmail.com'),
+(N'Face Mask', 1, 'staff@gmail.com'),
+(N'Micellar Water', 1, 'staff@gmail.com'),
+(N'Lipstick', 1, 'staff@gmail.com');
 
 INSERT INTO SkincareProduct([Name], [Description], Capacity, UnitPrice, Quantity, [Image], IsAvailable, CategoryId, BrandId, Username) values
-(N'Micellar Water 3-in-1', N'Nước Tẩy Trang LOreal Làm Sạch Sâu Trang Điểm 400ml', '400ml', 152000, 10, 'vn-11134201-7ras8-m0mekgjunu252f.jpg', 1, 3, 2, 'staff@gmail.com'),
-(N'Nước Tẩy Trang Bí Đao', N'Cocoon Nước Tẩy Trang Bí Đao 500ml', '500ml', 140000, 9, 'z5322301407365_da64ee4ef34e8f8c85194a8b3967f354_db4782bf9d.jpg', 1, 3, 1, 'staff@gmail.com'),
-(N'Son Kem Lì 3CE Laydown', N'Son Kem Lì 3CE Laydown - Hồng Đào Trầm Pha Nâu 4.6g Blur Water Tint', '4.6g', 277000, 10, '3624018493198550203900453350152075913799873n-5954.png', 1, 4, 3, 'staff@gmail.com'),
-(N'Son Kem Lì 3CE Mịn Như Nhung Daffodil', N'Son Kem Lì 3CE Mịn Như Nhung Daffodil - Đỏ Đất 4g Velvet Lip Tint', '4g', 277000, 7, '02-31-15-21-02-2023-3ce-daf-1.jpg', 1, 4, 3, 'staff@gmail.com'),
-(N'Nước Tẩy Trang LOreal Căng Mịn Da', N'Nước Tẩy Trang LOreal Căng Mịn Da 400ml - Revitalift Hyaluronic Acid Hydrating Micellar Water', '400ml', 165000, 10, 'vn-11134207-7qukw-ljnj14p5hcead8.jpg', 1, 3, 2, 'staff@gmail.com');
+(N'Micellar Water 3-in-1', N'LOreal Deep Cleansing Micellar Water 400ml', '400ml', 152000, 10, 'vn-11134201-7ras8-m0mekgjunu252f.jpg', 1, 3, 2, 'staff@gmail.com'),
+(N'Winter Melon Micellar Water', N'Cocoon Winter Melon Micellar Water 500ml', '500ml', 140000, 9, 'z5322301407365_da64ee4ef34e8f8c85194a8b3967f354_db4782bf9d.jpg', 1, 3, 1, 'staff@gmail.com'),
+(N'3CE Laydown Matte Lip Tint', N'3CE Laydown Matte Lip Tint - Peachy Brown 4.6g Blur Water Tint', '4.6g', 277000, 10, '3624018493198550203900453350152075913799873n-5954.png', 1, 4, 3, 'staff@gmail.com'),
+(N'3CE Velvet Lip Tint Daffodil', N'3CE Velvet Lip Tint Daffodil - Earthy Red 4g', '4g', 277000, 7, '02-31-15-21-02-2023-3ce-daf-1.jpg', 1, 4, 3, 'staff@gmail.com'),
+(N'LOreal Hydrating Micellar Water', N'LOreal Revitalift Hyaluronic Acid Hydrating Micellar Water 400ml', '400ml', 165000, 10, 'vn-11134207-7qukw-ljnj14p5hcead8.jpg', 1, 3, 2, 'staff@gmail.com');
 
 INSERT INTO Question(Title, Answer, [Type]) values
-(N'Vào mỗi buổi sáng thức dậy, bạn thấy da mình như thế nào?', 
-N'A. Bình thường, không có sự khác biệt so với trước khi ngủ-B. Nhiều dầu, tập trung ở mũi và trán-C. Khô và nẻ-D. Tấy đỏ, bong da', 
+(N'When you wake up in the morning, how does your skin feel?', 
+N'A. Normal, no difference from before sleeping-B. Oily, especially around nose and forehead-C. Dry and flaky-D. Red and peeling', 
 'Skin'),
-(N'Thực hiện rửa mặt với sữa rửa mặt của bạn với nước ấm. Từ 20 đến 30p sau, cảm nhận của da bạn là thế nào?', 
-N'A. Tốt-B. Vẫn còn nhiều dầu-C. Khô và ráp-D. Mẫn đỏ', 
+(N'Wash your face with cleanser and warm water. After 20-30 minutes, how does your skin feel?', 
+N'A. Good-B. Still oily-C. Dry and rough-D. Red and irritated', 
 'Skin'),
-(N'Hãy nhìn kỹ xem lỗ chân lông trên da bạn ra sao?', 
-N'A. Nhỏ-B. Lớn-C. Khô-D. Đỏ', 
+(N'Look closely at your pores. How do they appear?', 
+N'A. Small-B. Large-C. Dry-D. Red', 
 'Skin'),
-(N'Từ nào dưới đây có thể miêu tả kết cấu da bạn?', 
-N'A. Mềm mịn-B. Nhiều dầu-C. Hơi khô-D. Mỏng, lộ đường mạch máu', 
+(N'Which word best describes your skin texture?', 
+N'A. Smooth-B. Oily-C. Slightly dry-D. Thin, visible veins', 
 'Skin'),
-(N'Vào buổi trưa, da bạn ở tình trạng nào? (Không dùng tay, chỉ soi gương để đoán)', 
-N'A. Như buổi sáng-B. Sáng-C. Khô-D. Nhạy cảm', 
+(N'Around noon, how is your skin condition? (Without touching, observe in the mirror)', 
+N'A. Same as morning-B. Shiny-C. Dry-D. Sensitive', 
 'Skin'),
-(N'Bạn có thường xuyên nặn mụn trứng cá?', 
-N'A. Thỉnh thoảng-B. Thường xuyên, đặc biệt vào chu kỳ-C. Không bao giờ-D. Chỉ khi trang điểm', 
+(N'Do you often squeeze pimples?', 
+N'A. Occasionally-B. Frequently, especially during periods-C. Never-D. Only when wearing makeup', 
 'Skin'),
-(N'Làm thế nào để phòng ngừa tình trạng lão hóa da sớm?', 
-N'Dùng kem chống nắng mỗi ngày để bảo vệ da trước tác hại của tia UV.-Chăm sóc da bằng các sản phẩm chống lão hóa như serum chứa vitamin C, retinol hoặc peptide để tăng cường sản xuất collagen và tái tạo da.', 
+(N'How to prevent premature skin aging?', 
+N'Use sunscreen daily to protect against UV damage.-Use anti-aging products like vitamin C, retinol, or peptide serums to boost collagen and skin regeneration.', 
 'Common'),
-(N'Nam giới có nên quan tâm về da nhạy cảm?', 
-N'Da nhạy cảm có thể xảy ra ở cả nữ và nam, để bảo vệ da, nam giới cũng cần quan tâm đến vấn đề da nhạy cảm.', 
+(N'Should men care about sensitive skin?', 
+N'Sensitive skin can happen to both men and women, so men should also take care of it.', 
 'Common'),
-(N'Da nhạy cảm dùng mỹ phẩm gì?', 
-N'Những sản phẩm dưỡng da chứa silicone thường ít gây kích ứng da.-Sử dụng các loại phấn phủ có ít chất bảo quản, đây là sản phẩm có nguy cơ kích ứng da rất thấp.', 
+(N'What skincare products are suitable for sensitive skin?', 
+N'Silicone-based products are usually less irritating.-Use powders with minimal preservatives to reduce the risk of irritation.', 
 'Common');
 
 INSERT INTO [Order](DateCreated, Username) values
@@ -70,32 +70,3 @@ INSERT INTO [Order](DateCreated, Username) values
 INSERT INTO OrderDetails(OrderId, SkincareProductId, Quantity, TotalPrice) values
 (1, 2, 1, 1 * 140000),
 (1, 4, 3, 3 * 277000);
-
-select * from [Order]
-
-select * from OrderDetails
-
-select * from SkincareProduct
-
-select * from [Category]
-
-select * from [Brand]
-
-select * from [Order]
-inner join OrderDetails
-on [Order].OrderId = OrderDetails.OrderId
-
-SELECT 
-    o.OrderId,
-    SUM(od.TotalPrice) AS TotalRevenue
-FROM [Order] o
-INNER JOIN OrderDetails od ON o.OrderId = od.OrderId
-GROUP BY o.OrderId;
-
-select * from [User]
-
-select * from [Role]
-
-select * from [Brand]
-
-select * from TypeOfSkin
